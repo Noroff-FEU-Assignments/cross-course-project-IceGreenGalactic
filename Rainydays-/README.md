@@ -5,6 +5,7 @@ This is a website based on the prototype made in Design1 (Rainy Days)
 
 
 Classes:
+
 class="back-arrow"(go home - go back arrows)
 class="Size-button" - Choose size (not just hover effect but permanent change when cklicked)
 class="Price" - All the Prices on jackets

@@ -15,11 +15,12 @@ p{font-family: 'Hind', sans-serif;}
 main{margin-left: 50px; margin-right: 50px;}
 
 .index-Header>a>img,.Header1>a>img{max-width: 300px; max-height: 150px;display: flex; margin-left: 40%; padding-top: 30px;}
+
 header>nav{ display:flex ; justify-content: flex-end; display: grid; background-color:red; }
-.navbar-top >li {display: inline-block;
+.navbar-top{display: flex;
     color:black; padding-right: 40px; font-size: 1.1em; font-family: "Hind"; background-color: yellow;}
 .navbar-top >li>a>i {padding-right: 10px;} 
-.search {color: black; font-size: 1.5em;display: inline-flex; align-items:  center; background-color: purple} 
+.search {color: black; font-size: 1.5em;display: flex; align-items:  center; background-color: purple} 
 .search>div {
     padding:5px ;
 }
@@ -30,7 +31,7 @@ header>.back-arrow {display: flex; font-family: "Hind"; font-size: 3em; margin-l
 
 
 
-.index-Header{background-image:url(/Images/Background\ main2.jpg); max-height: 900px; 
+.index-Header{background-image:url(/Rainydays-/Images/Background\ main2.jpg); max-height: 900px; 
     position:relative;
     background-size:cover; background-repeat: no-repeat; top:auto; left: 0%; background-position-x: center;
  }
@@ -49,7 +50,7 @@ ul{list-style-type: none; padding: 0; display: inline}
     float: left; display:block;
     background-color: rgb(249, 254, 255); text-align: left; margin: auto;
     padding:10px;
-    border-style: solid; border-color: rgb(158, 238, 244); inline-size: 100px; a{color: black;}}
+    border-style: solid; border-color: rgb(158, 238, 244); inline-size: 100px; }
 
 
 
@@ -86,11 +87,11 @@ button {
     margin:20px;max-height: 60px; max-width: 200px; font-size: 1.8em; font-weight: 500;}
     
 Button:hover{background-size:cover;
-background-image: url(/Images/button\ color.jpg);
+background-image: url(/Rainydays-/Images/button\ color.jpg);
 }
 .current{ margin:20px;max-height: 60px; max-width: 200px; font-size: 1.8em; font-weight: 500;
     background-size:cover;
-    background-image: url(/Images/button\ color.jpg);text-decoration: underline;}
+    background-image: url(/Rainydays-/Images/button\ color.jpg);text-decoration: underline;}
 .Shop_CTA-Button{ display: flex; justify-content: center; padding: 2%; background-image: linear-gradient(white,rgb(142, 249, 249),rgb(197, 255, 255),white )}
 
 .Index__CTA-Button{ display: flex; justify-content: center; margin-top: 20%;}
@@ -99,12 +100,12 @@ background-image: url(/Images/button\ color.jpg);
     border-color: rgb(78, 228, 255); display: inline;
     margin:20px;max-height: 30px; max-width: 100px; font-size: 0.5em; font-weight: 900;}
 
-.CTA-Button:hover{background-size: cover;background-image: url(/Images/button\ color.jpg)}
+.CTA-Button:hover{background-size: cover;background-image: url(/Rainydays-/Images/button\ color.jpg)}
 
 
 
 
-.Index__Sale {color:rgb(181, 254, 255);-webkit-text-stroke: 2px; -webkit-text-stroke-color: black; background-image: url(/Images/button\ color.jpg)  ;
+.Index__Sale {color:rgb(181, 254, 255);-webkit-text-stroke: 2px; -webkit-text-stroke-color: black; background-image: url(/Rainydays-/Images/button\ color.jpg)  ;
     font-size: 5em;
      text-align: center; ; background-image:linear-gradient(white,rgb(0, 242, 255),white)}
 
@@ -136,20 +137,32 @@ background-image: url(/Images/button\ color.jpg);
 .percent{  position: absolute; top:2%; left: 5%; background-image:linear-gradient(rgb(159, 250, 255),rgb(0, 242, 255),rgb(159, 250, 255));
 }
 .Price {font-weight:900;
-    position: absolute; top:90%; left: 50%;transform: translate(-50%, -50%)
-     background-color: red;}
+    position: absolute; top:90%; left: 50%;transform: translate(-50%, -50%)}
 .jackets-Shop>div>h2,.Index_Jackets-shop>div>h3 {
 position: absolute; top:80%; left: 50%;transform: translate(-50%, -50%); font-weight: 500; }
 .jackets-Shop>div>h3, .Index_Jackets-shop>div>h4 {position: absolute; top:85%; left: 50%;transform: translate(-50%, -50%); 
 font-weight: 200}
 
-.Jacket_info{background-color:olive; display: flex;}
-.back-arrow-x{background-color: blueviolet; }
-.Jacket_info>div>img{ background-color: red;}
-.info_Price {background-color: yellow;}
-.Size-button {background-color: orange;}
-.Jacket_info>div>ul>lis{background-color: blue;}
-.Info_info{background-color:pink;}
+.Jacket_info{background-color:olive; 
+    min-height:  100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.info_Price{
+
+    background-color: yellow;
+}
+.Size-button { background-color: orange;}
+.Jacket_info>div>ul>li{background-color: blue;}
+.Info_info{background-color:pink; justify-content: last baseline;}
+
+
+.Jacket_info>div>img{ max-width: 600px; align-items: center;
+    }
+
 
 .Not-found { color:white;display: flex; background-image: url(/Images/Not\ found.jpg); max-height: 9000px; }
 .Not-found>main{}
@@ -159,10 +172,10 @@ font-weight: 200}
 .Sign-in>form>input,.Sign-in-fail>form>input[type=text], .Sign-in>form>input,.Sign-in-fail>form>input[type=password] 
 {padding: 10px; background-color: rgba(255, 0, 0, 0.325);}
 .Sign-in-fail>h2{font-size: 0.5em; color: red;}
-.Sign-in-fail>.CTA-Button{background-image: url(/Images/button\ color.jpg)}
+.Sign-in-fail>.CTA-Button{background-image: url(/Rainydays-/Images/button\ color.jpg)}
 
 .Sendt{
-     background-image: url(/Images/pexels-flo-maderebner-869258.jpg);
+     background-image: url(/Rainydays-/Images/pexels-flo-maderebner-869258.jpg);
     height: 500px;background-size: cover;
    
     }
