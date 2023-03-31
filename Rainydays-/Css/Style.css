@@ -14,13 +14,12 @@ p{font-family: 'Hind', sans-serif;}
 
 main{margin-left: 50px; margin-right: 50px;}
 
-.index-Header>a>img,.Header1>a>img{max-width: 300px; max-height: 150px;display: flex; margin-left: 40%; padding-top: 30px;}
-
-header>nav{ display:flex ; justify-content: flex-end; display: grid; background-color:red; }
+.index-Header>a>img,.Header1>a>img{max-width: 300px; max-height: 150px; margin-left: 50%; margin-top: 30px;}
+.index-Header,Header {display:grid; grid-template-columns: 1fr auto;}
 .navbar-top{display: flex;
-    color:black; padding-right: 40px; font-size: 1.1em; font-family: "Hind"; background-color: yellow;}
-.navbar-top >li>a>i {padding-right: 10px;} 
-.search {color: black; font-size: 1.5em;display: flex; align-items:  center; background-color: purple} 
+    color:black; margin-right: 50px;  margin-top: 40px ;font-size: 1em; font-family: "Hind"}
+.navbar-top >li>a>i {padding-right: 10px; padding-left: 10px;} 
+.search {color: black; display: flex; align-items:  center} 
 .search>div {
     padding:5px ;
 }
@@ -31,14 +30,14 @@ header>.back-arrow {display: flex; font-family: "Hind"; font-size: 3em; margin-l
 
 
 
-.index-Header{background-image:url(/Rainydays-/Images/Background\ main2.jpg); max-height: 900px; 
+.index-Header{background-image:url(/Rainydays-/Images/Background\ main2.jpg); max-height: 900px; height: 600px;
     position:relative;
     background-size:cover; background-repeat: no-repeat; top:auto; left: 0%; background-position-x: center;
  }
 
 
 ul{list-style-type: none; padding: 0; display: inline}
-
+.current2{text-decoration: underline;}
 
 
 
@@ -94,10 +93,10 @@ background-image: url(/Rainydays-/Images/button\ color.jpg);
     background-image: url(/Rainydays-/Images/button\ color.jpg);text-decoration: underline;}
 .Shop_CTA-Button{ display: flex; justify-content: center; padding: 2%; background-image: linear-gradient(white,rgb(142, 249, 249),rgb(197, 255, 255),white )}
 
-.Index__CTA-Button{ display: flex; justify-content: center; margin-top: 20%;}
+.Index__CTA-Button{ display: flex; justify-content:space-evenly; margin-left: 30%; margin-top: 20%}
 .CTA-Button {   font-family: "Hind";background-color: rgb(181, 254, 255); 
     border-radius: 10px; border-width: 1px; 
-    border-color: rgb(78, 228, 255); display: inline;
+    border-color: rgb(78, 228, 255);
     margin:20px;max-height: 30px; max-width: 100px; font-size: 0.5em; font-weight: 900;}
 
 .CTA-Button:hover{background-size: cover;background-image: url(/Rainydays-/Images/button\ color.jpg)}
