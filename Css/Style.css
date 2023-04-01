@@ -246,10 +246,14 @@ Button:hover {
     border-width: 1px;
     border-color: rgb(78, 228, 255);
     margin: 20px;
-    max-height: 30px;
-    max-width: 100px;
-    font-size: 0.5em;
+    height: 50px;
+    width: 200px;
+    max-height: 100px;
+    max-width: 200px;
+    font-size: 1.2em;
     font-weight: 900;
+    margin-left: 50%;
+    transform: translate(-50%, 50%);
 }
 
 .CTA-Button:hover {
@@ -405,6 +409,13 @@ Button:hover {
     max-width: 500px;
     background-color: blueviolet;
 }
+
+.Cart{display: grid; grid-template-columns:auto auto auto auto auto auto; }
+.Cart_info>div>h2{font-weight: 300; font-size: 1em ; background-color: yellow;}
+.Cart_info>div>h3{background-color: orange; font-size: 1em; font-weight: 200;}
+.Cart_Jackets>img{width: 100px; display: block; margin-bottom: 50px;}
+.Cart_Hedline{background-color: lightskyblue;}
+
 
 
 .Not-found {
