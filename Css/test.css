@@ -91,11 +91,8 @@ header>.back-arrow {
 .back-arrow2 {
     display: flex;
     font-family: "Hind";
-    font-size: 1.2em;
-    margin-left: 50px;
-    color: aquamarine;
-    text-emphasis-color: green;
-    text-decoration-line: underline;
+    font-size: 3em;
+    margin-left: 20px;
 }
 
 
@@ -205,7 +202,7 @@ button {
     border-width: 1px;
     border-color: rgb(78, 228, 255);
     display: inline;
-  
+    margin: 20px;
     max-height: 60px;
     max-width: 200px;
     font-size: 1.8em;
@@ -221,14 +218,6 @@ Button:hover {
     margin: 20px;
     max-height: 60px;
     max-width: 200px;
-    font-size: 1.8em;
-    font-weight: 500;
-    background-size: cover;
-    background-image: url(/Images/button\ color.jpg);
-    text-decoration: underline;
-}
-.Jacket_info>div>h3{  
-     
     font-size: 1.8em;
     font-weight: 500;
     background-size: cover;
@@ -376,6 +365,7 @@ Button:hover {
     font-weight: 500;
 }
 
+.jackets-Shop>div>h3,
 .Index_Jackets-shop>div>h4 {
     position: absolute;
     top: 85%;
@@ -384,74 +374,55 @@ Button:hover {
     font-weight: 200
 }
 
-.info_main{ background-image: linear-gradient(white, rgb(171, 251, 255), white);  }
 .Jacket_info {
+    background-color: olive;
     min-height: 100vh;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr 1fr auto auto;
     row-gap: 20px;
-    line-height: 40px;
-    
-    margin-left: 50px;
-   
+
+
 }
-.Info_Bergolos>h1{font-size: 3em; line-height: 5px; 
-}
-.Info_Bergolos>h2{line-height: 2px; 
-}
-.Jacket_info>div>ul>li {margin-left: 50px;
-    
-   text-align: left;
-}
-.Info_CTA-button{ margin-left: 100px;}
-.info_Price { 
+
+.info_Price {
     font-weight: 900;
     font-size: 2em;
-    margin-left: 150px;
-    
+    background-color: yellow;
 }
 
 .Size-button {
-    width: 60px;
-    font-size: 1em;
-    margin-right: 30px;
-    margin-bottom: 30px;
+    width: 80px;
 }
-.Size-button:focus
-{
-    background-image: url(/Images/button\ color2.jpg);
+
+.Jacket_info>div>ul>li {
+    background-color: blue
 }
+
+.Info_info {
+    background-color: pink;
+    height: fit-content;
+}
+
+
 .Jacket_info>div>img {
     max-width: 500px;
-
-    
+    background-color: blueviolet;
 }
 
-.Cart{display: grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr auto; }
-.Cart_Jackets>img{width: 200px; display: block; margin-bottom: 80%;}
-.Cart_Hedline{background-color: lightskyblue;}
-.Cart_info>div{background-color: red; margin-bottom: 90%; }
+.Cart{display: grid; grid-template-columns:auto auto; background-color: green; }
+.Shoppingbag{background-color: red;}
+.Shoppingbag>div>img{width: 200px; display: block; margin-bottom: 80%;}
+.Cart_Hedline{background-color: lightskyblue; display: grid; grid-template-columns: auto auto auto auto;}
+
+.Cart-Bergolos {display: grid; grid-template-columns: auto auto auto auto auto;}
+.Cart-Arilo{background-color: aqua;display: grid; grid-template-columns: auto auto auto auto auto;}
+.Cart_Fercospa {background-color: yellow;}
 
 .Cart_info>div>h2{font-weight: 900; font-size: 1em ; background-color: yellow;}
 .Cart_info>div>h3{background-color: orange; font-size: 1em; font-weight: 200;}
 .Cart_Price>p{background-color: rebeccapurple;}
 .Amount {background-color: pink}
-
-.Checkout_body{display: grid; grid-template-columns: auto auto;}
-.Checkout_Summary>div{background-color: green;}
-.Checkout_Summary{background-color: red;}
-.Checkout_topline>ul{ display:flex; justify-content: space-evenly;}
-.Checkout_active{text-decoration:underline ; background-color:rgb(106, 253, 255)}
-.Checkout_active2{text-decoration: underline; background-color: rgba(0, 255, 0, 0.473)}
-
-.Pay_Klarna_list{ list-style:inside;}
-
-
-.Completed_order {display: flex; justify-content: center;
-    background-image: url(/Pay_images/1891021_approved_check_checkbox_checkmark_confirm_icon.png) ;
-     background-position: center; background-size: 400px;height: 500px; background-repeat: no-repeat;}
-
-
 .Not-found {
     color: white;
     display: flex;

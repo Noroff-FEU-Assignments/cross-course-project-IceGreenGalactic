@@ -1,24 +1,94 @@
-<head>
-    <link href="css/Style.css" rel="stylesheet" />
-</head>
-<body>
-    <main>
-        <section class="container">
-            <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque bibendum enim.</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RainyDays|Cart</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <link href="/css/test.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/db895f6c4c.js" crossorigin="anonymous"></script>
+  </head>
+  
+  <body>
+  
+    <header Class="Header1">
+      <a href="/index.html">
+        <img src="/Images/RainyDays_Logo.png" alt="logo for rainy days website" class="Logo"/>
+      </a>
+      <nav alt="Profile,Shoppingbag,favorits" class="Nav_header">
+        <ul class="navbar-top">  
+          <li><a href= "/Sign-in.html"><i class="fa-solid fa-user"></i> Log in</a></li>
+          <li><a href= "/Checkout/Cart.html"><i class="fa-solid fa-basket-shopping"></i>shoppingbag</a></li>
+          <li>  <a href= "#"><i class="fa-regular fa-heart"></i>favorits</a></li>
+        </ul>
+      <section class="search"> 
+        <div><i class="fa-solid fa-magnifying-glass"></i></div>
+         <div><input type="text" name="search" placeholder="What are you looking for"> </div>
+      </section> 
+    </nav>
+ 
+
+   </header> 
+     <section class="back-arrow2">
+        <a href="/index.html" ><i class="fa-solid fa-arrow-left-long"></i>Go Home</a>
+     </section>
+    <main class="Cart">    
+
+     <section class="Shoppingbag">
+          <div Class="Cart_Hedline">
+     
+        <h1>Item</h1>
+        <h1>price</h1>
+        <h1> amount</h1>
+        <h1>total</h1>
+          </div>
+         <div class="Cart-Bergolos"> 
+          <img src="/Images/Bergolos Perito her.png" alt="Bergolos Perioto jacket"  />
+           <div><h2>Bergolos Perito</h2>
+     <h3>Outdoor Shell Jacket</h3></div> 
+      <button class="Amount"> - 1 +</button>
+      <div><p>$45</p >
+    </div>
+   </div>
+   <div Class="Cart-Arilo"> 
+    <img src="/Images/Arilo Slimort.png" alt= "Arilo Slimort jacket"> </div><div>
+  <h2> Arilo Slimort</h2>
+  <h3> Outdoor Shell jacket</h3> </div><div>
+  <button class="Amount"> - 1 +</button> </div><div><p>$50</p>
+</div>
+<div class="=Cart_Fercospa">
+  <img src="/Images/Fercospa Linover.png" alt=" Fercospa Linover Jacket"> </div><div>
+  <h2>Fercospa Linover</h2>
+  <h3>Outdoor Shell Jacket</h3>
+  <button class="Amount"> - 1 +</button> </div><div><p>Price $87</p></div>
+            <div class="Total"> Total $182
             </div>
-            <div>
-              <p>Sed convallis malesuada nisl, id laoreet nulla vulputate nec.</p>
-            </div>
-            <div>
-              <p>In varius ac ipsum in interdum.</p>
-            </div>
-            <div>
-              <p>
-                Vivamus ornare pretium mauris, tristique vulputate ex porttitor non. Nullam mattis lorem
-                mattis fermentum pulvinar.
-              </p>
-            </div>
-          </section>
+</div></section>
+<section>
+<section class="Cart_Summary">
+ <div>
+  <h1 class="Cart_Hedline">SUMMARY</h1>
+  </div>
+  <div>
+    <h1>Enter discount code</h1> 
+    <input type="password" name="discount" placeholder="xxx-xx-xxxx-xx">
+ </div>
+
+ <div>
+  <ul>
+    <li>subtotal</li>
+    <li>Total Savings</li>
+    <li>Shipping</li>
+    <li>(inkl Tax)</li>
+    <li>Order Total</li>
+  </ul>
+  
+ </div>
+</section>
     </main>
-</body>
+    <button class="CTA-Button">Checkout</button>
