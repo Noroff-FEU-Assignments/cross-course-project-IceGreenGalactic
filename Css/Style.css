@@ -467,8 +467,9 @@ font-size: 0.5em;}
 .Cart_Total {font-size: 2em; text-align: center; margin-left: 100px;}
 .Amount{font-size: 1em;}
 .Cart_Summary{background-image: linear-gradient(white, rgb(171, 251, 255), white);
-line-height: 50px;}
-.Cart_Summary>div{ display: grid; grid-template-columns: auto auto;}
+line-height: 50px;padding: 30px;}
+.Cart_Summary>div{ display: grid; grid-template-columns: auto auto; background-color: white; padding: 10px;}
+.Cart_Summary>div>ul>li{border-bottom: dotted rgb(203, 248, 249);}
 
 
 .Shoppingbag_Summary>div>h2{font-size: 0.7em; line-height: 10px;}
@@ -479,8 +480,8 @@ line-height: 50px;}
 overflow-y: scroll;
 margin: 30px;
 }
-.Shoppingbag_Summary>div>img{max-height: 100px; background-image: linear-gradient(white, rgb(171, 251, 255), white);padding: 20px;}
-.Checkout_Main,.Delivery_Main,.Payment_Main,.Orderd_Main{display: grid; grid-template-columns: 3fr 1fr;}
+.Shoppingbag_Summary>div>img{max-height: 200px; background-image: linear-gradient(white, rgb(171, 251, 255), white);padding: 20px;}
+.Checkout_Main,.Delivery_Main,.Payment_Main,.Orderd_Main{display: grid; grid-template-columns: 2fr 1fr;}
 
 
 
@@ -489,7 +490,7 @@ margin: 30px;
 .Checkout_active2{text-decoration: underline; background-color: rgba(0, 255, 47, 0.853); border-radius: 10px; padding: 5px;}
 
 .Checkout{ display: grid; grid-template-columns: auto auto; width: 50%; margin-bottom: 50px; justify-content: center; 
-    margin-left: 200px;background-image: linear-gradient(white, rgb(171, 251, 255), white); padding: 10px 80px; }
+    margin-left: 100px;background-image: linear-gradient(white, rgb(171, 251, 255), white); padding: 10px 80px; }
 .Checkout_Address,.Checkout_form__input { margin: 10px; padding: 5px; padding-right: 100px;}
 .Checkout_Main>section>div>h1{text-align: center; font-size: 2em; line-height: 1px;}
 .Delivery { text-align: center;margin: 0px 50px; }
