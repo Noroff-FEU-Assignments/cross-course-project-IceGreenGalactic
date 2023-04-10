@@ -1,91 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>RainyDays|Checkout</title>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
-    <link href="/css/Style.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <script src="https://kit.fontawesome.com/db895f6c4c.js" crossorigin="anonymous"></script>
-  </head>
-  
-  <body>
-  
-    <header Class="Header1">
-      <a href="/index.html">
-        <img src="/Images/RainyDays_Logo.png" alt="logo for rainy days website" class="Logo"/>
-      </a>
-      <nav alt="Profile,Shoppingbag,favorits" class="Nav_header">
-        <ul class="navbar-top">  
-          <li><a href= "/Sign-in.html"><i class="fa-solid fa-user"></i> Log in</a></li>
-          <li><a href= "#"><i class="fa-solid fa-basket-shopping"></i>shoppingbag</a></li>
-          <li>  <a href= "#"><i class="fa-regular fa-heart"></i>favorits</a></li>
-        </ul>
-      <section class="search"> 
+<head>
+  <title>RainyDays|Checkout</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="/css/Style.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/db895f6c4c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <header Class="Header1">
+    <a href="/index.html">
+      <img src="/Images/RainyDays_Logo.png" alt="logo for rainy days website" class="Logo" />
+    </a>
+    <nav alt="Profile,Shoppingbag,favorits" class="Nav_header">
+      <ul class="navbar-top">
+        <li><a href="/Sign-in.html"><i class="fa-solid fa-user"></i> Log in</a></li>
+        <li><a href="#"><i class="fa-solid fa-basket-shopping"></i>shoppingbag</a></li>
+        <li> <a href="#"><i class="fa-regular fa-heart"></i>favorits</a></li>
+      </ul>
+      <section class="search">
         <div><i class="fa-solid fa-magnifying-glass"></i></div>
-         <div><input type="text" name="search" placeholder="What are you looking for"> </div>
-      </section> 
+        <div><input type="text" name="search" placeholder="What are you looking for"> </div>
+      </section>
     </nav>
     <nav class="Checkout_topline">
       <ul>
         <li class="Checkout_active">1. Checkout</li>
-        <li >2. Delivery</li>
+        <li>2. Delivery</li>
         <li>3. Payment</li>
       </ul>
     </nav>
-  
-   </header> 
-   
-    <main>    
-       <section class="back-arrow2">
-        <a href="Cart.html" ><i class="fa-solid fa-arrow-left-long"></i>Go back</a>
-     </section>
-    <h1>Checkout</h1>
-   </header> 
-   <form action="form-success.php" method="post">
-    <fieldset>
-      <legend>Enter your details</legend>
-      <input type="text" name="Email" placeholder="Email" class="Checkout_form__input" required>
-      <input type="text" name="First-Name" placeholder="First Name" class="Checkout_form__input"required>
-      <input type="text" name="Last-name" placeholder="Last Name" class="Checkout_form__input">
-      <input type="number" name="Phone" placeholder="Phone Number" class="Checkout_form_input">
-    </fieldset>
-    <fieldset>Enter Your Address</fieldset>
-    <input type="text" name="Address" placeholder="Street Address" class="Checkout_Address" required>
-    <input type="text" name="Additional_info" placeholder="Additional info">
-    <input type="text" name="city" placeholder="City" class="Checkout_Address" required>
-    <input type="text" name="zip" placeholder="Zip Code" class="Checkout_Address" required>
-    <input type="text" name="State" placeholder="State" class="Checkout_Address">
-    <a href="delivery.html">    <input type="submit" value="Continue" ; class="CTA-Button"></a>
-  </form>
+
+  </header>
+ <section class="back-arrow2">
+      <a href="Cart.html"><i class="fa-solid fa-arrow-left-long"></i>Go back</a>
+    </section>
+  <main class="Checkout_Main">
+    <section>
+    <div>  <h1>Checkout</h1></div>
+    <div>
+    <form action="form-success.php" method="post">
+      <fieldset  class="Checkout" >
+        <legend>Enter your details</legend>
+        <input type="text" name="Email" placeholder="Email" class="Checkout_form__input" required>
+        <input type="text" name="First-Name" placeholder="First Name" class="Checkout_form__input" required>
+        <input type="text" name="Last-name" placeholder="Last Name" class="Checkout_form__input">
+        <input type="number" name="Phone" placeholder="Phone Number" class="Checkout_form__input">
+      </fieldset>
+      <fieldset  class="Checkout">
+        <legend> Your Address</legend>
+      <input type="text" name="Address" placeholder="Street Address" class="Checkout_Address" required>
+      <input type="text" name="Additional_info" placeholder="Additional info" class="Checkout_Address">
+      <input type="text" name="city" placeholder="City" class="Checkout_Address" required>
+      <input type="text" name="zip" placeholder="Zip Code" class="Checkout_Address" required>
+      <input type="text" name="State" placeholder="State" class="Checkout_Address">
+    </form>
+    </div>
+      <a href="delivery.html">
+    <button class="Continue_button">Continue</button></a>
+   </section> 
+    <section class="Checkout_Summary">
+      <h1>Summary</h1>
+      <section class="Shoppingbag_Summary">
+        <div>
+          <img src="/Images/Bergolos Perito her.png" alt="Bergolos Perioto jacket" />
+        </div>
+        <div>
+          <h2>Bergolos Perito</h2>
+          <h2> Price $45</h2>
+          <h2>Size M</h2>
+          <h2 class="Amount"> 1 </h2>
+        </div>
+        <div>
+          <img src="/Images/Arilo Slimort.png" alt="Arilo Slimort jacket">
+        </div> <div>
+            <h2> Arilo Slimort</h2>
+            <h2> Price $50</h2>
+            <h2>Size M</h2>
+            <h2 class="Amount"> 1 </h2>
+          </div>
+          <div>
+            <img src="/Images/Fercospa Linover.png" alt=" Fercospa Linover Jacket">
+          </div>
+          <div>
+              <h2>Fercospa Linover</h2>
+              <h2> Price $87</h2>
+              <h2>Size M</h2>
+              <h2 class="Amount"> 1 </h2>
+            </div>
+          </div>
+
+          <div class="Total"> Total $182
+          </div>
+        </div>
+      </section>
+
+  </main>
+</body>
+
+    
+<footer class="Footer">
+  <section class="Footer_Info">
+        <div >
+            <h4> Free Delivery</h4>
+            <h5>Free delivery over $100</h5>
+         </div><div>
+            <h4>Free Return</h4>
+            <h5>14 days free return policy</h5>
+         </div><div>
+          <h4>Fast Shipping</h4>
+            <h5>3-5 days shipping</h5>
+        </div>
+      </section>
+    <section class="Footer_Link" >
+       
+            <div><a href= "/About.html"><h4>About us</h4></a></div>
+            <div> <a href= "/contact.html"> <h4>Contact</h4></a> </div>
+            <div><a href="/Checkout/Cart.html"> <h4>My Order</h4></a></div>
+            <div> <a href= "/Not-found.html"><h4>My account</h4></a></div>
+        </ul>
+    </section>
+    <section Class="Footer_payment">
+    <img src="Pay images/1156750_finance_mastercard_payment_icon.png">
+    <img src="Pay images/295670_payment_klarna_methods_icon.png" alt="">
+    <img src="Pay images/206684_visa_method_card_payment_icon.png" alt="">
 </section>
-<section class="Checkout_Summary">
-  <h1>Summary</h1>
-  <div class="Cart-Bergolos"> 
-    <img src="/Images/Bergolos Perito her.png" alt="Bergolos Perioto jacket"  />
-     <h2>Bergolos Perito</h2>
-<h3>Outdoor Shell Jacket</h3> 
-<button class="Amount"> - 1 +</button>
-<p>$45</p >
-</div>
-<div Class="Cart-Arilo"> 
-<img src="/Images/Arilo Slimort.png" alt= "Arilo Slimort jacket"> 
-<h2> Arilo Slimort</h2>
-<h3> Outdoor Shell jacket</h3> 
-<button class="Amount"> - 1 +</button> <p>$50</p>
-</div>
-<div class="=Cart_Fercospa">
-<img src="/Images/Fercospa Linover.png" alt=" Fercospa Linover Jacket"> 
-<h2>Fercospa Linover</h2>
-<h3>Outdoor Shell Jacket</h3>
-<button class="Amount"> - 1 +</button><p>Price $87</p>
-      </div>
-</section>
-</main>  
-  </body>
-  
+</footer>

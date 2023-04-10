@@ -41,23 +41,29 @@
     </nav>
 
    </header> 
-   
-    <main>    
-       <section class="back-arrow2">
+   <section class="back-arrow2">
         <a href="delivery.html" ><i class="fa-solid fa-arrow-left-long"></i>Go back</a>
      </section>
-<section  class="Pay_Klarna">
-  <h1>Payment</h1>
-  <input type="radio" id="Choosen" Name="Choosen" value="Choose" />
+
+    <main class="Payment_Main">    
+    <section class="Payment">
+<section class="Pay" >
+  <div >
+  <button class="Radio_button">Choose</button></div>
+  <div>
   <h1>Pay with Klarna</h1>
   <p>Secure and smooth</p>
   <ul  class="Pay_Klarna_list">
     <li> Invoice 30 days or pay by card</li>
     <li> Save information for next time, quickly and safely</li>
     <li>Full overview of all payments in the app</li>
-</section>
-<section>
-  <input type="radio" id="Choosen" Name="Choosen" value="Choose" />
+  </ul>
+  </div>
+  </section>
+<section class="Pay">
+  <div >
+    <button class="Radio_button">Choose</button></div>
+    <div>
   <h1>PayPal</h1>
   <h1>SIGN IN</h1>
       <form action="submit.php" method="post">
@@ -66,45 +72,64 @@
         <input type="password" name="Password" placeholder="Password" />
       </form>
       <a href="#"><input type="submit" value="Pay with PayPal"  /></a>
-</section>
-<section>
-  <input type="radio" id="Choosen" Name="Choosen" value="Choose" />
+    </section>
+<section class="Pay">
+  <div >
+    <button class="Radio_button">Choose</button></div>
+    <div>
   <h1> Credit and Depitcard</h1>
   <p> Credit or Debit</p>
   <form action="form-success.php" method="post">
-    <fieldset>
+    <fieldset class="form__Payment">
       <legend>Enter your details</legend>
-      <input type="text" name="Cardname" placeholder="Name of cardholder" class="form__Payment" required>
-      <input type="text" name="Card-Number" placeholder="Card Number" class="form__Payment">
-      <input type="text" name="mm.yy" placeholder="MM/YY" class="form__Payment">
-      <input type="text" name="cvc" placeholder="cvc" class="form__Payment" required>
+      <input type="text" name="Cardname" placeholder="Name of cardholder"  required>
+      <input type="text" name="Card-Number" placeholder="Card Number" >
+      <input type="text" name="mm.yy" placeholder="MM/YY" >
+      <input type="text" name="cvc" placeholder="cvc"required>
     </fieldset>
   </form>
     <a href="orderd.html"><button> PAY </button></a>
 </section>
+</section>
 <section class="Checkout_Summary">
   <h1>Summary</h1>
-  <div class="Cart-Bergolos"> 
-    <img src="/Images/Bergolos Perito her.png" alt="Bergolos Perioto jacket"  />
-     <h2>Bergolos Perito</h2>
-<h3>Outdoor Shell Jacket</h3> 
-<button class="Amount"> - 1 +</button>
-<p>$45</p >
-</div>
-<div Class="Cart-Arilo"> 
-<img src="/Images/Arilo Slimort.png" alt= "Arilo Slimort jacket"> 
-<h2> Arilo Slimort</h2>
-<h3> Outdoor Shell jacket</h3> 
-<button class="Amount"> - 1 +</button> <p>$50</p>
-</div>
-<div class="=Cart_Fercospa">
-<img src="/Images/Fercospa Linover.png" alt=" Fercospa Linover Jacket"> 
-<h2>Fercospa Linover</h2>
-<h3>Outdoor Shell Jacket</h3>
-<button class="Amount"> - 1 +</button><p>Price $87</p>
+  <section class="Shoppingbag_Summary">
+    <div>
+      <img src="/Images/Bergolos Perito her.png" alt="Bergolos Perioto jacket" />
+    </div>
+    <div>
+      <h2>Bergolos Perito</h2>
+      <h2> Price $45</h2>
+      <h2>Size M</h2>
+      <h2 class="Amount"> 1 </h2>
+    </div>
+    <div>
+      <img src="/Images/Arilo Slimort.png" alt="Arilo Slimort jacket">
+    </div> <div>
+        <h2> Arilo Slimort</h2>
+        <h2> Price $50</h2>
+        <h2>Size M</h2>
+        <h2 class="Amount"> 1 </h2>
       </div>
-</section>
-   </body>
+      <div>
+        <img src="/Images/Fercospa Linover.png" alt=" Fercospa Linover Jacket">
+      </div>
+      <div>
+          <h2>Fercospa Linover</h2>
+          <h2> Price $87</h2>
+          <h2>Size M</h2>
+          <h2 class="Amount"> 1 </h2>
+        </div>
+      </div>
+
+      <div class="Total"> Total $182
+      </div>
+    </div>
+  </section>
+
+</main>
+  </body>
+
     
       <footer class="Footer">
         <section class="Footer_Info">
