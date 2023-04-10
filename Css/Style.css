@@ -226,8 +226,8 @@ Button:hover {
     margin: 0px 20px 0px 20px;
     max-height: 60px;
     max-width: 200px;
-    font-size: 1.8em;
-    font-weight: 500;
+    font-size: 1.2em;
+    font-weight: 900;
     background-size: cover;
     background-image: url(/Images/button\ color.jpg);
     text-decoration: underline;
@@ -384,7 +384,7 @@ Button:hover {
     font-weight: 500;
 }
 
-.Index_Jackets-shop>div>h4 {
+.Index_Jackets-shop>div>h4,.jackets-Shop>div>h3 {
     position: absolute;
     top: 85%;
     left: 50%;
@@ -423,10 +423,13 @@ Button:hover {
     font-size: 1em;
     margin-right: 30px;
     margin-bottom: 30px;
+    padding-left: 1px;
+    padding-right: 1px;
+    
 }
 .Size-button:focus
 {
-    background-image: url(/Images/button\ color2.jpg);
+    background-image: url(/Images/button\ color.jpg); background-size: cover;
 }
 .Jacket_info>div>img {
     max-width: 500px;
