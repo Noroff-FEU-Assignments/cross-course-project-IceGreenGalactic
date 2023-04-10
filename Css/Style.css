@@ -608,3 +608,17 @@ border: solid;border-color: rgb(171, 251, 255);}
 .Footer_payment {
     background-color: lightgray;
 }
+
+
+
+
+@media screen (min-width: 480px){
+    .index-Header>a>img,
+    .Header1>a>img {
+        max-width: 30px;
+        max-height: 150px;
+        margin-left: 50%;
+        margin-top: 30px;
+    }
+}
+@media
