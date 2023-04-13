@@ -21,17 +21,39 @@
     <a href="/index.html">
       <img src="/Images/RainyDays_Logo.png" alt="logo for rainy days website" class="Logo" />
     </a>
-    <nav alt="Profile,Shoppingbag,favorits" class="Nav_header">
-      <ul class="navbar-top">
-        <li><a href="/Sign-in.html"><i class="fa-solid fa-user"></i> Log in</a></li>
-        <li><a href="/Checkout/Cart.html"><i class="fa-solid fa-basket-shopping"></i>shoppingbag</a></li>
-        <li> <a href="#"><i class="fa-regular fa-heart"></i>favorits</a></li>
+    <section class="checkbox_menu">
+      <input type="checkbox" id="menu-checkbox">
+      <label for="menu-checkbox"><i class="fas fa-bars"></i></label>
+      <div  class="Hamburger-menu">
+      <nav alt="Profile,Shoppingbag,favorits">
+        <ul class="navbar-top">
+          <li>
+            <a href="/About.html" class="navbar-top">
+              About us
+            </a>
+          </li>
+          <li class="navbar-top"> <a href="/contact.html">
+              Contact
+            </a> </li>
+          <li class="navbar-top"><a href="/Checkout/Cart.html">
+              My Order
+            </a></li>
+          <li class="navbar-top"> <a href="/Sign-in.html">
+              My account
+            </a> </li>
+            <div>
+       <li class="navbar-top"> <a href="/Sign-in.html"><i class="fa-solid fa-user"></i> <h1>Log in </h1></a></li> </div>
+    
+       <div><li  class="navbar-top"> <a href="/Checkout/Cart.html"><i class="fa-solid fa-basket-shopping" ></i> <h1>shoppingbag </h1></a></li> </div>
+       <div><li  class="navbar-top"> <a href="#"><i class="fa-regular fa-heart"></i> <h1>favorits </h1></a></li></div>
       </ul>
-      <section class="search">
-        <div><i class="fa-solid fa-magnifying-glass"></i></div>
-        <div><input type="text" name="search" placeholder="What are you looking for"> </div>
+        <div class="search"><i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" name="search" placeholder="What are you looking for"> </div>
+        </nav>
       </section>
     </nav>
+
+
 
 
   </header>
@@ -107,6 +129,8 @@
         </div>
       </section>
 
+        <section class="Shoppingbag_Summary">
+          <div>
       <section class="Cart_Summary">
       
           <h1>Enter discount code</h1>

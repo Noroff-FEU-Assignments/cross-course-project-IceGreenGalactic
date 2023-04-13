@@ -32,3 +32,15 @@ Footer_Info- Free delivery etc
 Footer_Link- About us, contact, my order, my account
 footer_payment- Cards bottom line
 Info_info - name and image on info page
+
+
+
+
+Hamburger in the making: 
+
+.Hamburger-menu>nav{background-color: rgb(0, 255, 55); display:  none;}
+
+#menu-checkbox:checked ~ .Hamburger-menu>nav {display: block; background-color: blueviolet;}
+.Hamburger-menu>a{display: block;}
+
+#menu-checkbox{display: none;}

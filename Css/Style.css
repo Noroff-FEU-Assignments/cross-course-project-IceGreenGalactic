@@ -29,8 +29,8 @@ p {
 }
 
 main {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .index-Header>a>img,
@@ -48,36 +48,32 @@ Header {
 }
 
 .navbar-top {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
     color: black;
-    margin-right: 50px;
-    margin-top: 40px;
-    font-size: 1em;
-    font-family: "Hind"
+    margin-right: 30px;
+    margin-top: 20px;
+    font-size: 0.8em;
+    font-family: "Hind";
+    white-space: nowrap;
+    
+
 }
 
-.navbar-top>li>a>i {
+
+
+.navbar-top>div {
     padding-right: 10px;
     padding-left: 10px;
+    line-height: 1px;
 }
 
 .search {
-    color: black;
-    display: flex;
-    align-items: center
-}
+display: grid; grid-template-columns: auto 1fr; max-width:fit-content;}
 
-.search>div {
-    padding: 5px;
-}
-
-input[name=search] {
-    height: 30px;
-    width: 200px;
-}
 
 .search>div>i {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 header>.back-arrow {
@@ -104,7 +100,6 @@ header>.back-arrow {
     background-image: url(/Images/Background_main.jpg);
     max-height: 900px;
     height: 600px;
-    position: relative;
     background-size: cover;
     background-repeat: no-repeat;
     top: auto;
@@ -211,6 +206,8 @@ button {
     padding-right: 30px;
     font-size: 1.2em;
     font-weight: 900;
+    margin-left: 20px;
+    white-space: nowrap;
     
     
     
@@ -222,62 +219,53 @@ Button:hover {
 }
 
 .current {
-    margin: 0px 20px 0px 20px;
-    max-height: 60px;
-    max-width: 200px;
-    font-size: 1.2em;
-    font-weight: 900;
+ 
     background-size: cover;
     background-image: url(/Images/button\ color.jpg);
     text-decoration: underline;
 }
 .Continue_button{
-    margin-left: 50%;
+    margin-left: 50%; transform: translate(-50%, -50%);margin-top: 20px;
 }
+    
+
 
 .Added_button {
     border-radius: 10px;
     border-width: 1px;
     max-width: fit-content; margin-right: 20px;
 }
-.Shop_CTA-Button {
-    display: flex;
-    justify-content: center;
-    padding: 2%;
-    background-image: linear-gradient(white, rgb(142, 249, 249), rgb(197, 255, 255), white)
-}
+
 
 .Index__CTA-Button {
-    border-radius: 10px;
-    border-width: 1px;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
     justify-content: space-evenly;
+    align-items: center;
     margin-left: 30%;
-    margin-top: 20%
+    margin-top: 20%;
+    font-size: 1.2em;
+    font-weight: 900;
 }
 
 .CTA-Button {
     font-family: "Hind";
-    background-color:rgb(142, 249, 249);
     border-radius: 10px;
     border-width: 1px;
     border-color: rgb(78, 228, 255);
     margin: 20px;
     margin-bottom: 50px;
     height: 50px;
-    width: 200px;
-    max-height: 100px;
-    max-width: 200px;
+    width: fit-content;
     font-size: 1.2em;
     font-weight: 900;
-    margin-left: 50%;
-    transform: translate(-50%, 50%);
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 30%;
 }
 
-.CTA-Button:hover {
-    background-size: cover;
-    background-image: url(/Images/button\ color.jpg)
-}
 
 
 
@@ -418,15 +406,18 @@ Button:hover {
 }
 
 .Size-button {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
     width: 60px;
     font-size: 1em;
     margin-right: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     padding-left: 1px;
     padding-right: 1px;
+    margin-left: 20%;
     
 }
-.Size-button:focus
+.Size-button2:focus
 {
     background-image: url(/Images/button\ color.jpg); background-size: cover;
 }
@@ -463,7 +454,7 @@ font-size: 0.5em;}
 .Cart-Bergolos {display: grid; grid-template-columns: 1fr 1.3fr 1fr 1fr 0.5fr; border-bottom: solid rgb(203, 248, 249);}
 .Cart-Arilo{display: grid; grid-template-columns: 1fr 1.3fr 1fr 1fr 0.5fr; border-bottom: solid rgb(203, 248, 249)}
 .Cart_Fercospa { display: grid; grid-template-columns: 1fr 1.3fr 1fr 1fr 0.5fr; border-bottom: solid rgb(203, 248, 249)}
-.Cart_Total {font-size: 2em; text-align: center; margin-left: 100px;}
+.Cart_Total {font-size: 2em; text-align: center;}
 .Amount{font-size: 1em;}
 .Cart_Summary{background-image: linear-gradient(white, rgb(171, 251, 255), white);
 line-height: 50px;padding: 30px;}
@@ -545,14 +536,11 @@ border: solid;border-color: rgb(171, 251, 255);}
     background-color: rgba(255, 0, 0, 0.325);
 }
 
-.Sign-in-fail>h2 {
+.Sign-in>h2,.Sign-in-fail>h2 {
     font-size: 0.5em;
     color: red;
 }
 
-.Sign-in-fail>.CTA-Button {
-    background-image: url(/Rainydays-/Images/button\ color.jpg)
-}
 
 .Sendt {
     background-image: url(/Rainydays-/Images/pexels-flo-maderebner-869258.jpg);
@@ -720,10 +708,6 @@ button {
 
 
 
-
-
-
-
 .Footer_Info {
     display: flex;
     justify-content: space-evenly;
@@ -759,5 +743,22 @@ button {
 .Footer_payment {
     background-color: lightgray;
 }
+
+.navbar-top
+.Hamburger-menu>nav{background-color: rgb(0, 255, 55); display:  none;}
+
+#menu-checkbox:checked ~ .Hamburger-menu{display: block; background-color: blueviolet;}
+.Hamburger-menu{display: none;}
+
+#menu-checkbox{dzisplay: none;}
+
+.hamburger_bars{display: none;}
+
+.index-Header,
+Header {
+    display: grid;
+    grid-template-columns: auto auto;
 }
+}
+
 
