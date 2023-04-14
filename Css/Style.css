@@ -36,8 +36,9 @@ main {
 header>a>img {
     max-width: 300px;
     max-height: 150px;
-    margin-left: 50%;
-    margin-right: 50%;
+    margin-top: 100px;
+    margin-left: 60%; transform: translate(-50%, -50%);
+   
 }
 
 
@@ -492,7 +493,7 @@ margin: 30px;
 .Delivery>div{ border-style: solid; border-color: rgb(171, 251, 255); display: grid; grid-template-rows: auto auto; margin-bottom: 80px; }
 .Delivery>div>h1{font-size: 1.2em;}
 .Delivery>div>h2,.Delivery>div>h3{ font-size: 0.6em; line-height: 3px }
-.Delivery>div>button{font-size: 1.2em; display: flex; justify-content: center; margin-left: 40%;}
+.Delivery>div>button{font-size: 1.2em; display: flex; justify-content: center; margin-top: 30px;}
 .Delivery>div>button:focus{background-image: url(/Images/button\ color.jpg); background-size: cover;}
 
 .Pay{  display: grid; grid-template-columns: 1fr 2fr ; justify-content: center;padding-bottom: 30px;
@@ -627,7 +628,7 @@ button {
     border-radius: 10px;
     border-width: 1px;
     border-color: rgb(78, 228, 255);
-    display: inline;
+  
   
     max-height: 30px;
     max-width: 200px;
@@ -763,12 +764,13 @@ button {
  .checkbox_menu{; display: block; }
 
  #menu-checkbox:checked ~.navbar-top, .navbar-top>div {  display: flex; flex-direction: column-reverse;
-      background-color: rgb(181, 254, 255);  flex-wrap: unset; 
+      background-color: rgb(181, 254, 255);  flex-wrap: unset;  
 
    }    
    nav{ display: none;  }
      
-.hamburger_Menu{ position: relative; top: 55%}
+.hamburger_Menu{ position:relative; top: 45%}          
+
 
  .navbar-top>div>a>i{ margin-left: 0%; font-size: 1em;}
 
@@ -776,9 +778,8 @@ button {
 #menu-checkbox{display: none;} 
 
 .search {
-display: grid; max-width:fit-content;align-items: center; margin-left: 0%}
-.search>i{margin-right: 0px;}
-.search_text{display: none;}
+display: grid; max-width:fit-content;align-items:baseline; margin-left: 0%}
+.search>i{display: none;}
 
 
 
@@ -880,9 +881,8 @@ font-size: 0.4em;}
 .Cart_Total {font-size: 1em; text-align: center;}
 .Amount{font-size:0.6em;}
 .Cart_Summary{background-image: linear-gradient(white, rgb(171, 251, 255), white);
-line-height: 30px;padding: 30px; display; font-size: 0.8em;}
-.Cart_Summary>div{ display: grid; grid-template-columns: auto auto; background-color: white; padding: 10px;}
-.Cart_Summary>div>ul>li{border-bottom: dotted rgb(203, 248, 249);}
+line-height: 30px;padding: 30px; display; font-size: 0.8em; display: none;}
+
 
 
 .Shoppingbag_Summary>div>h{font-size: 0.6em; line-height: 10px;}
