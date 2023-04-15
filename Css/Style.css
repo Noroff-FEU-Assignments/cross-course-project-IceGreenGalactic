@@ -53,16 +53,17 @@ Header {
 
     line-height: 20px;
 
-    display: grid; grid-template-columns: auto auto auto auto;
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr  ;
     grid-template-rows: auto auto auto;
     color: black;
     margin-top: 20px;
     font-size: 0.8em;
     font-family: "Hind";
     white-space: nowrap;
-    
+    margin-right: 40px;
  }
- .navbar-top>div>a>i{; margin-left: 20%; font-size: 1.2em;}
+ .navbar-top>div>a:hover{ color: rgb(83, 79, 79)}
+ .navbar-top>div>a>i{margin-left: 10px; font-size: 1.2em;}
 
 .hamburger_bars {background-color: pink; display:none ;} 
 
@@ -97,8 +98,9 @@ header>.back-arrow {
 .index-Header {
     background-image: url(/Images/Background_main.jpg);
     max-height: 900px;
-    height: 600px;
-    background-size: cover;
+    height: 500px;
+    background-size:cover; 
+    background-position-y: -100px;
     background-repeat: no-repeat;
     top: auto;
     left: 0%;
@@ -231,7 +233,7 @@ Button:hover {
     text-decoration: underline;
 }
 .Continue_button{
-    margin-left: 50%; transform: translate(-50%, -50%);margin-top: 20px;
+    margin-left: 50%; transform: translate(-50%, -50%);margin-top: 20px; color: black;
 }
     
 
@@ -243,16 +245,6 @@ Button:hover {
 }
 
 
-.Index__CTA-Button {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-left: 30%;
-    margin-top: 20%;
-    font-size: 1.2em;
-    font-weight: 900;
-}
 
 .CTA-Button {
     font-family: "Hind";
@@ -375,7 +367,7 @@ Button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: 500;
-}
+}button
 
 .Index_Jackets-shop>div>h4,.jackets-Shop>div>h3 {
     position: absolute;
@@ -391,9 +383,9 @@ Button:hover {
     min-height: 100vh;
     display: grid;
     grid-template-columns: auto auto;
-    row-gap: 20px;
+
     line-height: 40px;
-    margin-top: 50px;
+ 
    
 }
 .Info_Bergolos>h1{font-size: 3em; line-height: 5px; 
@@ -414,16 +406,14 @@ Button:hover {
 .Size-button {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    width: 60px;
+ align-items: center;
     font-size: 1em;
-    margin-right: 30px;
     margin-bottom: 50px;
-    padding-left: 1px;
-    padding-right: 1px;
-    margin-left: 20%;
+    justify-content: center;
+
     
 }
-.Size-button2:focus
+.Size-button:focus
 {
     background-image: url(/Images/button\ color.jpg); background-size: cover;
 }
@@ -506,7 +496,9 @@ border: solid;border-color: rgb(171, 251, 255);}
 .Pay>div>form{ margin-bottom: 20px}
 .form__Payment{display: grid; grid-template-columns: auto auto; width: 50%;}
 
-.Completed_order {display: grid; justify-content: center; text-align: center; font-size: 2em; color: rgb(49, 175, 145); margin-bottom: 50px;}
+.Completed_order {display: grid; justify-content: center; 
+    text-align: center; font-size: 2em; color: rgb(49, 175, 145); margin-bottom: 50px;}
+    .Completed_order>img{max-width: 60%;  margin-left: 50%; transform: translate(-50%, -50%);margin-top: 120px;}
 
 
 .Not-found {
@@ -606,7 +598,8 @@ border: solid;border-color: rgb(171, 251, 255);}
 .index-Header {
     background-image: url(/Images/Background_main.jpg);
     max-height: 500px;
-    height: 400px;
+    height: 400px;  
+     background-position-y:unset;
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
@@ -615,12 +608,13 @@ border: solid;border-color: rgb(171, 251, 255);}
     background-position-x: center;
 }
 
+
 .index-Header,
 Header {
     display: block;
     grid-template-columns: auto 5fr;
 }
-.index-Header>a{}
+
 
 button {
     font-family: "Hind";
@@ -647,7 +641,7 @@ button {
         display: grid;
        grid-template-columns: auto auto;
        margin-left: 50%; transform: translate(-50%, -50%);
-        margin-top: 50%;
+
     }
     .Continue_button{
         margin-left: 50%; transform: translate(-50%, -50%)
@@ -765,20 +759,32 @@ button {
 
  #menu-checkbox:checked ~.navbar-top, .navbar-top>div {  display: flex; flex-direction: column-reverse;
       background-color: rgb(181, 254, 255);  flex-wrap: unset;  
-
+position: absolute;
    }    
-   nav{ display: none;  }
+   nav{  display: none;  }
      
-.hamburger_Menu{ position:relative; top: 45%}          
+.hamburger_Menu{ position: relative;top: 100%}          
 
-
+main{position: relative;}
  .navbar-top>div>a>i{ margin-left: 0%; font-size: 1em;}
 
+ .navbar-top>div {
+
+    line-height: 20px;
+
+    color: black;
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-family: "Hind";
+    white-space: nowrap;
+    margin-left: 10px;
+    text-decoration: underline;
+    line-height: 40px;}
 
 #menu-checkbox{display: none;} 
 
 .search {
-display: grid; max-width:fit-content;align-items:baseline; margin-left: 0%}
+display: grid; max-width:fit-content;align-items:baseline; margin-left: 0%;}
 .search>i{display: none;}
 
 
