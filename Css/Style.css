@@ -46,9 +46,10 @@ header>a>img {
 Header {
     display: grid;
     grid-template-columns: 3fr 1fr;
+    background-image: linear-gradient(white, rgb(171, 251, 255), white)
 }
 
-
+.added_body>header{background-image: none;}
 
 .navbar-top>div {
 
@@ -63,6 +64,7 @@ Header {
     font-family: "Hind";
     white-space: nowrap;
     margin-right: 40px;
+    font-size: 1em;
 }
 
 .navbar-top>div>a:hover {
@@ -87,7 +89,7 @@ Header {
     display: grid;
     max-width: fit-content;
     align-items: center;
-    margin-left: 5%
+    margin-left: 5%;
 }
 
 .search>i {
@@ -401,7 +403,8 @@ Button:hover {
     position: absolute;
     top: 90%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
 }
 
 .jackets-Shop>div>h2,
@@ -410,7 +413,7 @@ Button:hover {
     top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-weight: 500;
+    font-weight: 500; white-space: nowrap;
 }
 
 .Index_Jackets-shop>div>h4,
@@ -419,7 +422,7 @@ Button:hover {
     top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-weight: 200;
+    font-weight: 200; white-space: nowrap;
 }
 
 .info_main {
@@ -439,16 +442,16 @@ Button:hover {
 
 .Info_Bergolos>h1 {
     font-size: 3em;
-    line-height: 5px;
+    line-height: 5px; white-space: nowrap;
 }
 
 .Info_Bergolos>h2 {
-    line-height: 2px;
+    line-height: 2px; white-space: nowrap;
 }
 
 .Jacket_info>div>ul>li {
     margin-left: 50px;
-
+ white-space: nowrap;
 
 }
 
@@ -480,11 +483,12 @@ Button:hover {
 }
 
 .Added_main {
-    background-image: url(/Images/button\ color.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+   
     text-align: center;
 }
+.added_body{  background-image: url(/Images/button\ color.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;}
 
 .Jacket_info>div>h3 {
 
@@ -818,17 +822,52 @@ Button:hover {
     height: 40px;
     padding: 10px;
     bottom: 50%;
-    background-color:
+    ;
 }
 
 .Footer_payment {
-    background-color: lightgray;
+    background-color: lightgray;text-align: center
 }
 
 
+@media (max-width: 920px) and (min-width:661px)  { 
+
+  .navbar-top{
+    font-size: 0.8em;
+
+  }
+  
+.jackets-Shop>div {
+    position: relative;
+    width: 290px;
+    height: 500px;
+    margin: 40px;
+    margin-bottom: 100px;
 
 
-@media (max-width: 600px) {
+}
+
+.jackets-Shop>div>a>img {
+    max-width: 300px;
+    max-height: 400px;
+    margin-bottom: 80px;
+  
+
+}
+     
+.Cart_Hedline{
+        padding: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.3fr 1.5fr 1.5fr;
+        padding-left: 160px;
+        font-size: 0.5em;
+    }
+}
+
+    
+    
+
+@media (max-width: 660px) {
     h1 {
         font-size: 1.4em;
     }
@@ -965,7 +1004,7 @@ Button:hover {
     .Index_Jackets-shop>div>a>img {
         max-width: 150px;
         height: 200px;
-        margin-bottom: 40px;
+        margin-bottom: 40px; 
     }
 
     .Index_Jackets-shop>div>h4,

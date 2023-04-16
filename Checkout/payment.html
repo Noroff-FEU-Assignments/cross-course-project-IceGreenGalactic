@@ -1,174 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <title>RainyDays|Pay</title>
     <meta charset="UTF-8">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+
     <link href="/css/Style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;700&display=swap"
+      rel="stylesheet">
 
-    <script src="https://kit.fontawesome.com/db895f6c4c.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/db895f6c4c.js"
+      crossorigin="anonymous"></script>
   </head>
-  
+
   <body>
-  
+
     <header Class="Header1">
       <a href="/index.html">
         <img src="/Images/RainyDays_Logo.png" alt="logo for rainy days website" class="Logo">
       </a>
-      <section >
-      
+      <section>
+
         <input type="checkbox" id="menu-checkbox">
         <label for="menu-checkbox" class="hamburger_bars"><i class="fas fa-bars"></i>
         </label>
         <nav class="navbar-top">
-              <div><a href="/About.html">
-                About us
-              </a>
-           
-             <a href="/contact.html">
-                Contact
-              </a> 
+          <div><a href="/About.html">
+              About us
+            </a>
+
+            <a href="/contact.html">
+              Contact
+            </a>
             <a href="/Checkout/Cart.html">
-                My Order
-              </a>
-             <a href="/Sign-in.html">
-                My account
-              </a> </div>
-           <div>
-         <a href="/Sign-in.html"><i class="fa-solid fa-user"></i> Log in </a>
-         <a href="/Checkout/Cart.html"><i class="fa-solid fa-basket-shopping" ></i> shoppingbag </a>
-         <a href="#"><i class="fa-regular fa-heart"></i> favorits</a></div>
-            
+              My Order
+            </a>
+            <a href="/Sign-in.html">
+              My account
+            </a>
+          </div>
+          <div>
+            <a href="/Sign-in.html"><i class="fa-solid fa-user"></i> Log in </a>
+            <a href="/Checkout/Cart.html"><i class="fa-solid fa-basket-shopping"></i> shoppingbag </a>
+            <a href="#"><i class="fa-regular fa-heart"></i> favorits</a>
+          </div>
+
           <div class="search">
             <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" name="search" placeholder="What are you looking for" class="search_text"> 
-          </div></nav></section>
+            <input type="text" name="search" placeholder="What are you looking for" class="search_text">
+          </div>
+        </nav>
+      </section>
 
 
 
       <nav class="Checkout_topline">
         <ul>
           <li class="Checkout_active2">1. Checkout</li>
-          <li class="Checkout_active2" >2. Delivery</li>
+          <li class="Checkout_active2">2. Delivery</li>
           <li class="Checkout_active">3. Payment</li>
         </ul>
       </nav>
-   </header> 
-   <section class="back-arrow2">
-        <a href="delivery.html" ><i class="fa-solid fa-arrow-left-long"></i>Go back</a>
-     </section>
-
-    <main class="Payment_Main">    
-    <section class="Payment">
-<section class="Pay" >
-  <div >
-  <button class="Radio_button">Choose</button></div>
-  <div>
-  <h1>Pay with Klarna</h1>
-  <p>Secure and smooth</p>
-  <ul  class="Pay_Klarna_list">
-    <li> Invoice 30 days or pay by card</li>
-    <li> Save information for next time, quickly and safely</li>
-    <li>Full overview of all payments in the app</li>
-  </ul>
-  </div>
-  </section>
-<section class="Pay">
-  <div >
-    <button class="Radio_button">Choose</button></div>
-    <div>
-  <h1>PayPal</h1>
-  <h1>SIGN IN</h1>
-      <form action="submit.php" method="post">
-        <input type="text" name="username" placeholder="Username/Email">
-        <br>
-        <input type="password" name="Password" placeholder="Password">
-      </form>
-      <a href="#"><input type="submit" value="Pay with PayPal" ></a>
+    </header>
+    <section class="back-arrow2">
+      <a href="delivery.html"><i class="fa-solid fa-arrow-left-long"></i>Go back</a>
     </section>
-<section class="Pay">
-  <div >
-    <button class="Radio_button">Choose</button></div>
-    <div>
-  <h1> Credit and Depitcard</h1>
-  <p> Credit or Debit</p>
-  <form action="form-success.php" method="post">
-    <fieldset class="form__Payment">
-      <legend>Enter your details</legend>
-      <input type="text" name="Cardname" placeholder="Name of cardholder"  required>
-      <input type="text" name="Card-Number" placeholder="Card Number" >
-      <input type="text" name="mm.yy" placeholder="MM/YY" >
-      <input type="text" name="cvc" placeholder="cvc"required>
-    </fieldset>
-  </form>
 
-</section>   
- <a href="orderd.html"><button class="Continue_button"> PAY </button></a>
-</section>
-<section class="Checkout_Summary">
-  <h1>Summary</h1>
-  <section class="Shoppingbag_Summary">
-    <div>
-      <img src="/Images/Bergolos Perito her.png" alt="Bergolos Perioto jacket">
-    </div>
-    <div>
-      <h2>Bergolos Perito</h2>
-      <h2> Price $45</h2>
-      <h2>Size M</h2>
-      <h2 class="Amount"> 1 </h2>
-    </div>
-    <div>
-      <img src="/Images/Arilo Slimort.png" alt="Arilo Slimort jacket">
-    </div> <div>
-        <h2> Arilo Slimort</h2>
-        <h2> Price $50</h2>
-        <h2>Size M</h2>
-        <h2 class="Amount"> 1 </h2>
-      </div>
-      <div>
-        <img src="/Images/Fercospa Linover.png" alt=" Fercospa Linover Jacket">
-      </div>
-      <div>
-          <h2>Fercospa Linover</h2>
-          <h2> Price $87</h2>
-          <h2>Size M</h2>
-          <h2 class="Amount"> 1 </h2>
+    <main class="Payment_Main">
+      <section class="Payment">
+        <section class="Pay">
+          <div>
+            <button class="Radio_button">Choose</button>
+          </div>
+          <div>
+            <h1>Pay with Klarna</h1>
+            <p>Secure and smooth</p>
+            <ul class="Pay_Klarna_list">
+              <li> Invoice 30 days or pay by card</li>
+              <li> Save information for next time, quickly and safely</li>
+              <li>Full overview of all payments in the app</li>
+            </ul>
+          </div>
+        </section>
+        <section class="Pay">
+          <div>
+            <button class="Radio_button">Choose</button>
+          </div>
+          <div>
+            <h1>PayPal</h1>
+            <h1>SIGN IN</h1>
+            <form action="submit.php" method="post">
+              <input type="text" name="username" placeholder="Username/Email">
+              <br>
+              <input type="password" name="Password" placeholder="Password">
+            </form>
+            <a href="#"><input type="submit" value="Pay with PayPal"></a>
+          </section>
+          <section class="Pay">
+            <div>
+              <button class="Radio_button">Choose</button>
+            </div>
+            <div>
+              <h1> Credit and Depitcard</h1>
+              <p> Credit or Debit</p>
+              <form action="form-success.php" method="post">
+                <fieldset class="form__Payment">
+                  <legend>Enter your details</legend>
+                  <input type="text" name="Cardname" placeholder="Name of
+                    cardholder" required>
+                  <input type="text" name="Card-Number" placeholder="Card
+                    Number">
+                  <input type="text" name="mm.yy" placeholder="MM/YY">
+                  <input type="text" name="cvc" placeholder="cvc" required>
+                </fieldset>
+              </form>
+
+            </section>
+            <a href="orderd.html"><button class="Continue_button"> PAY </button></a>
+          </section>
+          <section class="Checkout_Summary">
+            <h1>Summary</h1>
+            <section class="Shoppingbag_Summary">
+              <div>
+                <img src="/Images/Bergolos Perito her.png" alt="Bergolos Perioto
+                  jacket">
+              </div>
+              <div>
+                <h2>Bergolos Perito</h2>
+                <h2> Price $45</h2>
+                <h2>Size M</h2>
+                <h2 class="Amount"> 1 </h2>
+              </div>
+              <div>
+                <img src="/Images/Arilo Slimort.png" alt="Arilo Slimort jacket">
+              </div>
+              <div>
+                <h2> Arilo Slimort</h2>
+                <h2> Price $50</h2>
+                <h2>Size M</h2>
+                <h2 class="Amount"> 1 </h2>
+              </div>
+              <div>
+                <img src="/Images/Fercospa Linover.png" alt=" Fercospa Linover
+                  Jacket">
+              </div>
+              <div>
+                <h2>Fercospa Linover</h2>
+                <h2> Price $87</h2>
+                <h2>Size M</h2>
+                <h2 class="Amount"> 1 </h2>
+              </div>
+            </div>
+
+            <div class="Total"> Total $182
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </body>
+
+    <footer class="Footer">
+      <section class="Footer_Info">
+        <div>
+          <h4> Free Delivery</h4>
+          <h5>Free delivery over $100</h5>
         </div>
-      </div>
+        <div>
+          <h4>Free Return</h4>
+          <h5>14 days free return policy</h5>
+        </div>
+        <div>
+          <h4>Fast Shipping</h4>
+          <h5>3-5 days shipping</h5>
+        </div>
 
-      <div class="Total"> Total $182
-      </div>
-    </div>
-  </section>
-
-</main>
-  </body>
-
-  <footer class="Footer">
-    <section class="Footer_Info">
-      <div>
-        <h4> Free Delivery</h4>
-        <h5>Free delivery over $100</h5>
-      </div>
-      <div>
-        <h4>Free Return</h4>
-        <h5>14 days free return policy</h5>
-      </div>
-      <div>
-        <h4>Fast Shipping</h4>
-        <h5>3-5 days shipping</h5>
-      </div>
-   
-    </section>
-    <section Class="Footer_payment">
-      <img src="Pay_images/1156750_finance_mastercard_payment_icon.png" alt="Mastercard payment icon">
-      <img src="Pay_images/295670_payment_klarna_methods_icon.png" alt=" Klarna Icon">
-      <img src="Pay_images/206684_visa_method_card_payment_icon.png" alt=" Card payment icon ">
-    </section>
-     </footer>
+      </section>
+      <section Class="Footer_payment">
+        <img src="Pay_images/1156750_finance_mastercard_payment_icon.png"
+          alt="Mastercard payment icon">
+        <img src="Pay_images/295670_payment_klarna_methods_icon.png" alt="
+          Klarna Icon">
+        <img src="Pay_images/206684_visa_method_card_payment_icon.png" alt="
+          Card payment icon ">
+      </section>
+    </footer>
