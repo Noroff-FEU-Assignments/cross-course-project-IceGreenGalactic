@@ -720,7 +720,7 @@ Button:hover {
 .form__Payment {
     display: grid;
     grid-template-columns: auto auto;
-    width: 50%; background-color: red;
+    width: 50%; ;
 }
 .form__Payment>input{padding: 5%; font-size: 1em;}
 
