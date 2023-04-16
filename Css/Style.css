@@ -1047,7 +1047,7 @@ Button:hover {
         display: flex;
         flex-direction: column-reverse;
         background-color: rgb(171, 251, 255);
-        flex-wrap: unset;
+        flex-wrap: unset; z-index: 1;
 
     }
 
@@ -1093,6 +1093,7 @@ Button:hover {
         margin-left: 10px;
         text-decoration: underline;
         line-height: 40px;
+       
     }
 
     #menu-checkbox {
