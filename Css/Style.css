@@ -3,35 +3,19 @@
     src: url(https://fonts.googleapis.com/css2?family=Hind&display=swap)
 }
 
-h1 {
+h1,h2,h3,h4,p {
     font-family: 'Hind', sans-serif;
 }
 
-h2 {
-    font-family: 'Hind', sans-serif;
-}
-
-h3 {
-    font-family: 'Hind', sans-serif;
-}
-
-h4 {
-    font-family: 'Hind', sans-serif;
-}
 
 h5 {
     font-family: "Hind", sans-serif;
     font-weight: 500;
 }
 
-p {
-    font-family: 'Hind', sans-serif;
-}
 
-main {
-    margin-left: 10px;
-    margin-right: 10px;
-}
+
+
 
 header>a>img {
     max-width: 300px;
@@ -39,6 +23,7 @@ header>a>img {
     margin-top: 100px;
     margin-left: 650%;
     transform: translate(-50%, -50%);
+    
 
 }
 
@@ -47,6 +32,7 @@ Header {
     display: grid;
     grid-template-columns: 3fr 1fr;
     background-image: linear-gradient(white, rgb(171, 251, 255), white)
+    
 }
 
 .added_body>header{background-image: none;}
@@ -150,12 +136,13 @@ ul {
     text-decoration: underline;
 }
 
-.Contact_Main,
+.contact_main,
 .About_Main {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
     grid-template-rows: auto auto auto;
 }
+
 
 .Picture-side-menu>img {
     object-fit: cover;
@@ -210,14 +197,13 @@ a {
     padding: 10px;
     border-style: solid;
     border-color: rgb(158, 238, 244);
-    inline-size: 400px;
+    inline-size: 50%;
+    font-size: 1.6em;
 }
-
+.About>h1, .About>h2 {text-align: center;}
 
 .Contact {
     background-color: rgb(249, 254, 255);
-    text-align: left;
-    margin: auto;
     padding: 10px;
     border-style: solid;
     border-color: rgb(158, 238, 244);
@@ -227,12 +213,15 @@ a {
     margin-right: auto;
     margin-top: 10%;
     width: 50%;
+    font-size: 1.5em;
+    margin-bottom: 10%;
 }
 
 .form__input {
     display: block;
-    width: 60%;
-    padding: inherit
+    width: 90%;
+    padding: inherit;
+
 }
 
 input[name=message] {
@@ -436,6 +425,7 @@ Button:hover {
     grid-template-columns: auto auto;
 
     line-height: 40px;
+    
 
 
 }
@@ -633,17 +623,17 @@ Button:hover {
     grid-template-columns: auto auto;
     width: 50%;
     margin-bottom: 50px;
-    justify-content: center;
-    margin-left: 100px;
     background-image: linear-gradient(white, rgb(171, 251, 255), white);
-    padding: 10px 80px;
+    padding: 2% 18%;
+    margin-left: 10%;
 }
 
 .Checkout_Address,
 .Checkout_form__input {
-    margin: 10px;
-    padding: 5px;
-    padding-right: 100px;
+    margin: 2%;
+    padding: 4%;
+    padding-right: 20%;
+    width: 100%;
 }
 
 .Checkout_Main>section>div>h1 {
@@ -666,19 +656,19 @@ Button:hover {
 }
 
 .Delivery>div>h1 {
-    font-size: 1.2em;
+    font-size: 1.6em;
 }
 
 .Delivery>div>h2,
 .Delivery>div>h3 {
-    font-size: 0.6em;
+    font-size: 1.2em;
     line-height: 3px
 }
 
 .Delivery>div>button {
     font-size: 1.2em;
-    display: flex;
-    justify-content: center;
+   margin-left: 50%;
+   transform: translate(-50%, -50%);
     margin-top: 30px;
 }
 
@@ -694,8 +684,10 @@ Button:hover {
     padding-bottom: 30px;
     border: solid;
     border-color: rgb(171, 251, 255);
+    font-size: 1.3em;
+    margin: 3%;
 }
-
+.pay_pal_form{padding: 2%; width: 30%; margin-bottom: 1%;}
 .Radio_button {
     margin: 50px
 }
@@ -714,7 +706,7 @@ Button:hover {
     display: grid;
     grid-template-columns: 1fr 2fr;
     justify-content: center;
-    padding-bottom: 30px
+    padding-bottom: 30px; 
 }
 
 .pay_pal>div>h1 {
@@ -728,8 +720,9 @@ Button:hover {
 .form__Payment {
     display: grid;
     grid-template-columns: auto auto;
-    width: 50%;
+    width: 50%; background-color: red;
 }
+.form__Payment>input{padding: 5%; font-size: 1em;}
 
 .Completed_order {
     display: grid;
@@ -752,10 +745,11 @@ Button:hover {
     color: white;
     display: flex;
     background-image: url(/Images/Not\ found.jpg);
-    height: 400px;
+    height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 
 .Not-found>h1 {
     margin-left: 10%;
@@ -772,24 +766,35 @@ Button:hover {
 
 .Sign-in>i,
 .Sign-in-fail>i {
-    font-size: 8em;
+    font-size: 12em;
+    margin-top: 1%;
 }
 
 .Sign-in>form>input,
 .Sign-in-fail>form>input[type=text],
 .Sign-in>form>input {
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 10%;
+    margin-bottom: 10%;
 }
 
 .Sign-in-fail>form>input {
-    padding: 10px;
+    padding: 10%;
     background-color: rgba(255, 0, 0, 0.325);
 }
+.Sign-in>h1 {
+    font-size: 3em;
+}
+.Sign-in-fail>h1 {
+    font-size: 3em;
+    
+}
+.Sign-in>h2  {
+    font-size: 3em;
+  
+}
 
-.Sign-in>h2,
 .Sign-in-fail>h2 {
-    font-size: 0.5em;
+    font-size: 1.5em;
     color: red;
 }
 
