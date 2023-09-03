@@ -2,6 +2,8 @@ import { getExistingFavs } from "./utils/favFunctions.js";
 
 const url = "https://api.noroff.dev/api/v1/rainy-days";
 
+const favourites = getExistingFavs();
+
 async function getJackets() {
     const response = await fetch(url);
     const jacketList = await response.json();
@@ -13,11 +15,23 @@ async function getJackets() {
 
     
        jacketList.forEach((jacket) =>{
+        let cssClass="far";
+
+        const doesObjectExist = favourites.find(function(fav){
+        console.log(fav);
+        return parseInt(fav.id) === jacket.id;
+    })
+     console.log(doesObjectExist);
+     if( doesObjectExist){
+        cssClass = "fa";
+     }
+    
+
         jacketsContainer.innerHTML += `<div class="jackets-Shop">
-        <img  src="${jacket.image}" alt="${jacket.name}" />
+        <img  src="${jacket.image}" alt="${jacket.description}" />
         <h2 >${jacket.title}</h2>
         <p class="Price"> ${jacket.price} </p>
-        <i class="far fa-heart" data-id="${jacket.id}" data-title="${jacket.title}"></i>
+        <i class="${cssClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}"></i>
         </div>` }); 
         //if (jacket.onSale===true){
            // const.getElementsByClassName("Price")
@@ -38,6 +52,8 @@ async function getJackets() {
 
         const id = this.dataset.id;
         const title = this.dataset.title;
+        const image =this.dataset.image;
+        const text = this.dataset.description
     
         const currentFavs = getExistingFavs();
 
@@ -46,8 +62,8 @@ async function getJackets() {
         });
 
         if (productExist === undefined){
-      const product ={id: id, title: title};
-        currentFavs.push(product);
+      const jacket ={id: id, title: title, image:image, text: text, };
+        currentFavs.push(jacket);
         saveFavs(currentFavs);  
     } else {
         const newFavs = currentFavs.filter((fav)=> fav.id !== id);
