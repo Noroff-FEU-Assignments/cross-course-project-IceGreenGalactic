@@ -3,7 +3,11 @@
     src: url(https://fonts.googleapis.com/css2?family=Hind&display=swap)
 }
 
-h1,h2,h3,h4,p {
+h1,
+h2,
+h3,
+h4,
+p {
     font-family: 'Hind', sans-serif;
 }
 
@@ -23,7 +27,7 @@ header>a>img {
     margin-top: 100px;
     margin-left: 650%;
     transform: translate(-50%, -50%);
-    
+
 
 }
 
@@ -32,10 +36,11 @@ Header {
     display: grid;
     grid-template-columns: 3fr 1fr;
     background-image: linear-gradient(white, rgb(171, 251, 255), white)
-    
 }
 
-.added_body>header{background-image: none;}
+.added_body>header {
+    background-image: none;
+}
 
 .navbar-top>div {
 
@@ -200,7 +205,11 @@ a {
     inline-size: 50%;
     font-size: 1.6em;
 }
-.About>h1, .About>h2 {text-align: center;}
+
+.About>h1,
+.About>h2 {
+    text-align: center;
+}
 
 .Contact {
     background-color: rgb(249, 254, 255);
@@ -335,10 +344,17 @@ Button:hover {
     margin-bottom: 150px;
 }
 
+.jackets-Shop {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .jackets-Shop>div {
     position: relative;
     width: 400px;
-    height: 600px;
+    height: 500px;
     margin: 20px;
     margin-bottom: 100px;
     display: inline-flex;
@@ -348,9 +364,9 @@ Button:hover {
 }
 
 
-.jackets-Shop>div>a>img {
-    max-width: 500px;
-    max-height: 400px;
+.jackets-Shop>img {
+    max-width: 300px;
+    max-height: 300px;
     margin-bottom: 80px;
 
 }
@@ -402,16 +418,18 @@ Button:hover {
     top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-weight: 500; white-space: nowrap;
+    font-weight: 500;
+    white-space: nowrap;
 }
 
 .Index_Jackets-shop>div>h4,
-.jackets-Shop>div>h3 {
+.jackets-Shop>h3 {
     position: absolute;
     top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-weight: 200; white-space: nowrap;
+    font-weight: 200;
+    white-space: nowrap;
 }
 
 .info_main {
@@ -425,23 +443,25 @@ Button:hover {
     grid-template-columns: auto auto;
 
     line-height: 40px;
-    
+
 
 
 }
 
 .Info_Bergolos>h1 {
     font-size: 3em;
-    line-height: 5px; white-space: nowrap;
+    line-height: 5px;
+    white-space: nowrap;
 }
 
 .Info_Bergolos>h2 {
-    line-height: 2px; white-space: nowrap;
+    line-height: 2px;
+    white-space: nowrap;
 }
 
 .Jacket_info>div>ul>li {
     margin-left: 50px;
- white-space: nowrap;
+    white-space: nowrap;
 
 }
 
@@ -473,12 +493,15 @@ Button:hover {
 }
 
 .Added_main {
-   
+
     text-align: center;
 }
-.added_body{  background-image: url(/Images/button\ color.jpg);
+
+.added_body {
+    background-image: url(/Images/button\ color.jpg);
     background-repeat: no-repeat;
-    background-size: cover;}
+    background-size: cover;
+}
 
 .Jacket_info>div>h3 {
 
@@ -667,8 +690,8 @@ Button:hover {
 
 .Delivery>div>button {
     font-size: 1.2em;
-   margin-left: 50%;
-   transform: translate(-50%, -50%);
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
     margin-top: 30px;
 }
 
@@ -687,7 +710,13 @@ Button:hover {
     font-size: 1.3em;
     margin: 3%;
 }
-.pay_pal_form{padding: 2%; width: 30%; margin-bottom: 1%;}
+
+.pay_pal_form {
+    padding: 2%;
+    width: 30%;
+    margin-bottom: 1%;
+}
+
 .Radio_button {
     margin: 50px
 }
@@ -706,7 +735,7 @@ Button:hover {
     display: grid;
     grid-template-columns: 1fr 2fr;
     justify-content: center;
-    padding-bottom: 30px; 
+    padding-bottom: 30px;
 }
 
 .pay_pal>div>h1 {
@@ -720,9 +749,14 @@ Button:hover {
 .form__Payment {
     display: grid;
     grid-template-columns: auto auto;
-    width: 50%; ;
+    width: 50%;
+    ;
 }
-.form__Payment>input{padding: 5%; font-size: 1em;}
+
+.form__Payment>input {
+    padding: 5%;
+    font-size: 1em;
+}
 
 .Completed_order {
     display: grid;
@@ -781,16 +815,19 @@ Button:hover {
     padding: 10%;
     background-color: rgba(255, 0, 0, 0.325);
 }
+
 .Sign-in>h1 {
     font-size: 3em;
 }
+
 .Sign-in-fail>h1 {
     font-size: 3em;
-    
+
 }
-.Sign-in>h2  {
+
+.Sign-in>h2 {
     font-size: 3em;
-  
+
 }
 
 .Sign-in-fail>h2 {
@@ -831,48 +868,52 @@ Button:hover {
 }
 
 .Footer_payment {
-    background-color: lightgray;text-align: center
+    background-color: lightgray;
+    text-align: center
 }
 
 
-@media (max-width: 920px) and (min-width:661px)  { 
+@media (max-width: 900px) {
 
-  .navbar-top{
-    font-size: 0.8em;
+    .navbar-top {
+        font-size: 0.8em;
 
-  }
-  
-.jackets-Shop>div {
-    position: relative;
-    width: 290px;
-    height: 500px;
-    margin: 40px;
-    margin-bottom: 100px;
+    }
+
+    .jackets-Shop>div {
+        position: relative;
+        width: 290px;
+        height: 350px;
+        margin: 20px;
+        margin-bottom: 100px;
 
 
-}
+    }
 
-.jackets-Shop>div>a>img {
-    max-width: 300px;
-    max-height: 400px;
-    margin-bottom: 80px;
-  
+    .jackets-Shop>img {
+        max-width: 230px;
+        max-height: 260px;
+        margin-bottom: 80px;
 
-}
-     
-.Cart_Hedline{
+
+    }
+
+    .Cart_Hedline {
         padding: 15px;
         display: grid;
         grid-template-columns: 1fr 1fr 1.3fr 1.5fr 1.5fr;
         padding-left: 160px;
         font-size: 0.5em;
     }
+
+    h2 {
+        font-size: 1em;
+    }
 }
 
-    
-    
 
-@media (max-width: 660px) {
+
+@media (max-width: 675px) {
     h1 {
         font-size: 1.4em;
     }
@@ -901,7 +942,6 @@ Button:hover {
     .Header1>a>img {
         max-width: 200px;
         max-height: 100px;
-        margin-left: 0%;
         margin-top: 70px;
         margin-left: 50%;
         transform: translate(-50%, -50%);
@@ -1009,11 +1049,11 @@ Button:hover {
     .Index_Jackets-shop>div>a>img {
         max-width: 150px;
         height: 200px;
-        margin-bottom: 40px; 
+        margin-bottom: 40px;
     }
 
     .Index_Jackets-shop>div>h4,
-    .jackets-Shop>div>h3 {
+    .jackets-Shop>h3 {
         position: absolute;
         top: 75%;
         left: 50%;
@@ -1024,7 +1064,7 @@ Button:hover {
     .Index_Jackets-shop>div>h3,
     .jackets-Shop>div>h2 {
         position: absolute;
-        top: 70%;
+        top: 80%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-weight: 500;
@@ -1091,7 +1131,8 @@ Button:hover {
         display: flex;
         flex-direction: column-reverse;
         background-color: rgb(171, 251, 255);
-        flex-wrap: unset; z-index: 1;
+        flex-wrap: unset;
+        z-index: 1;
 
     }
 
@@ -1137,7 +1178,7 @@ Button:hover {
         margin-left: 10px;
         text-decoration: underline;
         line-height: 40px;
-       
+
     }
 
     #menu-checkbox {
@@ -1156,16 +1197,10 @@ Button:hover {
     }
 
 
-
-
-
-
-
-
     .jackets-Shop>div {
-        width: 300px;
+        width: 250px;
         height: 400px;
-        margin: 5px;
+        margin: 10px;
         margin-top: 10%;
         display: grid;
         justify-content: center;
@@ -1173,14 +1208,14 @@ Button:hover {
         background-image: linear-gradient(white, rgb(171, 251, 255), white)
     }
 
-    .jackets-Shop>div>a>img {
-        max-width: 250px;
+    .jackets-Shop>img {
+        max-width: 200px;
         max-height: 300px;
         margin-bottom: 30px;
 
     }
 
-    .jackets-Shop>div>h3 {
+    .jackets-Shop>h3 {
         position: absolute;
         top: 85%;
         left: 50%;
@@ -1188,7 +1223,7 @@ Button:hover {
         font-weight: 200
     }
 
-    .jackets-Shop>div>h2 {
+    .jackets-Shop>h2 {
         position: absolute;
         top: 82%;
         left: 50%;
@@ -1637,8 +1672,4 @@ header>.back-arrow {
 
 .back-arrow2 {
     display: none
-}
-
-
-
 }
