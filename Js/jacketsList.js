@@ -1,4 +1,5 @@
-//import{getgetExistingFavs} from "./utils/favFunctions.js"
+import { getExistingFavs } from "./utils/favFunctions.js";
+
 const url = "https://api.noroff.dev/api/v1/rainy-days";
 
 async function getJackets() {
@@ -9,9 +10,7 @@ async function getJackets() {
     async function displayJackets(){
         const jacketList = await getJackets();
         const jacketsContainer = document.querySelector(".jackets-Shop");
-    
-       // for ( i = 0; i < jacketList.length; i++) {
-         //   const jacket= jacketList[i];
+
     
        jacketList.forEach((jacket) =>{
         jacketsContainer.innerHTML += `<div class="jackets-Shop">
@@ -34,28 +33,27 @@ async function getJackets() {
 
     function handelClick(){
 
-        this.classList.toggle("far");
         this.classList.toggle("fa");
+        this.classList.toggle("far");
 
         const id = this.dataset.id;
         const title = this.dataset.title;
     
         const currentFavs = getExistingFavs();
 
-        const productExist = currentFavs.find(function(fav){
+        const productExist = currentFavs.find(function(fav) {
             return fav.id === id;
         });
 
-        if (! productExist === undefined){
+        if (productExist === undefined){
       const product ={id: id, title: title};
         currentFavs.push(product);
         saveFavs(currentFavs);  
-    }else{
+    } else {
         const newFavs = currentFavs.filter((fav)=> fav.id !== id);
         saveFavs(newFavs);
          }
     }
-   
     
     function saveFavs(favs){
         localStorage.setItem("favourites", JSON.stringify(favs));
