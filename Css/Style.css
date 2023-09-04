@@ -356,7 +356,7 @@ Button:hover {
     width: 400px;
     height: 500px;
     margin: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -364,7 +364,7 @@ Button:hover {
 }
 
 
-.jackets-Shop>img {
+.jackets-Shop>a>img {
     max-width: 300px;
     max-height: 300px;
 
@@ -384,14 +384,14 @@ Button:hover {
 .Index_Jackets-shop>div>i,
 .jackets-Shop>div>i {
     position: absolute;
-    top: 2%;
+    top: 12%;
     right: 15%;
     font-size: 1.5em;
 }
 
 .Index_Jackets-shop>div>i:hover,
 .jackets-Shop>div>i:hover {
-    background-color: aqua;
+    transform: scale(1.2);
 }
 
 
@@ -439,7 +439,7 @@ Button:hover {
     text-align: center;
 }
 
-.jackets-Shop>div>h2,
+.jackets-Shop>a>h2,
 .Index_Jackets-shop>div>h3 {
     position: absolute;
     top: 85%;
@@ -912,12 +912,12 @@ Button:hover {
         width: 290px;
         height: 400px;
         margin: 20px;
-        margin-bottom: 100px;
+        margin-bottom: 10px;
 
 
     }
 
-    .jackets-Shop>img {
+    .jackets-Shop>a>img {
         max-width: 230px;
         height: 250px;
 
@@ -1255,13 +1255,6 @@ Button:hover {
         font-weight: 200
     }
 
-    .jackets-Shop>h2 {
-        position: absolute;
-        top: 82%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-weight: 500;
-    }
 
 
 

@@ -4,6 +4,7 @@ const url = "https://api.noroff.dev/api/v1/rainy-days";
 
 const favourites = getExistingFavs();
 
+
 async function getJackets() {
     const response = await fetch(url);
     const jacketList = await response.json();
@@ -26,19 +27,13 @@ async function getJackets() {
      if( doesObjectExist){
         cssClass = "fa";
      }
-    
-
-        jacketsContainer.innerHTML += `<div class="jackets-Shop">
-        <a href="Info.html?id=${jacket.id}">
+   
+        jacketsContainer.innerHTML += `<a href="Info.html?id=${jacket.id}" class="jackets-Shop">
         <img  src="${jacket.image}" alt="${jacket.description}" />
-        <h2 >${jacket.title}</h2></a>
+        <h2 >${jacket.title}</h2>
         <p class="Price"> ${jacket.price} </p>
-        <i class="${cssClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}" data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
-        </div>` }); 
-        //if (jacket.onSale===true){
-           // const.getElementsByClassName("Price")
-          //  const jacketDiv = document.createElement("div");
-            //jacketDiv.classList.add("newPrice");
+        <i class="${cssClass} fa-heart" data-id="${jacket.id}"  data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
+        </a>` }); 
     
    
     const favButtons=document.querySelectorAll(".jackets-Shop i");
@@ -78,22 +73,5 @@ async function getJackets() {
         localStorage.setItem("favourites", JSON.stringify(favs));
     }
     }
-//<div class = "newPrice">${jacket.price} </div> $${jacket.discountedPrice}';
 
 displayJackets();
-
-//try {
-    //if (simulatedError); {
-  //  throw "bad things happened";
-//}
-//for(let i =0; i < jacket.length; i++){
-   // if (limit && i === limit){
-    //    break;
-  //  }
-//    resultsContainer.innerHTML+= createPublisher(publisher[i]);
-//}
-//}
-//catch (error){
- //   console.log(error);
- //   resultsContainer.innerHTML= displayMessage ("error", error)
-//}
