@@ -90,7 +90,7 @@ export async function getJackets() {
     }
 //<div class = "newPrice">${jacket.price} </div> $${jacket.discountedPrice}';
 
-displayJackets();
+
 
 //try {
     //if (simulatedError); {
