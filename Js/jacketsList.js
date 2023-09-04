@@ -16,12 +16,13 @@ async function getJackets() {
     
        jacketList.forEach((jacket) =>{
         let cssClass="far";
-
-        const doesObjectExist = favourites.find(function(fav){
+        
+        const doesObjectExist = favourites.find(function (fav) {
         console.log(fav);
+        
         return parseInt(fav.id) === jacket.id;
     })
-     console.log(doesObjectExist);
+    
      if( doesObjectExist){
         cssClass = "fa";
      }
@@ -31,7 +32,7 @@ async function getJackets() {
         <img  src="${jacket.image}" alt="${jacket.description}" />
         <h2 >${jacket.title}</h2>
         <p class="Price"> ${jacket.price} </p>
-        <i class="${cssClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}"></i>
+        <i class="${cssClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}" data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
         </div>` }); 
         //if (jacket.onSale===true){
            // const.getElementsByClassName("Price")
@@ -52,8 +53,9 @@ async function getJackets() {
 
         const id = this.dataset.id;
         const title = this.dataset.title;
-        const image =this.dataset.image;
-        const text = this.dataset.description
+        const image = this.dataset.image;
+        const price = this.dataset.price;
+        const description = this.dataset.description;
     
         const currentFavs = getExistingFavs();
 
@@ -62,7 +64,7 @@ async function getJackets() {
         });
 
         if (productExist === undefined){
-      const jacket ={id: id, title: title, image:image, text: text, };
+      const jacket ={id: id, title: title, image:image, price:price, description:description, };
         currentFavs.push(jacket);
         saveFavs(currentFavs);  
     } else {

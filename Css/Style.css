@@ -367,7 +367,6 @@ Button:hover {
 .jackets-Shop>img {
     max-width: 300px;
     max-height: 300px;
-    margin-bottom: 80px;
 
 }
 
@@ -406,16 +405,44 @@ Button:hover {
 .Price {
     font-weight: 900;
     position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+.favourite-title {
+    position: absolute;
+    text-decoration: underline;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 500;
+    font-size: 1.4em;
+    white-space: nowrap;
+
+}
+
+.favourite-price {
+    font-weight: 900;
+    position: absolute;
     top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
 }
 
+.favourite-text {
+    font-size: 0.8em;
+    font-weight: 200;
+    padding: 2em;
+    text-align: center;
+}
+
 .jackets-Shop>div>h2,
 .Index_Jackets-shop>div>h3 {
     position: absolute;
-    top: 80%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: 500;
@@ -883,7 +910,7 @@ Button:hover {
     .jackets-Shop>div {
         position: relative;
         width: 290px;
-        height: 350px;
+        height: 400px;
         margin: 20px;
         margin-bottom: 100px;
 
@@ -893,7 +920,6 @@ Button:hover {
     .jackets-Shop>img {
         max-width: 230px;
         max-height: 260px;
-        margin-bottom: 80px;
 
 
     }
@@ -908,6 +934,11 @@ Button:hover {
 
     h2 {
         font-size: 1em;
+    }
+
+    .favourite-title {
+        font-size: 1.2em;
+        top: 60%;
     }
 }
 
@@ -1073,11 +1104,15 @@ Button:hover {
     .Price {
         font-weight: 900;
         position: absolute;
-        top: 85%;
+        top: 90%;
         left: 50%;
         transform: translate(-50%, -50%)
     }
 
+    .favourite-title {
+        font-size: 1em;
+        top: 53%;
+    }
 
 
     .Footer_Info {
@@ -1202,7 +1237,6 @@ Button:hover {
         height: 400px;
         margin: 10px;
         margin-top: 10%;
-        display: grid;
         justify-content: center;
         align-items: center;
         background-image: linear-gradient(white, rgb(171, 251, 255), white)
@@ -1211,8 +1245,6 @@ Button:hover {
     .jackets-Shop>img {
         max-width: 200px;
         max-height: 300px;
-        margin-bottom: 30px;
-
     }
 
     .jackets-Shop>h3 {
@@ -1229,10 +1261,6 @@ Button:hover {
         left: 50%;
         transform: translate(-50%, -50%);
         font-weight: 500;
-    }
-
-    .jackets-Shop>div>p {
-        top: 90%;
     }
 
 
