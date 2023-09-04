@@ -324,7 +324,7 @@ Button:hover {
 }
 
 
-.Index_Jackets-shop>a {
+.Index_Jackets-shop>div {
     position: relative;
     width: 400px;
     height: 400px;
@@ -335,7 +335,7 @@ Button:hover {
     background-image: linear-gradient(white, rgb(171, 251, 255), white)
 }
 
-.Index_Jackets-shop>a {
+.Index_Jackets-shop {
     max-width: 100%;
     max-height: 500px;
     overflow-y: a;
@@ -385,7 +385,7 @@ Button:hover {
 .jackets-Shop>div>i {
     position: absolute;
     top: 12%;
-    right: 15%;
+    right: 20%;
     font-size: 1.5em;
 }
 
@@ -442,7 +442,7 @@ Button:hover {
 .jackets-Shop>a>h2,
 .Index_Jackets-shop>div>h3 {
     position: absolute;
-    top: 85%;
+    top: 82%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: 500;
@@ -1065,7 +1065,7 @@ Button:hover {
 
     .Index_Jackets-shop>div {
         width: 200px;
-        height: 350px;
+        height: 240px;
         margin: 5px;
 
     }
@@ -1076,10 +1076,23 @@ Button:hover {
         margin-bottom: 50px;
     }
 
+    .Index_Jackets-shop>div>i {
+        position: absolute;
+        top: 5%;
+        right: 25%;
+        font-size: 1.5em;
+    }
+
+    .jackets-Shop>div>i {
+        position: absolute;
+        top: 20%;
+        right: 10%;
+        font-size: 1.5em;
+    }
 
     .Index_Jackets-shop>div>a>img {
         max-width: 150px;
-        height: 200px;
+        height: 180px;
         margin-bottom: 40px;
     }
 
@@ -1092,13 +1105,15 @@ Button:hover {
         font-weight: 200
     }
 
-    .Index_Jackets-shop>div>h3,
-    .jackets-Shop>div>h2 {
+
+    .Index_Jackets-shop>div>h3 {
         position: absolute;
-        top: 80%;
+        top: 70%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-weight: 500;
+        white-space: nowrap;
+        background-color: rgb(34, 0, 255);
     }
 
     .Price {

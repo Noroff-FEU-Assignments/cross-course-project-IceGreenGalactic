@@ -4,32 +4,31 @@ import { getExistingFavs } from "./utils/favFunctions.js";
 const url = "https://api.noroff.dev/api/v1/rainy-days";
 
 const favourites = getExistingFavs();
-async function getJackets() {
+export async function getJackets() {
     const response = await fetch(url);
     const jacketList = await response.json();
    return jacketList}
    
     export async function displayJackets(){
         const jacketList = await getJackets();
-        const jacketsContainer = document.querySelector(".Index_Jackets-shop");
+        const jacketsContainer = document.querySelector(".jackets-Shop");
 
-  
+       
     
        jacketList.forEach((jacket) =>{
         let cssClass="far";
-        
         
         const doesObjectExist = favourites.find(function (fav) {
         console.log(fav);
         
         return parseInt(fav.id) === jacket.id;
-        
     })
     
      if( doesObjectExist){
         cssClass = "fa";
      }
     
+
         jacketsContainer.innerHTML += `<div class="jackets-Shop">
         <a href="Info.html?id=${jacket.id}">
         <img  src="${jacket.image}" alt="${jacket.description}" />
@@ -37,18 +36,11 @@ async function getJackets() {
         <p class="Price"> ${jacket.price} </p>
         <i class="${cssClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}" data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
         </div>` }); 
-
-
         //if (jacket.onSale===true){
            // const.getElementsByClassName("Price")
           //  const jacketDiv = document.createElement("div");
             //jacketDiv.classList.add("newPrice");
-    // const indexFilter = jacket.filter(filterIndex);
-    // function filterIndex (filter){
-    //     if(filter.title.toLowerCase().startsWith("Rainy Days Venture")){
-    //         console.log ("JADDDA")
-    //     }
-    // }
+    
    
     const favButtons=document.querySelectorAll(".jackets-Shop i");
     
@@ -87,22 +79,6 @@ async function getJackets() {
         localStorage.setItem("favourites", JSON.stringify(favs));
     }
     }
-        
-   
+//<div class = "newPrice">${jacket.price} </div> $${jacket.discountedPrice}';
 
-displayJackets()
-
-
-        
-// for (let i=0; i< jacketList.length; i++)
-// if (i ===3){
-//    break;
-// }
-
-// if (jacket.favorite===true){
-//     console.log ("JAPPPPPPPPPPPPPPPPPPP");
-
-// }
-// else if (jacket.favorite !== true){
-//     console.log ("NOOOOOOOOOOOOOOOOOOOOOOOOOO")
-// }
+displayJackets();

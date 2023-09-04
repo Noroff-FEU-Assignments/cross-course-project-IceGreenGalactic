@@ -1,10 +1,10 @@
 import { getJackets} from "./jacketsList.js";
-const jacketsContainer = document.querySelector(".Index_Jackets-shop");
+const jacketsContainer = document.querySelector(".jackets-container");
 console.log(getJackets)
 
 
 
-jacketsContainer.innerHTML += `<div class="Index_Jackets-shop">
+jacketsContainer.innerHTML += `<div class="jackets-container">
 <a href="Info.html?id=${jacket.id}">
 <img  src="${jacket.image}" alt="${jacket.description}" />
 <h2 >${jacket.title}</h2></a>

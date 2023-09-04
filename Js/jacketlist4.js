@@ -1,5 +1,7 @@
-import { getJackets,displayJackets} from "./jacketsList.js";
-import { displayMessage } from "./utils/errorMessage.js";
+
+import { displayJackets } from "./url.js"
+
+const jacketsContainer = document.getElementsByClassName("jackets-Shop");
 
 jacketsContainer.innerHTML += `<div class="jackets-Shop">
 <a href="Info.html?id=${jacket.id}">
@@ -7,7 +9,8 @@ jacketsContainer.innerHTML += `<div class="jackets-Shop">
 <h2 >${jacket.title}</h2></a>
 <p class="Price"> ${jacket.price} </p>
 <i class="${cssClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}" data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
-</div>`; 
+</div>`
 
-getJackets();
-displayJackets()
+if (jacket.gender === "Female"){
+    displayJackets()
+}
