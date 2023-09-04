@@ -414,7 +414,7 @@ Button:hover {
 .favourite-title {
     position: absolute;
     text-decoration: underline;
-    top: 65%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: 500;
@@ -435,7 +435,7 @@ Button:hover {
 .favourite-text {
     font-size: 0.8em;
     font-weight: 200;
-    padding: 2em;
+    padding: 20px;
     text-align: center;
 }
 
@@ -919,7 +919,7 @@ Button:hover {
 
     .jackets-Shop>img {
         max-width: 230px;
-        max-height: 260px;
+        height: 250px;
 
 
     }
@@ -938,7 +938,7 @@ Button:hover {
 
     .favourite-title {
         font-size: 1.2em;
-        top: 60%;
+
     }
 }
 
@@ -1111,7 +1111,7 @@ Button:hover {
 
     .favourite-title {
         font-size: 1em;
-        top: 53%;
+
     }
 
 
