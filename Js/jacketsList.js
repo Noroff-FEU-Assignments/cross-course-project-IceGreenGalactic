@@ -1,18 +1,28 @@
 import { getExistingFavs } from "./utils/favFunctions.js";
 
+
+//export function getExistingFavs() {
+    //const favs= localStorage.getItem("favourites");
+
+    //if (favs === null){
+      //  return [];
+  //  } else { 
+   //     return JSON.parse(favs);
+    //}
+//}
 const url = "https://api.noroff.dev/api/v1/rainy-days";
 
 const favourites = getExistingFavs();
-
-async function getJackets() {
+export async function getJackets() {
     const response = await fetch(url);
     const jacketList = await response.json();
    return jacketList}
    
-    async function displayJackets(){
+     async function displayJackets(){
         const jacketList = await getJackets();
         const jacketsContainer = document.querySelector(".jackets-Shop");
 
+       
     
        jacketList.forEach((jacket) =>{
         let cssClass="far";
