@@ -1,5 +1,5 @@
 import {getExistingFavs} from "./utils/favFunctions.js";
-import { getJackets } from "./jacketsList.js";
+
 
 const favourites= getExistingFavs();
 

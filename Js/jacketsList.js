@@ -30,7 +30,7 @@ export async function getJackets() {
     
 
         jacketsContainer.innerHTML += `<div class="jackets-Shop">
-        <a href="Info.html?id=${jacket.id}">
+        <a href="Info.html?id=${jacket.id}" class"Jacket_info">
         <img  src="${jacket.image}" alt="${jacket.description}" />
         <h2 >${jacket.title}</h2></a>
         <p class="Price"> ${jacket.price} </p>

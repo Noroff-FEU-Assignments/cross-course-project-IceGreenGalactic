@@ -12,4 +12,11 @@ jacketsContainer.innerHTML += `<div class="jackets-container">
 <i class="${cssClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}" data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
 </div>`;
 
+// jacket = $.sort ((a,b)=>{
+//     if (a.id< b.id){
+//         console.log("hhoogseoisnoi")
+//     }
+// })
+
 displayJackets()
+ 

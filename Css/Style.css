@@ -463,6 +463,34 @@ Button:hover {
     background-image: linear-gradient(white, rgb(171, 251, 255), white);
     text-align: center;
 }
+/* 
+.NEWJacket_info {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: auto auto;
+    line-height: 40px;
+    text-align: center;
+}
+
+.NEWJacket_info>img {
+    max-width: 500px;
+
+}
+
+.NEWJacket_info>h1 {
+    font-size: 3em;
+    line-height: 5px;
+    white-space: nowrap;
+}
+
+.NEWJacket_info>h2 {
+    list-style: none;
+    padding: 0;
+    display: inline;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 300;
+} */
 
 .Jacket_info {
     min-height: 100vh;
@@ -486,7 +514,7 @@ Button:hover {
     white-space: nowrap;
 }
 
-.Jacket_info>div>ul>li {
+.Jacket_info>li {
     margin-left: 50px;
     white-space: nowrap;
 
@@ -515,7 +543,7 @@ Button:hover {
     background-size: cover;
 }
 
-.Jacket_info>div>img {
+.Jacket_info>img {
     max-width: 500px;
 }
 
@@ -530,10 +558,10 @@ Button:hover {
     background-size: cover;
 }
 
-.Jacket_info>div>h3 {
+.Jacket_info>h3 {
 
     font-size: 4em;
-    font-weight: 500;
+    font-weight: 300;
 
     height: 150px;
     text-align: center;
