@@ -1,18 +1,20 @@
 import { getExistingFavs } from "./utils/favFunctions.js";
+const jacketsContainer = document.querySelector(".Index_Jackets-shop");
 
 
 const url = "https://api.noroff.dev/api/v1/rainy-days";
 
 const favourites = getExistingFavs();
+
+
 async function getJackets() {
     const response = await fetch(url);
     const jacketList = await response.json();
    return jacketList}
    
-    export async function displayJackets(){
+   async function displayJackets(){
         const jacketList = await getJackets();
-        const jacketsContainer = document.querySelector(".Index_Jackets-shop");
-
+        
   
     
        jacketList.forEach((jacket) =>{
@@ -38,17 +40,6 @@ async function getJackets() {
         <i class="${cssClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}" data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
         </div>` }); 
 
-
-        //if (jacket.onSale===true){
-           // const.getElementsByClassName("Price")
-          //  const jacketDiv = document.createElement("div");
-            //jacketDiv.classList.add("newPrice");
-    // const indexFilter = jacket.filter(filterIndex);
-    // function filterIndex (filter){
-    //     if(filter.title.toLowerCase().startsWith("Rainy Days Venture")){
-    //         console.log ("JADDDA")
-    //     }
-    // }
    
     const favButtons=document.querySelectorAll(".jackets-Shop i");
     

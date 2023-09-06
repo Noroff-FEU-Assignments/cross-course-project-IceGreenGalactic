@@ -1,8 +1,7 @@
 import { getJackets} from "./jacketsList.js";
-const jacketsContainer = document.querySelector(".jackets-Shop");
+const jacketsContainer = document.querySelector(".Index_Jackets-shop");
 console.log(getJackets)
 
-if (jacket.favorite === true){getJackets()}
 
 jacketsContainer.innerHTML += `<div class="jackets-container">
 <a href="Info.html?id=${jacket.id}">
