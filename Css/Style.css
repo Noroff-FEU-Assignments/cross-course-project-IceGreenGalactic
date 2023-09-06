@@ -394,6 +394,11 @@ Button:hover {
     transform: scale(1.2);
 }
 
+.jackets-him-text {
+    display: flex;
+    flex-direction: column;
+    padding: 0% 20%;
+}
 
 .percent {
     position: absolute;

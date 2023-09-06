@@ -1,7 +1,4 @@
-import { getExistingFavs } from "./utils/favFunctions.js";
-
 const url = "https://api.noroff.dev/api/v1/rainy-days";
-
 async function getJackets() {
     const response = await fetch(url);
     const jacketList = await response.json();
@@ -9,16 +6,16 @@ async function getJackets() {
    
   async function displayJackets(){
         const jacketList = await getJackets();
-        const jacketContainer =document.getElementById("jacket-container");
+        const jacketContainer = document.querySelector(".jackets-Shop");
 
-    for (i=0; i<jacketList.length; i++){
+    for ( let i=0; i<jacketList.length; i++) {
         const jacket = jacketList[i];
 
         const jacketDiv=document.createElement("div");
         jacketDiv.classList.add ("jackets-Shop");
 
         const productimage= document.createElement("img");
-        productimage.classList.add("jackets-Shop")
+        productimage.classList.add("jackets-Shop");
         productimage.src= jacket.image;
         productimage.alt= jacket.description;
 
@@ -30,9 +27,10 @@ async function getJackets() {
         price.classList.add("Price");
         price.textContent = jacket.price;
 
-        jacketContainer.appendChild(productimage);
-        jacketContainer.appendChild(jacketName);
-        jacketContainer.appendChild(price);
+        jacketContainer.appendChild(jacketDiv);
+        jacketDiv.appendChild(productimage);
+        jacketDiv.appendChild(jacketName);
+        jacketDiv.appendChild(price);
     }
   }
-  displayJackets() ;
+  displayJackets();

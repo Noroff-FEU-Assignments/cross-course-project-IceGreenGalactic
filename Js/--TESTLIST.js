@@ -41,9 +41,7 @@ export async function getJackets() {
           //  const jacketDiv = document.createElement("div");
             //jacketDiv.classList.add("newPrice");
     
-   if(jacket.gender==="Female"){
-    displayJackets()
-   }
+   
     const favButtons=document.querySelectorAll(".jackets-Shop i");
     
     favButtons.forEach((button)=>{
