@@ -1,21 +1,28 @@
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
 
-
 const url = "https://api.noroff.dev/api/v1/rainy-days";
-const jacketsContainer =document.querySelector(".jackets-Shop");
-const favourites = getExistingFavs();
 
-export async function getJackets() {
+
+export async function getJackets(jacketContainer) {
   try{
     const response = await fetch(url);
     const jacketList = await response.json();
+
+    const favourites = getExistingFavs();
+    
+
+    jacketList.forEach((jacket) =>{
+      createHTML(jacket, jacketContainer, favourites);
+    });
+
    return jacketList;
-} catch (error){
-    console.error ("Error fetching jacket data:", error)
-    return []
+  } catch (error){
+    console.error ("Error fetching jacket data:", error);
+    return [];
+  }
 }
-}
-export function createHTML (jacket){
+
+export function createHTML (jacket, jacketContainer, favourites){
   const isFavorite = favourites.some((fav) => fav.id === jacket.id)
   const HeartClass= isFavorite? "fa" : "far"
     
@@ -27,28 +34,35 @@ export function createHTML (jacket){
         <i class="${HeartClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}" data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
         </div>`;
 
-        jacketsContainer.innerHTML += jacketHTML;
-    }
-
-    jacketsContainer.addEventListener("click", (e) => {
+        jacketContainer.innerHTML += jacketHTML;
+   
+    jacketContainer.addEventListener("click", (e) => {
       if (e.target.classList.contains ("fa-heart")){
-      handelClick(e.target)
+      handelClick(e.target, favourites, jacketContainer)
     }
   });
 
-  
+}
 
-    function handelClick(heartIcon){
-        console.log
 
-        heartIcon.classList.toggle("fa");
+    function handelClick(heartIcon, favourites, jacketContainer){
+       
         heartIcon.classList.toggle("far");
+        heartIcon.classList.toggle("fa");
 
         const id = heartIcon.dataset.id;
         const title = heartIcon.dataset.title;
         const image = heartIcon.dataset.image;
         const price = heartIcon.dataset.price;
         const description = heartIcon.dataset.description;
+
+        toggleFavorite({
+          id:id,
+          title:title,
+          image: image,
+          price: price,
+          description: description,
+        });
     
         const currentFavs = getExistingFavs();
 
