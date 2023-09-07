@@ -1,6 +1,5 @@
-import { fetchJackets, filterFavoriteJackets } from "./--TESTLIST.js";
-import { getExistingFavs, toggleFavorite } from "./utils/favFunctions";
-import { displayJackets } from "./--TESTHim.js";
+import { fetchJackets, filterFavoriteJackets, createHTML } from "./--TESTLIST.js";
+import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -15,7 +14,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         if (jacketList.length>0){
             const favJackets = filterFavoriteJackets(jacketList);
-            displayJackets(favJackets.length> 0? favJackets: jacketList.slice(0, 5), jacketContainer,favourites)
+            displayJackets(
+                favJackets.length> 0? favJackets: jacketList.slice(0, 5), 
+                jacketContainer,
+                favourites);
 
         }else{
             jacketContainer.innerHTML=
@@ -27,3 +29,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         return[]
       }
     });
+    function displayJackets(jacketList, jacketContainer, favourites){
+        jacketContainer.innerHTML="";
+    
+    jacketList.forEach((jacket)=>{
+        createHTML(jacket,jacketContainer,favourites)
+    });
+}

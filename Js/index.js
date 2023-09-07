@@ -113,7 +113,7 @@ jacketContainer.addEventListener("click", (e) => {
     
 //     favButtons.forEach((button)=>{
 //         button.addEventListener ("click", handelClick);
-//     });
+// //     });
 
 //     function handelClick(){
 
