@@ -1,5 +1,5 @@
 import {getExistingFavs} from "./utils/favFunctions.js";
-import { createHTML } from "./--TESTLIST.js"; 
+import { createHTML } from "./jacketsList.js"; 
 
 document.addEventListener("DOMContentLoaded", () => {
     const favourites= getExistingFavs();
