@@ -1,15 +1,15 @@
 import {getExistingFavs} from "./utils/favFunctions.js";
 import { createHTML } from "./--TESTLIST.js"; 
 
-document.addEventListener("DOMContentLoaded",() =>{
-const favourites= getExistingFavs();
-const jacketsContainer = document.querySelector(".jackets-Shop");
+document.addEventListener("DOMContentLoaded", () => {
+    const favourites= getExistingFavs();
+    const jacketsContainer = document.querySelector(".jackets-Shop");
 
 if(favourites.length === 0){
-    jacketsContainer.innerHTML= " favourites is empty";
+    jacketsContainer.innerHTML= "favourites is empty";
 } else{
     favourites.forEach((favourite) =>{
-        createHTML(favourite,jacketsContainer);
+        createHTML(favourite,jacketsContainer, favourites);
     });
 }
 });

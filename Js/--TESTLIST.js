@@ -69,7 +69,7 @@ export function handelClick(heartIcon, favourites, jacketContainer){
     description: description,
   });
 
-  const currentFavs = getExistingFavs();
+  let currentFavs = getExistingFavs();
 
   const productExist = currentFavs.find((fav) => fav.id === id);
 

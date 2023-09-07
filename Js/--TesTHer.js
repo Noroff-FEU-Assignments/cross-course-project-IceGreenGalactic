@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try{
     if (jacketContainer){
         const jacketList = await fetchJackets(jacketContainer)
-        const favourites = getExistingFavs();
+        let favourites = getExistingFavs();
         
         const femaleJackets = jacketList.filter((jacket) => jacket.gender==="Female");
 
@@ -16,12 +16,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             jacketContainer.addEventListener("click", (e) =>{
                 if (e.target.classList.contains("fa-heart")){
+                    const clicketJacketID = e.target.dataset.id;
+                    const clicketJacket = jacketList.find((jacket) => jacket.id === clicketJacketID);
                     handelClick(e.target, favourites, jacketContainer);
-                    toggleFavorite(jacket);
-                    saveFavs(getExistingFavs());
-                    
-                    favourites =getExistingFavs();
+                    toggleFavorite(clicketJacket);
+                    favourites = getExistingFavs()
                     saveFavs(favourites);
+                    ;
                     }
             });
 
