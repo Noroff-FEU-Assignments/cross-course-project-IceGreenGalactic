@@ -17,7 +17,9 @@ h5 {
     font-weight: 500;
 }
 
-
+body {
+    margin: 0%
+}
 
 
 
@@ -354,9 +356,9 @@ Button:hover {
 .jackets-Shop>div {
     position: relative;
     width: 400px;
-    height: 500px;
+    height: 400px;
     margin: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 10%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -384,7 +386,7 @@ Button:hover {
 .Index_Jackets-shop>div>i,
 .jackets-Shop>div>i {
     position: absolute;
-    top: 12%;
+    top: 0%;
     right: 20%;
     font-size: 1.5em;
 }
@@ -1581,18 +1583,21 @@ Button:hover {
         margin-left: 40%;
     }
 
-
-    .Contact_Main,
-    .About_Main {
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto;
-    }
-
     .Picture-side-menu>img {
+        display: block;
         object-fit: cover;
         height: 100px;
         width: 100px;
+    }
+
+
+
+    .contact_main,
+    .About_Main {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto auto;
+        justify-content: space-evenly;
     }
 
     .side-menu {
@@ -1655,7 +1660,7 @@ Button:hover {
 
 
     .Not-found {
-        color: white;
+        color: rgb(231, 0, 0);
         display: flex;
         background-image: url(/Images/Not\ found.jpg);
         height: 400px;
@@ -1707,19 +1712,16 @@ Button:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
 header>.back-arrow {
     display: none
 }
 
 .back-arrow2 {
     display: none
+}
+
+@media (max-width: 350px) {
+    .Picture-side-menu>img {
+        display: none;
+    }
 }
