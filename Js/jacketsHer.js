@@ -1,10 +1,15 @@
+import { showLoaders } from "./utils/loader.js";
 import { fetchJackets, filterFavoriteJackets, createHTML, handelClick} from "./jacketsList.js"; 
 import { getExistingFavs, toggleFavorite,saveFavs } from "./utils/favFunctions.js";
+
+
 
 document.addEventListener("DOMContentLoaded", async () => {
     const jacketContainer = document.querySelector (".jackets-Shop");
     try{
     if (jacketContainer){
+        showLoaders(".loader")
+    newContaner.innerHTML="";
         const jacketList = await fetchJackets(jacketContainer)
         let favourites = getExistingFavs();
         

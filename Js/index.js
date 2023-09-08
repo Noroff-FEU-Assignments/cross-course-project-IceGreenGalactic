@@ -1,5 +1,6 @@
 import { fetchJackets, filterFavoriteJackets, createHTML } from "./jacketsList.js";
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
+import { hideLoader, showLoader } from "./utils/loader.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -7,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try{
     if (jacketContainer){
+        showLoader();
         const jacketList = await fetchJackets()
         const favourites = getExistingFavs();
         
@@ -22,6 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             jacketContainer.innerHTML=
             "No jackets found"
         }
+        hideLoader();
     }
         }catch (error) {
         console.error ("Error fetching jacket data:", error);

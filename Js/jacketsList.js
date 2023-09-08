@@ -1,3 +1,4 @@
+import { showLoaders } from "./utils/loader.js";
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
 
 const url = "https://api.noroff.dev/api/v1/rainy-days";
@@ -5,6 +6,7 @@ const url = "https://api.noroff.dev/api/v1/rainy-days";
 
 export async function fetchJackets() {
   try{
+    showLoader();
     const response = await fetch(url);
     return await response.json();
   
@@ -25,7 +27,7 @@ export function filterFavoriteJackets(jacketList){
 
 export function createHTML (jacket, jacketContainer, favourites){
   const isFavorite = favourites.some((fav) => fav.id === jacket.id);
-  const HeartClass= isFavorite? "fa" : "far"
+  const HeartClass= isFavorite? "far" : "fa"
     
   const jacketHTML= `<div class="jackets-Shop">
         <a href="Info.html?id=${jacket.id} "class= "Jacket_info">

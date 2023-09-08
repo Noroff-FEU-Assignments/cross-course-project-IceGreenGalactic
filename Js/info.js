@@ -1,4 +1,5 @@
 import { getExistingFavs, toggleFavorite,saveFavs } from "./utils/favFunctions.js";
+import { hideLoader, showLoader } from "./utils/loader.js";
 const jacketContainer = document.querySelector(".jacket-container");
 
 const queryString = document.location.search;
@@ -14,7 +15,7 @@ const url = "https://api.noroff.dev/api/v1/rainy-days/" + id;
 
 
 async function getJackets() {
-
+showLoader();
     try{
     const response = await fetch(url);
     if (!response.ok){
@@ -25,6 +26,7 @@ async function getJackets() {
    
    createHTML(jacketInfo);
     
+   hideLoader();
       }  
       catch(error){
         console.error(error);
@@ -62,9 +64,4 @@ info.sizes.forEach((size) =>{
 
       sizeButtonsContainer.appendChild (sizeButton)
     });
-  }
-
-  function showLoadingIndicator(){
-    const itemList=document.querySelector(".loader");
-    itemList.innerHTML = "<li>Loading....</li>";
   }
