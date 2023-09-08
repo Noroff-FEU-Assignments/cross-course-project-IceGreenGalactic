@@ -515,7 +515,10 @@ Button:hover {
     background-image: url(/Images/button\ color.jpg);
     background-size: cover;
 }
-
+.Size-button.clicked {
+    background-image: url(/Images/button\ color.jpg);
+    background-size: cover;
+}
 .Jacket_info>img {
     max-width: 400px;
 }

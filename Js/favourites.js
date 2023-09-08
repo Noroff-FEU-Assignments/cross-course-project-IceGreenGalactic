@@ -14,15 +14,3 @@ if(favourites.length === 0){
 }
 });
 
-// favourites.forEach ((favourite) => {
-//     jacketsContainer.innerHTML+= `<div class= "jackets-Shop">
-                                     
-//                                       <a href="Info.html?id=${favourite.id}">
-//                                      <img src="${favourite.image}" alt="${favourite.description}" />
-//                                     <p class="favourite-title">${favourite.title}</p></a>
-//                                     <p class="favourite-price"> ${favourite.price} </p> 
-//                                     <i class="fa fa-heart"></i> 
-//                                         </div>`;
-// });
-
-// displayJackets()
