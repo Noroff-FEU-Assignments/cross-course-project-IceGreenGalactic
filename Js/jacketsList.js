@@ -1,4 +1,4 @@
-import { showLoaders } from "./utils/loader.js";
+
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
 
 const url = "https://api.noroff.dev/api/v1/rainy-days";
@@ -6,7 +6,7 @@ const url = "https://api.noroff.dev/api/v1/rainy-days";
 
 export async function fetchJackets() {
   try{
-    showLoader();
+    
     const response = await fetch(url);
     return await response.json();
   

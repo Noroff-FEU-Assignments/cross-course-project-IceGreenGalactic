@@ -1,4 +1,4 @@
-import { showLoader,hideLoader } from "./utils/loader.js";
+
 import { fetchJackets, filterFavoriteJackets, createHTML, handelClick} from "./jacketsList.js"; 
 import { getExistingFavs, toggleFavorite,saveFavs } from "./utils/favFunctions.js";
 
@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const jacketContainer = document.querySelector (".jackets-Shop");
     try{
     if (jacketContainer){
-        showLoader();
+        
         const jacketList = await fetchJackets(jacketContainer)
         let favourites = getExistingFavs();
         
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }else{
           jacketContainer.innerHTML = "We are expanding our collection to include men's jackets!! Stay tuned for the latest updates, in the meantime, feel free to ecplore our fabulous range of women's jackets";
         }
-        hideLoader();
+   
     }
 }catch(error){
             console.error("error fetching jacket data:", error)

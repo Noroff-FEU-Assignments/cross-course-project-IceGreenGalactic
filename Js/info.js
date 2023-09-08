@@ -15,7 +15,7 @@ const url = "https://api.noroff.dev/api/v1/rainy-days/" + id;
 
 
 async function getJackets() {
-showLoader();
+
     try{
     const response = await fetch(url);
     if (!response.ok){
@@ -25,8 +25,7 @@ showLoader();
     const jacketInfo = await response.json();
    
    createHTML(jacketInfo);
-    
-   hideLoader();
+
       }  
       catch(error){
         console.error(error);

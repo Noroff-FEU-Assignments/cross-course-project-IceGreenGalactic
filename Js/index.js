@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try{
     if (jacketContainer){
-        showLoader();
+       
         const jacketList = await fetchJackets()
         const favourites = getExistingFavs();
         
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             jacketContainer.innerHTML=
             "No jackets found"
         }
-        hideLoader();
+       
     }
         }catch (error) {
         console.error ("Error fetching jacket data:", error);
