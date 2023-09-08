@@ -1,18 +1,20 @@
-
+import { showLoaders } from "./utils/loader.js";
 import { fetchJackets, filterFavoriteJackets, createHTML, handelClick} from "./jacketsList.js"; 
 import { getExistingFavs, toggleFavorite,saveFavs } from "./utils/favFunctions.js";
 
-
+const newContaner =document.querySelector(".loader");
 
 document.addEventListener("DOMContentLoaded", async () => {
     const jacketContainer = document.querySelector (".jackets-Shop");
     try{
     if (jacketContainer){
- 
+        showLoaders(".loader")
+    newContaner.innerHTML="";
         const jacketList = await fetchJackets(jacketContainer)
         let favourites = getExistingFavs();
         
         const femaleJackets = jacketList.filter((jacket) => jacket.gender==="Female");
+newContaner.innerHTML="";
 
         if (femaleJackets.length>0){
             femaleJackets.forEach((jacket)=>{
