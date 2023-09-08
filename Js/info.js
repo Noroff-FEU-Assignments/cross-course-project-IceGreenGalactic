@@ -63,3 +63,8 @@ info.sizes.forEach((size) =>{
       sizeButtonsContainer.appendChild (sizeButton)
     });
   }
+
+  function showLoadingIndicator(){
+    const itemList=document.querySelector(".loader");
+    itemList.innerHTML = "<li>Loading....</li>";
+  }
