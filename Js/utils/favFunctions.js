@@ -1,14 +1,15 @@
 export function toggleFavorite(jacket){
     try{
     const currentFavs = getExistingFavs();
-    const existingItemIndex = currentFavs.findIndex((fav) => fav.id === jacket.id);
+    const filterFavs = currentFavs.filter((fav) =>fav);
+    const existingItemIndex = filterFavs.findIndex((fav) => fav.id === jacket.id);
    
 if (existingItemIndex === -1){
     currentFavs.push(jacket);
 }else{
 currentFavs.splice(existingItemIndex, 1);
 }
-saveFavs(currentFavs)
+saveFavs(currentFavs);
 }catch (error){
     console.error("Error toggling favorite:", error);
     }

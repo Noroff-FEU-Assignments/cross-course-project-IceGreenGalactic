@@ -15,22 +15,31 @@ export async function fetchJackets() {
   
       }catch (error){
         throw new Error("error fetching jacket data:", error+error.message);
-        return[]
+        return[];
       }
     }
   
 
 export function filterFavoriteJackets(jacketList){
-  const favourites =getExistingFavs();
-  return jacketList.filter((jacket)=> jacket.favourite===true);
+  const favourites = getExistingFavs();
+  return jacketList.filter((jacket)=> {
+    if (jacket.favourite){
+      return favourites.some ((fav) => fav&& fav.id === jacket.id);
+    }
+
+    return true;
+});
 }
 
 
 
 
 export function createHTML (jacket, jacketContainer, favourites){
-  const isFavorite = favourites.some((fav) => fav.id === jacket.id);
-  const HeartClass= isFavorite? "far" : "fa"
+  const isFavorite = favourites.some((fav) => fav&& fav.id===jacket.id);
+  const HeartClass = isFavorite ? "fa" : "far";
+  
+ 
+  
     
   const jacketHTML= `<div class="jackets-Shop">
         <a href="Info.html?id=${jacket.id} "class= "Jacket_info">

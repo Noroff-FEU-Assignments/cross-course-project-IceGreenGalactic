@@ -1,16 +1,19 @@
-import { fetchJackets, filterFavoriteJackets, createHTML } from "./jacketsList.js";
+import { fetchJackets, filterFavoriteJackets, createHTML, handelClick } from "./jacketsList.js";
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
 import { hideLoader, showLoader } from "./utils/loader.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
     const jacketContainer = document.querySelector (".Index_Jackets-shop");
-
+    let jacketList = [];
     try{
     if (jacketContainer){
        
-        const jacketList = await fetchJackets()
-        const favourites = getExistingFavs();
+  
+        jacketList = await fetchJackets()
+    
+
+        let favourites = getExistingFavs();
         
         
         if (jacketList.length>0){
@@ -18,7 +21,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             displayJackets(
                 favJackets.length> 0? favJackets: jacketList.slice(0, 5), 
                 jacketContainer,
-                favourites);
+                favourites
+            );
+                 jacketContainer.addEventListener("click", (e) =>{
+                if (e.target.classList.contains("fa-heart")){
+                    const clicketJacketID = e.target.dataset.id;
+                    const clicketJacket = jacketList.find((jacket) => jacket.id === clicketJacketID);
+                    handelClick(e.target, favourites, jacketContainer);
+                    toggleFavorite(clicketJacket);
+                    favourites = getExistingFavs();
+
+                  
+                         }
+                 });
 
         }else{
             jacketContainer.innerHTML=
@@ -28,9 +43,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
         }catch (error) {
         console.error ("Error fetching jacket data:", error);
+        jacketContainer.innerHTML="an error occured while fetching data. Please try again later";
         return[]
       }
-    });
     function displayJackets(jacketList, jacketContainer, favourites){
         jacketContainer.innerHTML="";
     
@@ -38,3 +53,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         createHTML(jacket,jacketContainer,favourites)
     });
 }
+
+});

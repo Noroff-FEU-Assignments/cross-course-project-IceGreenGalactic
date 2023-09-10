@@ -1,16 +1,25 @@
-import {getExistingFavs} from "./utils/favFunctions.js";
-import { createHTML } from "./jacketsList.js"; 
+import { fetchJackets, filterFavoriteJackets, createHTML, handelClick } from "./jacketsList.js";
+import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const favourites= getExistingFavs();
+    let favourites= getExistingFavs();
     const jacketsContainer = document.querySelector(".jackets-Shop");
 
 if(favourites.length === 0){
-    jacketsContainer.innerHTML= " <h1>favourites is empty</h1>";
+    jacketsContainer.innerHTML= "favourites is empty";
 } else{
     favourites.forEach((favourite) =>{
-        createHTML(favourite,jacketsContainer, favourites);
+        createHTML(favourite ,jacketsContainer, favourites);
     });
 }
-});
+jacketsContainer.addEventListener("click", (e) =>{
+    if (e.target.classList.contains("fa-heart")){
+        const clicketJacketID = e.target.dataset.id;
+        const clicketJacket = favourites.find((jacket) => jacket.id === clicketJacketID);
+        handelClick(e.target, favourites, jacketsContainer);
+        toggleFavorite(clicketJacket);
+        favourites = getExistingFavs();
 
+     }
+ });
+});
