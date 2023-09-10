@@ -14,6 +14,7 @@ const url = "https://api.noroff.dev/api/v1/rainy-days/" + id;
 async function getJackets() {
 
     try{
+      showLoader();
     const response = await fetch(url);
     if (!response.ok){
       throw new Error ("failed to fetch data");
@@ -21,8 +22,8 @@ async function getJackets() {
    
     const jacketInfo = await response.json();
    
-   createHTML(jacketInfo);
-hideLoader();
+    createHTML(jacketInfo);
+    hideLoader();
       }  
       catch(error){
         console.error(error);
@@ -61,22 +62,21 @@ info.sizes.forEach((size) =>{
       sizeButtonsContainer.appendChild (sizeButton)
     });
     const addToCartButton = jacketContainer.querySelector(".addedToCart");
+    const buttonTexts =["Add to cart", "Added!", "Removed from cart"];
+    let currentTextIndex =0;
+
+    function updateButtonText(){
+      addToCartButton.textContent= buttonTexts[currentTextIndex];
+      currentTextIndex = (currentTextIndex + 1)% buttonTexts.length;
+    }
+
+
     addToCartButton.addEventListener ("click", () => {
-      console.log("add to cart button clicked")
-      addedToCart(info);
+      console.log("add to cart button clicked");
+      updateButtonText();
+       
+    setTimeout(()=>{
+      updateButtonText();
+    }, 1000);
     });
-  } 
-  const popupMessage= document.createElement("div");
-  function addedToCart(item){
-    popupMessage.className ="popup-message";
-    popupMessage.textContent ="Item added to cart"
-    document.body.appendChild(popupMessage);
-  
-    
-  //   setTimeout(()=>{
-  //     if (document.body.contains(popupMessage)){
-        
-  //   document.body.removeChild(popupMessage);
-  //     }
-  // }, 3000);
-}
+  }
