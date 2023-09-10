@@ -10,6 +10,8 @@ const id = params.get("id");
 
 const url = "https://api.noroff.dev/api/v1/rainy-days/" + id;
 
+const buttonTexts =["Add to cart", "Added!", "Removed from cart"];
+let currentTextIndex =0;
 
 async function getJackets() {
 
@@ -59,24 +61,24 @@ info.sizes.forEach((size) =>{
         sizeButton.classList.toggle("clicked")
       });
 
-      sizeButtonsContainer.appendChild (sizeButton)
+      sizeButtonsContainer.appendChild (sizeButton);
     });
     const addToCartButton = jacketContainer.querySelector(".addedToCart");
-    const buttonTexts =["Add to cart", "Added!", "Removed from cart"];
-    let currentTextIndex =0;
 
-    function updateButtonText(){
-      addToCartButton.textContent= buttonTexts[currentTextIndex];
-      currentTextIndex = (currentTextIndex + 1)% buttonTexts.length;
-    }
-
+    addToCartButton.textContent = buttonTexts[currentTextIndex];
 
     addToCartButton.addEventListener ("click", () => {
-      console.log("add to cart button clicked");
-      updateButtonText();
-       
-    setTimeout(()=>{
-      updateButtonText();
-    }, 1000);
+      currentTextIndex = (currentTextIndex + 1)% buttonTexts.length;
+updateButtonText();
     });
+
+    function updateButtonText(){
+      addToCartButton.textContent=buttonTexts[currentTextIndex];
+      if (currentTextIndex ===2){
+        setTimeout(()=>{
+          currentTextIndex =0;
+          updateButtonText();
+        }, 2000);
+      }
+    }
   }
