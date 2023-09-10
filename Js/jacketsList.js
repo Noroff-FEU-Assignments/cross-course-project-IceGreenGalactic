@@ -1,6 +1,7 @@
 
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
 import { hideLoader, showLoader } from "./utils/loader.js";
+import { displayMessage } from "./utils/errorMessage.js";
 
 const url = "https://api.noroff.dev/api/v1/rainy-days";
 
@@ -14,8 +15,10 @@ export async function fetchJackets() {
     return jacketlist;
   
       }catch (error){
-        throw new Error("error fetching jacket data:", error+error.message);
-        return[];
+        const errorMessage="an error occurred while fetching jacket data. please try again later";
+        const messageType = "Error";
+        displayMessage(messageType,errorMessage);
+        return[]
       }
     }
   
@@ -53,18 +56,18 @@ export function createHTML (jacket, jacketContainer, favourites){
 
         const heartIcon = jacketContainer.querySelector (`[data-id="${jacket.id}"]`)
         heartIcon.addEventListener("click", ()=>{
-          handelClick(heartIcon,favourites,jacketContainer)
+          handleClick(heartIcon,favourites,jacketContainer)
         });
     
     jacketContainer.addEventListener("click", (e) => {
       if (e.target.classList.contains ("fa-heart")){
-      handelClick(e.target, favourites, jacketContainer)
+      handleClick(e.target, favourites, jacketContainer)
       }
   });
 }
 
 
-export function handelClick(heartIcon, favourites, jacketContainer){
+export function handleClick(heartIcon, favourites, jacketContainer){
        
   heartIcon.classList.toggle("far");
   heartIcon.classList.toggle("fa");
@@ -103,4 +106,3 @@ const jacket ={
   saveFavs(currentFavs);
    }
 }
-

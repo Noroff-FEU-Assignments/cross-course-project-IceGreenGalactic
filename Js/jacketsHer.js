@@ -1,7 +1,6 @@
 
-import { fetchJackets, filterFavoriteJackets, createHTML, handelClick} from "./jacketsList.js"; 
-import { getExistingFavs, toggleFavorite,saveFavs } from "./utils/favFunctions.js";
-import { hideLoader,showLoader } from "./utils/loader.js";
+import { fetchJackets, , createHTML, handleClick} from "./jacketsList.js"; 
+import { getExistingFavs, toggleFavorite, } from "./utils/favFunctions.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const jacketContainer = document.querySelector (".jackets-Shop");
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (e.target.classList.contains("fa-heart")){
                     const clicketJacketID = e.target.dataset.id;
                     const clicketJacket = jacketList.find((jacket) => jacket.id === clicketJacketID);
-                    handelClick(e.target, favourites, jacketContainer);
+                    handleClick(e.target, favourites, jacketContainer);
                     toggleFavorite(clicketJacket);
                     favourites = getExistingFavs();
                    

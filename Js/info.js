@@ -1,5 +1,5 @@
-import { getExistingFavs, toggleFavorite,saveFavs } from "./utils/favFunctions.js";
 import { hideLoader, showLoader } from "./utils/loader.js";
+import { displayMessage } from "./utils/errorMessage.js";
 const jacketContainer = document.querySelector(".jacket-container");
 
 const queryString = document.location.search;
@@ -29,8 +29,10 @@ async function getJackets() {
       }  
       catch(error){
         console.error(error);
-        jacketContainer.innerHTML = `<p> Failed to fetch data. Pleas try again</p>`
-      }
+        const errorMessage = "failed to fetch data. please try again later";
+        const messageType ="Error";
+        displayMessage(messageType,errorMessage, ".jacket-container");
+       }
 
     }
     
