@@ -1,5 +1,6 @@
-import { fetchJackets, filterFavoriteJackets, createHTML, handleClick } from "./jacketsList.js";
+import { fetchJackets, createHTML, handleClick } from "./jacketsList.js";
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
+
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -16,7 +17,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         
         if (jacketList.length>0){
-            const favJackets = filterFavoriteJackets(jacketList);
+            const favJackets = jacketList.filter((jacket)=> jacket.favourite === true);
+            
+            
             displayJackets(
                 favJackets.length> 0? favJackets: jacketList.slice(0, 5), 
                 jacketContainer,
@@ -29,6 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     handleClick(e.target, favourites, jacketContainer);
                     toggleFavorite(clicketJacket);
                     favourites = getExistingFavs();
+                    saveFavs(favourites);
 
                   
                          }

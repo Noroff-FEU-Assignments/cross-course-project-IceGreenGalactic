@@ -1,6 +1,6 @@
 
-import { fetchJackets, , createHTML, handleClick} from "./jacketsList.js"; 
-import { getExistingFavs, toggleFavorite, } from "./utils/favFunctions.js";
+import { fetchJackets, createHTML, handleClick} from "./jacketsList.js"; 
+import { getExistingFavs, toggleFavorite } from "./utils/favFunctions.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const jacketContainer = document.querySelector (".jackets-Shop");
