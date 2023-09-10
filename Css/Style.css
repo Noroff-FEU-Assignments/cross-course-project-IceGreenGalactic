@@ -300,6 +300,21 @@ Button:hover {
     }
 }
 
+.popup-message {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(78, 228, 255);
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0 0 10 px rgba (0, 0, 0, 0.3);
+
+}
+
 .current {
 
     background-size: cover;
