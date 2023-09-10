@@ -267,27 +267,36 @@ Button:hover {
     background-image: url(/Images/button\ color.jpg);
 }
 
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.545);
+    z-index: 9999;
+}
+
 .loader {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 15px solid blue;
-    border-top: 4px solid rgb(78, 228, 255);
+
+    border: 10px solid rgb(78, 228, 255);
+    border-top: 10px solid rgb(fff);
     border-radius: 50%;
-    width: 400px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
     0% {
-        transform: translate(-50%, -50%) rotate(0deg)
+        transform: rotate(0deg);
     }
 
     100% {
-        transform: translate(-50%, -50%) rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -503,7 +512,7 @@ Button:hover {
 }
 
 .Jacket_info>div>h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     line-height: 5px;
 }
 
@@ -965,7 +974,7 @@ Button:hover {
 
 
     .Jacket_info>div>h1 {
-        font-size: 2em;
+        font-size: 1.6em;
         line-height: 5px;
     }
 

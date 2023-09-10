@@ -1,17 +1,20 @@
 
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
+import { hideLoader, showLoader } from "./utils/loader.js";
 
 const url = "https://api.noroff.dev/api/v1/rainy-days";
 
 
 export async function fetchJackets() {
   try{
-    
+    showLoader();
     const response = await fetch(url);
-    return await response.json();
+    const jacketlist= await response.json();
+    hideLoader();
+    return jacketlist;
   
       }catch (error){
-        console.error("error fetching jacket data:", error);
+        throw new Error("error fetching jacket data:", error+error.message);
         return[]
       }
     }
