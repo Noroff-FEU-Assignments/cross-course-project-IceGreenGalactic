@@ -26,15 +26,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 favourites
             );
                  jacketContainer.addEventListener("click", (e) =>{
-                if (e.target.classList.contains("fa-heart")){
-                    const clicketJacketID = e.target.dataset.id;
-                    const clicketJacket = jacketList.find((jacket) => jacket.id === clicketJacketID);
-                    handleClick(e.target, favourites, jacketContainer);
-                    toggleFavorite(clicketJacket);
-                    favourites = getExistingFavs();
-                    saveFavs(favourites);
-
-                  
+                    if (e.target.classList.contains("fa-heart")){
+                    
+                        const clicketJacketID = e.target.dataset.id;
+                        const clicketJacket = jacketList.find((jacket) => jacket.id === clicketJacketID);
+                    
+                        handleClick(e.target, favourites, jacketContainer);
+                         toggleFavorite(clicketJacket);
+                    
+                         favourites = getExistingFavs();
                          }
                  });
 
