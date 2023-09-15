@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         
         if (jacketList.length>0){
-            const favJackets = jacketList.filter((jacket)=> jacket.favourite === true);
+            const favJackets = jacketList.filter((jacket)=> jacket.favorite === true);
             
             
             displayJackets(
