@@ -5,8 +5,10 @@ export function toggleFavorite(jacket){
     const existingItemIndex = filterFavs.findIndex((fav) => fav.id === jacket.id);
    
 if (existingItemIndex === -1){
+    jacket.favorite = true;
     currentFavs.push(jacket);
 }else{
+    jacket.favorite=false;
 currentFavs.splice(existingItemIndex, 1);
 }
 saveFavs(currentFavs);

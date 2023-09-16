@@ -14,14 +14,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     
 
         let favourites = getExistingFavs();
+        const favJackets = jacketList.filter((jacket)=> jacket.favorite);
+  
         
-        
-        if (jacketList.length>0){
-            const favJackets = jacketList.filter((jacket)=> jacket.favorite === true);
+        if (favJackets.length>0){
             
             
             displayJackets(
-                favJackets.length> 0? favJackets: jacketList.slice(0, 5), 
+                favJackets.length> 0? favJackets: favJackets.slice(0, 5), 
                 jacketContainer,
                 favourites
             );
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     if (e.target.classList.contains("fa-heart")){
                     
                         const clicketJacketID = e.target.dataset.id;
-                        const clicketJacket = jacketList.find((jacket) => jacket.id === clicketJacketID);
+                        const clicketJacket = favJackets.find((jacket) => jacket.id === clicketJacketID);
                     
                         handleClick(e.target, favourites, jacketContainer);
                          toggleFavorite(clicketJacket);
@@ -49,10 +49,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         jacketContainer.innerHTML="an error occured while fetching data. Please try again later";
         return[]
       }
-    function displayJackets(jacketList, jacketContainer, favourites){
+    function displayJackets(favJackets, jacketContainer, favourites){
         jacketContainer.innerHTML="";
     
-    jacketList.forEach((jacket)=>{
+        favJackets.forEach((jacket)=>{
         createHTML(jacket,jacketContainer,favourites)
     });
 }

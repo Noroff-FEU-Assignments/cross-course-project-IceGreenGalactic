@@ -27,7 +27,7 @@ export function filterFavoriteJackets(jacketList){
   const favourites = getExistingFavs();
   return jacketList.filter((jacket)=> {
     if (jacket.favourite){
-      return favourites.some ((fav) => fav&& fav.id === jacket.id);
+      return favourites.some ((fav) => fav && fav.id === jacket.id);
     }
 
     return true;
@@ -61,6 +61,8 @@ export function createHTML (jacket, jacketContainer, favourites){
     
     jacketContainer.addEventListener("click", (e) => {
       if (e.target.classList.contains ("fa-heart")){
+        e.target.classList.toggle("far");
+        e.target.classList.toggle("fa");
       handleClick(e.target, favourites, jacketContainer)
       }
   });
