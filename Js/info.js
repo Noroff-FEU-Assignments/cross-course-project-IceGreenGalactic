@@ -59,9 +59,14 @@ info.sizes.forEach((size) =>{
   const sizeButton = document.createElement("Button");
   sizeButton.textContent = size;
   sizeButton.className= "Size-button";
-      sizeButton.addEventListener("click", () => {
-        sizeButton.classList.toggle("clicked")
-      });
+
+  sizeButton.addEventListener("click", () => {
+    if (selectedSizeButton){
+      selectedSizeButton.classList.remove("clicked");
+    }
+   sizeButton.classList.toggle("clicked");
+   selectedSizeButton = sizeButton;
+  });
 
       sizeButtonsContainer.appendChild (sizeButton);
     });
