@@ -55,6 +55,7 @@ async function getJackets() {
                                          </div>` ;
 
 const sizeButtonsContainer = jacketContainer.querySelector(".Size-button");
+let selectedSizeButton = null;
 info.sizes.forEach((size) =>{
   const sizeButton = document.createElement("Button");
   sizeButton.textContent = size;
