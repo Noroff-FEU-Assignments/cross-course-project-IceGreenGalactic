@@ -57,6 +57,7 @@ export async function fetchJackets(container) {
 const sizeButtonsContainer = jacketContainer.querySelector(".Size-button");
 let selectedSizeButton = null;
 
+if (info.sizes){
 info.sizes.forEach((size) =>{
   const sizeButton = document.createElement("Button");
   sizeButton.textContent = size;
@@ -72,21 +73,22 @@ info.sizes.forEach((size) =>{
 
       sizeButtonsContainer.appendChild (sizeButton);
     });
-
+  }
 
     const addToCartButton = jacketContainer.querySelector(".addedToCart");
     const removeButton = jacketContainer.querySelector(".Remove_button");
     const storedButtonText = localStorage.getItem ("addToCartButtonText") 
 
-    if (storedButtonText ){
-      currentTextIndex = buttonTexts.indexOf(storedButtonText);
-      if (currentTextIndex ===1){
-           addToCartButton.style.display ="block";
-        removeButton.style.display ="block";
-      }
-    } else{
-      currentTextIndex = 0; 
-      removeButton.style.display = "none"
+    const cart = getCartFromLocalStorage();
+    const isJacketInCart = cart.some((item)=> item.id === info.id);
+    
+    if (isJacketInCart && storedButtonText && storedButtonText==="Added!"){
+      currentTextIndex =1;
+      addToCartButton.style.display ="block";
+      removeButton.style.display ="block"
+    }else{
+      currentTextIndex =0;
+      removeButton.style.display ="none"
     }
 
     addToCartButton.textContent = buttonTexts[currentTextIndex];
@@ -95,11 +97,15 @@ info.sizes.forEach((size) =>{
       if (currentTextIndex ===0){
         currentTextIndex =1; 
         addToCart(info);
+        updateButtonText();
         addToCartButton.style.display ="block";
         removeButton.style.display ="block";
      
       } else {
         addToCart(jacket);
+        currentTextIndex = 0;
+        addToCartButton.textContent = buttonTexts[currentTextIndex];
+        removeButton.style.display = "none"
       
       }
        });
@@ -154,4 +160,4 @@ removeButton.className = "Continue_button Remove_button"
     const cart = localStorage.getItem("shoppingCart");
     return cart ? JSON.parse(cart) :[];
   } 
-  fetchJackets() 
+  fetchJackets()
