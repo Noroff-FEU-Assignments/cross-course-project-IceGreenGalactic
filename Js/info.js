@@ -2,7 +2,7 @@ import { hideLoader, showLoader } from "./utils/loader.js";
 import { displayMessage } from "./utils/errorMessage.js";
 
 
-export const jacketContainer = document.querySelector(".jacket-container");
+const jacketContainer = document.querySelector(".jacket-container");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
@@ -35,7 +35,7 @@ export async function fetchJackets(container) {
     }
     
      
-       export function createHTML(info){
+       export function createHTML(info, container){
         let cssClass="far"
         jacketContainer.innerHTML += `
                               <div class="Jacket_info ">
@@ -50,8 +50,6 @@ export async function fetchJackets(container) {
                                          <img  src="${info.image}" alt="${info.description}" />
                                          </div>` ;
 
-
-if (info.sizes){
 const sizeButtonsContainer = jacketContainer.querySelector(".Size-button");
 let selectedSizeButton = null;
 
@@ -89,31 +87,28 @@ info.sizes.forEach((size) =>{
           currentTextIndex = (currentTextIndex +1) %4;;
           updateButtonText();
         }, 3000);
-      }
+     
     }
+  }}
+
+
+
+  export function addToCart(jacket, container){
+    const cart = getCartFromLocalStorage();
+    const itemIndex = cart.findIndex((item) => item.id === jacket.id);
+    if (itemIndex !== -1){
+      cart.splice(itemIndex, 1);
+    }else{
+    cart.push(jacket);
+   
+  } 
+  saveCartToLocalStorage(cart)
+  
   }
-}
-
-export function addToCart(jacket){
-  const cart = getCartFromLocalStorage();
-  const itemIndex = cart.findIndex((item) => item.id === jacket.id);
-  if (itemIndex !== -1){
-    cart.splice(itemIndex, 1);
-  }else{
-  cart.push(jacket);
- 
-} 
-saveCartToLocalStorage(cart)
-// renderCart(); 
-}
-// export function updateCartUI(){
-
-// }
-export function saveCartToLocalStorage(cart){
-  localStorage.setItem("shoppingCart", JSON.stringify(cart));
-}
-export function getCartFromLocalStorage() {
-  const cart = localStorage.getItem("shoppingCart");
-  return cart ? JSON.parse(cart) :[];
-}
-
+  export function saveCartToLocalStorage(cart){
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+  }
+  export function getCartFromLocalStorage() {
+    const cart = localStorage.getItem("shoppingCart");
+    return cart ? JSON.parse(cart) :[];
+  } fetchJackets()
