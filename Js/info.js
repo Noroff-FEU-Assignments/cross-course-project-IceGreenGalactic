@@ -8,10 +8,13 @@ const params = new URLSearchParams(queryString);
 const id = params.get("id");
 const url = id? "https://api.noroff.dev/api/v1/rainy-days/" + id: "https://api.noroff.dev/api/v1/rainy-days/";
 
-const buttonTexts =["Add to cart", "Added!", "Remove item", "Removed from cart"];
+const buttonTexts =["Add to cart", "Added!"];
 let currentTextIndex =0;
 
-
+const storedButtonText = localStorage.getItem("addToCartButtonText");
+if (storedButtonText) {
+  currentTextIndex = buttonTexts.indexOf(storedButtonText);
+}
 export async function fetchJackets(container) {
 
     try{
@@ -46,6 +49,7 @@ export async function fetchJackets(container) {
                                       <p class="info_Price"> ${info.price} </p>
                                      <div class="Size-button"></div>
                                       <button class="Continue_button addedToCart"> Add to cart </button>
+                                      <button class="Remove_button"> Remove item </button>
                                     </div >
                                          <img  src="${info.image}" alt="${info.description}" />
                                          </div>` ;
@@ -71,44 +75,83 @@ info.sizes.forEach((size) =>{
 
 
     const addToCartButton = jacketContainer.querySelector(".addedToCart");
+    const removeButton = jacketContainer.querySelector(".Remove_button");
+    const storedButtonText = localStorage.getItem ("addToCartButtonText") 
+
+    if (storedButtonText ){
+      currentTextIndex = buttonTexts.indexOf(storedButtonText);
+      if (currentTextIndex ===1){
+           addToCartButton.style.display ="block";
+        removeButton.style.display ="block";
+      }
+    } else{
+      currentTextIndex = 0; 
+      removeButton.style.display = "none"
+    }
 
     addToCartButton.textContent = buttonTexts[currentTextIndex];
 
-    addToCartButton.addEventListener ("click", () => {
-      addToCart(info);
-      currentTextIndex = (currentTextIndex + 1)% buttonTexts.length;
+    addToCartButton.addEventListener("click", ()=>{
+      if (currentTextIndex ===0){
+        currentTextIndex =1; 
+        addToCart(info);
+        addToCartButton.style.display ="block";
+        removeButton.style.display ="block";
+     
+      } else {
+        addToCart(jacket);
+      
+      }
+       });
+removeButton.textContent="Remove item"
+removeButton.className = "Continue_button Remove_button"
+    removeButton.addEventListener("click", () =>{
+      removeFromCart (info);
+      currentTextIndex =0;
       updateButtonText();
+      addToCartButton.style.display = "block";
+      removeButton.style.display = "none";
     });
 
-    function updateButtonText(){
+    function updateButtonText() {
       addToCartButton.textContent=buttonTexts[currentTextIndex];
-      if (currentTextIndex === 1 || currentTextIndex===3){
-        setTimeout(()=>{
-          currentTextIndex = (currentTextIndex +1) %4;;
-          updateButtonText();
-        }, 3000);
-     
+      if (currentTextIndex === 0) {
+        removeButton.style.display = "none"
+      } else{
+        removeButton.style.display ="block"
+      } localStorage.setItem("addToCartButtonText", buttonTexts[currentTextIndex]);
     }
-  }}
-
-
+  }
+      
 
   export function addToCart(jacket, container){
     const cart = getCartFromLocalStorage();
     const itemIndex = cart.findIndex((item) => item.id === jacket.id);
     if (itemIndex !== -1){
       cart.splice(itemIndex, 1);
-    }else{
-    cart.push(jacket);
-   
-  } 
-  saveCartToLocalStorage(cart)
+    }
+    cart.push({id: jacket.id, jacket});
   
-  }
+  saveCartToLocalStorage(cart);
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+  } 
+  
+  export function removeFromCart(jacket){
+    const cart = getCartFromLocalStorage();
+    const itemIndex = cart.findIndex((cartItem) => cartItem.id === jacket.id);
+    if (itemIndex !== -1){
+      cart.splice(itemIndex, 1);
+      saveCartToLocalStorage(cart);    
+    }
+  } 
+
+  
+
   export function saveCartToLocalStorage(cart){
     localStorage.setItem("shoppingCart", JSON.stringify(cart));
   }
   export function getCartFromLocalStorage() {
     const cart = localStorage.getItem("shoppingCart");
     return cart ? JSON.parse(cart) :[];
-  } fetchJackets()
+  } 
+  fetchJackets() 
