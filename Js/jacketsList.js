@@ -2,10 +2,13 @@
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
 import { hideLoader, showLoader } from "./utils/loader.js";
 import { displayMessage } from "./utils/errorMessage.js";
+import { NavbarClosing } from "./utils/hamburgerMenu.js";
 
 const url = "https://api.noroff.dev/api/v1/rainy-days";
 
-
+document.addEventListener("DOMContentLoaded", async()=>{
+    NavbarClosing();
+});
 export async function fetchJackets() {
   try{
     showLoader();

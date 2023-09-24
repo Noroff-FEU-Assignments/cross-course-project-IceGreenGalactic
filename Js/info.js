@@ -1,6 +1,10 @@
 import { hideLoader, showLoader } from "./utils/loader.js";
 import { displayMessage } from "./utils/errorMessage.js";
+import { NavbarClosing } from "./utils/hamburgerMenu.js";
 
+document.addEventListener("DOMContentLoaded", async()=>{
+    NavbarClosing();
+});
 
 const jacketContainer = document.querySelector(".jacket-container");
 const queryString = document.location.search;

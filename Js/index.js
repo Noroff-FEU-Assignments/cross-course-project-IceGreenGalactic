@@ -1,7 +1,10 @@
 import { fetchJackets, createHTML, handleClick } from "./jacketsList.js";
 import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
+import { NavbarClosing } from "./utils/hamburgerMenu.js";
 
-
+document.addEventListener("DOMContentLoaded", async()=>{
+    NavbarClosing();
+});
 
 document.addEventListener("DOMContentLoaded", async () => {
     const jacketContainer = document.querySelector (".Index_Jackets-shop");
