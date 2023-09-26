@@ -54,10 +54,10 @@ export function createHTML (jacket, jacketContainer, favourites){
         ${
           jacket.onSale
           ?
-          ` <p class="Price original-price"> ${jacket.price} </p>
-          <p class = "onSale-price"> ${jacket.discountedPrice}</p>
+          ` <p class="Price original-price"> $${jacket.price}  </p>
+          <p class = "onSale-price">  $${jacket.discountedPrice}</p>
           `
-          : `<p class= "Price"> ${jacket.price}</p>`
+          : `<p class= "Price"> $${jacket.price}</p>`
         }
        
         <i class="${HeartClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}" data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
