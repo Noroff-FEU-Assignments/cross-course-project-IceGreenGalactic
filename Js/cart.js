@@ -4,9 +4,15 @@ import { displayMessage } from "./utils/errorMessage.js";
 import { showLoader, hideLoader } from "./utils/loader.js";
 import { getExistingFavs, toggleFavorite } from "./utils/favFunctions.js";
 import {addToCart, getCartFromLocalStorage, saveCartToLocalStorage } from "./info.js";
+import { NavbarClosing } from "./utils/hamburgerMenu.js";
 
 document.addEventListener("DOMContentLoaded", async()=>{
-const cartContainer = document.querySelector(".Shoppingbag");
+    NavbarClosing();
+});
+
+
+document.addEventListener("DOMContentLoaded", async()=>{
+const cartContainer = document.querySelector(".jacket-container");
 // const shoppingBag = document.querySelector (".Cart-Bergolos");
 
   try{

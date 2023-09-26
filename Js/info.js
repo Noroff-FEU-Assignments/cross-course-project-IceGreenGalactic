@@ -140,8 +140,7 @@ removeButton.className = "Continue_button Remove_button"
     if (itemIndex !== -1){
       cart.splice(itemIndex, 1);
     }
-    cart.push({id: jacket.id, jacket});
-  
+    cart.push({id: jacket.id, title: jacket.title, price:jacket.price, image: jacket.image});
   saveCartToLocalStorage(cart);
     localStorage.setItem("shoppingCart", JSON.stringify(cart));
   } 
