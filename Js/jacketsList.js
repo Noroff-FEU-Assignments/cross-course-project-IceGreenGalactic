@@ -51,7 +51,15 @@ export function createHTML (jacket, jacketContainer, favourites){
         <a href="Info.html?id=${jacket.id} "class= "Jacket_info">
         <img  src="${jacket.image}" alt="${jacket.description}" />
         <h2 >${jacket.title}</h2></a>
-        <p class="Price"> ${jacket.price} </p>
+        ${
+          jacket.onSale
+          ?
+          ` <p class="Price original-price"> ${jacket.price} </p>
+          <p class = "onSale-price"> ${jacket.discountedPrice}</p>
+          `
+          : `<p class= "Price"> ${jacket.price}</p>`
+        }
+       
         <i class="${HeartClass} fa-heart" data-id="${jacket.id}" data-title="${jacket.title}" data-image="${jacket.image}" data-price="${jacket.price}" data-description="${jacket.description}"  ></i>
         </div>`;
 

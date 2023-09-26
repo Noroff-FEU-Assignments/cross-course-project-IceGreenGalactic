@@ -370,6 +370,8 @@ Button:hover {
     display: flex;
     margin-left: 50%;
     transform: translate(-50%, -50%);
+    white-space: nowrap;
+    align-items: center;
 
 }
 
@@ -479,6 +481,28 @@ Button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
+}
+
+.original-price {
+    font-weight: 900;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    text-decoration: line-through;
+
+
+}
+
+.onSale-price {
+    font-weight: 900;
+    position: absolute;
+    top: 95%;
+    left: 63%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    color: red;
 }
 
 .favourite-title {
@@ -1002,7 +1026,13 @@ Button:hover {
 
     }
 
+    button {
+        font-size: 1em;
+    }
 
+    .CTA-Button {
+        margin-top: 0px;
+    }
 
     .Jacket_info>div>h1 {
         font-size: 1.6em;
@@ -1028,6 +1058,15 @@ Button:hover {
         font-size: 1.2em;
         ;
 
+    }
+
+    .original-price {
+
+        left: 45%
+    }
+
+    .price {
+        left: 45%
     }
 }
 
@@ -1122,6 +1161,7 @@ Button:hover {
         margin-left: 50%;
         transform: translate(-50%, -50%);
 
+
     }
 
     .Continue_button {
@@ -1147,6 +1187,7 @@ Button:hover {
         margin-left: 50%;
         transform: translate(-50%, -50%);
         position: relative;
+
     }
 
     .Index__Sale {
@@ -1216,6 +1257,10 @@ Button:hover {
         top: 90%;
         left: 50%;
         transform: translate(-50%, -50%)
+    }
+
+    .onSale-price {
+        left: 50%
     }
 
     .favourite-title {
