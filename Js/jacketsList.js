@@ -47,7 +47,7 @@ export function createHTML (jacket, jacketContainer, favourites){
  
   
     
-  const jacketHTML= `<div class="jackets-Shop">
+  const jacketHTML= `<div class="jackets-Shop ">
         <a href="Info.html?id=${jacket.id} "class= "Jacket_info">
         <img  src="${jacket.image}" alt="${jacket.description}" />
         <h2 >${jacket.title}</h2></a>

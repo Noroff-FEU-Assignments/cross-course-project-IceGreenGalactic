@@ -1,9 +1,7 @@
 
 import { fetchJackets,createHTML } from "./jacketsList.js";
-import { displayMessage } from "./utils/errorMessage.js";
-import { showLoader, hideLoader } from "./utils/loader.js";
-import { getExistingFavs, toggleFavorite } from "./utils/favFunctions.js";
-import {addToCart, getCartFromLocalStorage, saveCartToLocalStorage } from "./info.js";
+import { getExistingFavs } from "./utils/favFunctions.js";
+import { getCartFromLocalStorage } from "./info.js";
 import { NavbarClosing } from "./utils/hamburgerMenu.js";
 
 document.addEventListener("DOMContentLoaded", async()=>{
@@ -12,20 +10,23 @@ document.addEventListener("DOMContentLoaded", async()=>{
 
 
 document.addEventListener("DOMContentLoaded", async()=>{
-const cartContainer = document.querySelector(".jacket-container");
+const cartContainer = document.querySelector(".Shoppingbag");
 // const shoppingBag = document.querySelector (".Cart-Bergolos");
 
   try{
     if (cartContainer){
+    const cartItems = getCartFromLocalStorage();
     const jacketList = await fetchJackets(cartContainer);
     const favourites = getExistingFavs();
-    const cartItems = getCartFromLocalStorage();
+    
     
 
     cartContainer.innerHTML="";
 
-    cartItems.forEach( async (cartItem)=>{
+    cartItems.forEach( (cartItem)=>{
       const jacket = jacketList.find ((jacketItem)=> jacketItem.id === cartItem.id);
+
+      
       if (jacket){
       createHTML(jacket,cartContainer, favourites);
 
@@ -34,34 +35,40 @@ const cartContainer = document.querySelector(".jacket-container");
       
       const img = document.createElement("img");
       img.src= jacket.image;
-      img.alt = jacket.description
-      cartItemDiv.appendChild(img);
+      img.alt = jacket.description;
+      
 
-      const titleDiv = document.createElement ("div");
-      titleDiv.classList.add ("Cart-Item-Info");
+      const TextContainer = document.createElement ("div");
+      
       const titleH2 = document.createElement ("h2");
       const descriptionH3= document.createElement ("h3");
-
+      const color= document.createElement("h2")
       titleH2.textContent = jacket.title;
       descriptionH3.textContent = jacket.description;
-      titleDiv.appendChild(titleH2);
-      titleDiv.appendChild(descriptionH3);
-      cartItemDiv.appendChild (titleDiv);
+      color.textContent = jacket.baseColor;
+      TextContainer.appendChild(titleH2);
+      TextContainer.appendChild(descriptionH3);
+      TextContainer.appendChild(color);
 
       const priceDiv = document.createElement("div");
-      const priceP = document.createElement("p");
-      priceP.textContent = `$${jacket.price}`;
-      priceDiv.appendChild(priceP);
-      cartItemDiv.appendChild(priceDiv);
 
-      const amount = document.createElement("h4");
-      amount.classList.add ("Amount");
-      amount.textContent = "1";
-      cartItemDiv.appendChild (amount); 
-      
+      const priceP = document.createElement("p");
+      const amountH4 = document.createElement("h4");
+      priceP.textContent = `$${jacket.price}`;
+      amountH4.classList.add ("amount");
+      amountH4.classList.add (`1`);
+
+      priceDiv.appendChild(priceP);
+      priceDiv.appendChild(amountH4);
+
+     
+      cartItemDiv.appendChild(img);
+       cartItemDiv.appendChild(TextContainer);
+       cartItemDiv.appendChild(priceDiv)
+
       cartContainer.appendChild(cartItemDiv)
       }
-    });
+      });
   }
 
 
@@ -69,9 +76,6 @@ window.addEventListener("load", () =>{
 });
 } catch (error){
   console.error (error);
-  // const errorMessage = "failed to fetch data. Please try again later";
-  // const messageType = "Error"
-  // displayMessage(messageType, errorMessage, cartContainer)
 }
 
 });

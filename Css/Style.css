@@ -448,6 +448,11 @@ Button:hover {
     margin-bottom: 40px;
 }
 
+.fa-heart {
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .Index_Jackets-shop>div>i,
 .jackets-Shop>div>i {
     position: absolute;
@@ -642,6 +647,10 @@ Button:hover {
     width: 150px;
 }
 
+.Shoppingbag .jackets-Shop {
+    display: none;
+}
+
 .Cart_Hedline {
     background-image: linear-gradient(white, rgb(171, 251, 255), white);
     padding-bottom: 15px;
@@ -650,6 +659,7 @@ Button:hover {
     padding-left: 280px;
     font-size: 0.6em;
 }
+
 
 .Cart-Bergolos {
     display: grid;
