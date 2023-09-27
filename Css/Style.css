@@ -592,6 +592,20 @@ Button:hover {
 
 }
 
+.info_Price_original {
+    font-weight: 900;
+    font-size: 2em;
+    text-decoration: line-through;
+}
+
+.info_onSale_price {
+    font-weight: 900;
+    font-size: 2em;
+    color: red;
+
+}
+
+
 .Size-button {
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -663,13 +677,13 @@ Button:hover {
 
 .Cart-Bergolos {
     display: grid;
-    grid-template-columns: 1fr 1.3fr 1fr 1fr 0.5fr;
+    grid-template-columns: 4fr 4.8fr 3fr 3fr 3fr 3fr;
     border-bottom: solid rgb(203, 248, 249);
 }
 
 .Cart-Arilo {
     display: grid;
-    grid-template-columns: 1fr 1.3fr 1fr 1fr 0.5fr;
+    grid-template-columns: 1fr 0.7fr 1fr 1fr 0.5fr;
     border-bottom: solid rgb(203, 248, 249)
 }
 
@@ -1063,12 +1077,15 @@ Button:hover {
         max-width: 350px;
     }
 
-    .info_Price {
+    .info_Price,
+    .info_Price_original,
+    .info_onSale_price {
         font-weight: 900;
         font-size: 1.2em;
         ;
 
     }
+
 
     .original-price {
 
@@ -1456,7 +1473,9 @@ Button:hover {
         display: block;
     }
 
-    .info_Price {
+    .info_Price,
+    .info_Price_original,
+    .info_onSale_price {
         font-weight: 00;
         font-size: 1em;
         text-align: center;

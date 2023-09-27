@@ -35,37 +35,52 @@ const cartContainer = document.querySelector(".Shoppingbag");
       
       const img = document.createElement("img");
       img.src= jacket.image;
-      img.alt = jacket.description;
-      
+      img.alt = jacket.description; 
 
-      const TextContainer = document.createElement ("div");
-      
-      const titleH2 = document.createElement ("h2");
-      const descriptionH3= document.createElement ("h3");
-      const color= document.createElement("h2")
-      titleH2.textContent = jacket.title;
-      descriptionH3.textContent = jacket.description;
-      color.textContent = jacket.baseColor;
-      TextContainer.appendChild(titleH2);
-      TextContainer.appendChild(descriptionH3);
-      TextContainer.appendChild(color);
-
+      const titleDiv = document.createElement("div");
       const priceDiv = document.createElement("div");
-
+      const amountDiv = document.createElement("div");
+      const totalDiv = document.createElement("div");
+      const colorDiv = document.createElement("div");
+      
+      const titleH3 = document.createElement ("h3");
       const priceP = document.createElement("p");
+      if (jacket.onSale === true){
+      priceP.textContent= `$${jacket.discountedPrice}`;
+      }else{
+        priceP.textContent =`$${jacket.price}`
+      }
       const amountH4 = document.createElement("h4");
-      priceP.textContent = `$${jacket.price}`;
+      const totalP = document.createElement("p");
+      const color = document.createElement("h4")
+    
+      titleH3.textContent = jacket.title +``+ jacket.tags;
+       priceP.textContent = `$${jacket.price}`;
       amountH4.classList.add ("amount");
-      amountH4.classList.add (`1`);
+      amountH4.textContent= "1";
+      color.textContent = jacket.baseColor;
 
+      
+      titleDiv.appendChild(titleH3);
       priceDiv.appendChild(priceP);
-      priceDiv.appendChild(amountH4);
+      amountDiv.appendChild(amountH4);
+      colorDiv.appendChild(color);
 
-     
+      const totalPrice =parseFloat(jacket.price) * 1;
+      totalP.textContent = `$${totalPrice.toFixed(2)}`
+
+      totalDiv.appendChild(totalP);
+
+
       cartItemDiv.appendChild(img);
-       cartItemDiv.appendChild(TextContainer);
-       cartItemDiv.appendChild(priceDiv)
-
+      cartItemDiv.appendChild(titleDiv);
+      cartItemDiv.appendChild(priceDiv);
+      cartItemDiv.appendChild(amountDiv);
+      cartItemDiv.appendChild(colorDiv);
+      cartItemDiv.appendChild(totalDiv);
+      
+      
+      
       cartContainer.appendChild(cartItemDiv)
       }
       });

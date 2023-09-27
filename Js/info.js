@@ -50,7 +50,15 @@ export async function fetchJackets(container) {
                                  <h1 >${info.title}</h1>
                                   <h2> Color: ${info.baseColor}</h2>
                                     <h3>${info.description}</h3>
-                                      <p class="info_Price"> ${info.price} </p>
+                                    
+                                    ${
+                                      info.onSale
+                                      ?
+                                      ` <p class="info_Price_original"> $${info.price}  </p>
+                                      <p class = "info_onSale_price">  $${info.discountedPrice}</p>
+                                      `
+                                      : `<p class= "info_Price "> $${info.price}</p>`
+                                    }
                                      <div class="Size-button"></div>
                                       <button class="Continue_button addedToCart"> Add to cart </button>
                                       <button class="Remove_button"> Remove item </button>
@@ -140,7 +148,7 @@ removeButton.className = "Continue_button Remove_button"
     if (itemIndex !== -1){
       cart.splice(itemIndex, 1);
     }
-    cart.push({id: jacket.id, title: jacket.title, price:jacket.price, image: jacket.image});
+    cart.push({id: jacket.id, title: jacket.title, price:jacket.price, image: jacket.image, onSale:jacket.onSale,});
   saveCartToLocalStorage(cart);
     localStorage.setItem("shoppingCart", JSON.stringify(cart));
   } 
