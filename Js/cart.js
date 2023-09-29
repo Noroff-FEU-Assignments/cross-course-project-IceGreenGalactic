@@ -2,6 +2,7 @@ import { fetchJackets, createHTML } from "./jacketsList.js";
 import { getExistingFavs } from "./utils/favFunctions.js";
 import { getCartFromLocalStorage } from "./info.js";
 import { NavbarClosing } from "./utils/hamburgerMenu.js";
+import { displayMessage } from "./utils/errorMessage.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   NavbarClosing();
@@ -13,11 +14,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     if (cartContainer) {
+      cartContainer.innerHTML = "";
       const cartItems = getCartFromLocalStorage();
       const jacketList = await fetchJackets(cartContainer);
       const favourites = getExistingFavs();
 
-      cartContainer.innerHTML = "";
+      
 
       cartItems.forEach((cartItem) => {
         const jacket = jacketList.find(
@@ -40,6 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const totalDiv = document.createElement("div");
           const colorDiv = document.createElement("div");
 
+
           const titleH3 = document.createElement("h3");
           const priceP = document.createElement("p");
           if (jacket.onSale === true) {
@@ -50,12 +53,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           const amountH4 = document.createElement("h4");
           const totalP = document.createElement("p");
           const color = document.createElement("h4");
+          const sizeP = document.createElement ("p");
+         
 
           titleH3.textContent = jacket.title + `` + jacket.tags;
           priceP.textContent = `$${jacket.price}`;
           amountH4.classList.add("amount");
-          amountH4.textContent = "1";
+          amountH4.textContent = cartItem.quantity;
           color.textContent = jacket.baseColor;
+          sizeP.textContent = `size: ${cartItem.size}`;
 
           titleDiv.appendChild(titleH3);
           priceDiv.appendChild(priceP);
@@ -75,6 +81,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           cartItemDiv.appendChild(totalDiv);
 
           cartContainer.appendChild(cartItemDiv);
+          
+        }else{
+          const errorMessage = "jacket not found in the cart";
+          const messageType = "Error";
+          displayMessage (messageType, errorMessage, cartContainer)
         }
       });
     }

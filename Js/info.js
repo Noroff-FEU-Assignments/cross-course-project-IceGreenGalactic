@@ -1,6 +1,7 @@
 import { hideLoader, showLoader } from "./utils/loader.js";
 import { displayMessage } from "./utils/errorMessage.js";
 import { NavbarClosing } from "./utils/hamburgerMenu.js";
+import { fetchJackets } from "./jacketsList.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   NavbarClosing();
@@ -10,9 +11,21 @@ const jacketContainer = document.querySelector(".jacket-container");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-const url = id
-  ? "https://api.noroff.dev/api/v1/rainy-days/" + id
-  : "https://api.noroff.dev/api/v1/rainy-days/";
+
+document.addEventListener("DOMContentLoaded", async()=>{
+  const jacketData = await fetchJackets();
+  const jacketList = jacketData.find((jacket)=> jacket.id === id);
+  if (jacketList){
+    createHTML(jacketList);
+    
+  }else{
+    if(window.location.pathname.includes("info.html")){
+    const errorMessage ="jacket not found";
+    const messageType ="Error";
+    displayMessage(messageType, errorMessage, ".jacket-container");
+  }
+}
+});
 
 const buttonTexts = ["Add to cart", "Added!"];
 let currentTextIndex = 0;
@@ -21,27 +34,9 @@ const storedButtonText = localStorage.getItem("addToCartButtonText");
 if (storedButtonText) {
   currentTextIndex = buttonTexts.indexOf(storedButtonText);
 }
-export async function fetchJackets(container) {
-  try {
-    showLoader();
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("failed to fetch data");
-    }
 
-    const jacketInfo = await response.json();
 
-    createHTML(jacketInfo);
-    hideLoader();
-  } catch (error) {
-    console.error(error);
-    const errorMessage = "failed to fetch data. please try again later";
-    const messageType = "Error";
-    displayMessage(messageType, errorMessage, ".jacket-container");
-  }
-}
-
-export function createHTML(info, container) {
+export function createHTML(info) {
   let cssClass = "far";
   jacketContainer.innerHTML += `
                               <div class="Jacket_info ">
@@ -68,6 +63,7 @@ export function createHTML(info, container) {
 
   const sizeButtonsContainer = jacketContainer.querySelector(".Size-button");
   let selectedSizeButton = null;
+  let selectedSize ="";
 
   if (info.sizes) {
     info.sizes.forEach((size) => {
@@ -75,12 +71,15 @@ export function createHTML(info, container) {
       sizeButton.textContent = size;
       sizeButton.className = "Size-button";
 
+      let selectedSize ="";
+
       sizeButton.addEventListener("click", () => {
         if (selectedSizeButton) {
           selectedSizeButton.classList.remove("clicked");
         }
         sizeButton.classList.toggle("clicked");
         selectedSizeButton = sizeButton;
+        selectedSize = size;
       });
 
       sizeButtonsContainer.appendChild(sizeButton);
@@ -108,25 +107,23 @@ export function createHTML(info, container) {
   addToCartButton.addEventListener("click", () => {
     if (currentTextIndex === 0) {
       currentTextIndex = 1;
-      addToCart(info);
+      const selectedSizeButton = jacketContainer.querySelector(".Size-button .clicked");
+      const selectedSize = selectedSizeButton ? selectedSizeButton.textContent: "";
+      addToCart(info, selectedSize);
       updateButtonText();
       addToCartButton.style.display = "block";
       removeButton.style.display = "block";
     } else {
-      addToCart(jacket);
+      addToCart(info, selectedSize);
       currentTextIndex = 0;
       addToCartButton.textContent = buttonTexts[currentTextIndex];
-      removeButton.style.display = "none";
+     
     }
   });
-  removeButton.textContent = "Remove item";
+  removeButton.textContent = "Go to cart";
   removeButton.className = "Continue_button Remove_button";
   removeButton.addEventListener("click", () => {
-    removeFromCart(info);
-    currentTextIndex = 0;
-    updateButtonText();
-    addToCartButton.style.display = "block";
-    removeButton.style.display = "none";
+    window.location.href="Checkout/Cart.html"
   });
 
   function updateButtonText() {
@@ -140,19 +137,25 @@ export function createHTML(info, container) {
   }
 }
 
-export function addToCart(jacket, container) {
+export function addToCart(jacket, selectedSize) {
   const cart = getCartFromLocalStorage();
   const itemIndex = cart.findIndex((item) => item.id === jacket.id);
   if (itemIndex !== -1) {
-    cart.splice(itemIndex, 1);
-  }
+    cart[itemIndex].quantity +=1;
+    cart[itemIndex].totalPrice += jacket.price;
+    cart[itemIndex].size = selectedSize;
+  }else{
   cart.push({
     id: jacket.id,
     title: jacket.title,
     price: jacket.price,
     image: jacket.image,
     onSale: jacket.onSale,
+    size: selectedSize,
+    quantity: 1,
+    totalPrice: jacket.price
   });
+}
   saveCartToLocalStorage(cart);
   localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
