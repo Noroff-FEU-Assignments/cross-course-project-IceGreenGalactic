@@ -659,6 +659,7 @@ Button:hover {
 
 .Shoppingbag>div>a>img {
     width: 150px;
+    margin-left: 10%;
 }
 
 .Shoppingbag .jackets-Shop {
@@ -669,16 +670,21 @@ Button:hover {
     background-image: linear-gradient(white, rgb(171, 251, 255), white);
     padding-bottom: 15px;
     display: grid;
-    grid-template-columns: 1.1fr 0.8fr 1fr 1fr 1fr;
-    padding-left: 280px;
+    grid-template-columns: 20% 15% 20% 20% 20%;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20%;
     font-size: 0.6em;
+    text-align: left;
 }
 
 
 .Cart-Bergolos {
     display: grid;
-    grid-template-columns: 4fr 4.8fr 3fr 3fr 3fr 3fr;
+    grid-template-columns: 15% 20% 13% 15% 17% 10%;
     border-bottom: solid rgb(203, 248, 249);
+    gap: 15px;
 }
 
 
@@ -997,6 +1003,23 @@ Button:hover {
     text-align: center
 }
 
+@media (max-width: 1030px) {
+
+    .Cart_Hedline {
+        grid-template-columns: 25% 13% 15% 17% 10%;
+        padding-left: 20%;
+        font-size: 0.5em;
+    }
+
+
+
+
+    .Cart-Bergolos {
+        grid-template-columns: 20% 20% 12% 10% 12% 5%;
+        gap: 25px;
+    }
+}
+
 
 @media (max-width: 903px) {
 
@@ -1022,76 +1045,75 @@ Button:hover {
 
     }
 
-    .Cart_Hedline {
-        padding: 15px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1.3fr 1.5fr 1.5fr;
-        padding-left: 160px;
-        font-size: 0.5em;
-    }
 
-    h2 {
-        font-size: 1em;
-    }
-
-    .favourite-title {
-        font-size: 1.2em;
-
-    }
-
-    button {
-        font-size: 1em;
-    }
-
-    .CTA-Button {
-        margin-top: 0px;
-    }
-
-    .Jacket_info>div>h1 {
-        font-size: 1.6em;
-        line-height: 5px;
-    }
-
-    .Jacket_info>div>h2 {
-        line-height: 2px;
-    }
-
-    .Jacket_info>div>h3 {
-        font-size: 1em;
-        font-weight: 300;
-        margin: 0% 10%;
-    }
-
-    .Jacket_info>img {
-        max-width: 350px;
-    }
-
-    .info_Price,
-    .info_Price_original,
-    .info_onSale_price {
-        font-weight: 900;
-        font-size: 1.2em;
-        ;
-
-    }
-
-
-    .original-price {
-
-        left: 45%
-    }
-
-    .price {
-        left: 45%
-    }
 }
 
-@media (max-width: 785) {
+h2 {
+    font-size: 1em;
+}
+
+.favourite-title {
+    font-size: 1.2em;
+
+}
+
+button {
+    font-size: 1em;
+}
+
+.CTA-Button {
+    margin-top: 0px;
+}
+
+.Jacket_info>div>h1 {
+    font-size: 1.6em;
+    line-height: 5px;
+}
+
+.Jacket_info>div>h2 {
+    line-height: 2px;
+}
+
+.Jacket_info>div>h3 {
+    font-size: 1em;
+    font-weight: 300;
+    margin: 0% 10%;
+}
+
+.Jacket_info>img {
+    max-width: 350px;
+}
+
+.info_Price,
+.info_Price_original,
+.info_onSale_price {
+    font-weight: 900;
+    font-size: 1.2em;
+    ;
+
+}
+
+
+.original-price {
+
+    left: 45%
+}
+
+.price {
+    left: 45%
+}
+
+
+@media (max-width: 785px) {
     .Jacket_info>div>h1 {
         font-size: 1.7em;
         line-height: 5px;
     }
+
+
 }
+
+
 
 @media (max-width: 675px) {
     h1 {
@@ -1487,25 +1509,20 @@ Button:hover {
     }
 
 
-    .Shoppingbag>div>img {
+    .Shoppingbag>div>a>img {
         width: 100px;
     }
 
     .Cart_Hedline {
-        background-image: linear-gradient(white, rgb(171, 251, 255), white);
-        padding: 15px;
-        display: grid;
-        grid-template-columns: 2.6fr 1.5fr 1.5fr 1fr 0fr;
-        padding-left: 120px;
-        font-size: 0.4em;
+        grid-template-columns: 30% 10% 12% 13% 10%;
+        padding-left: 17%;
     }
 
+
     .Cart-Bergolos {
-        display: grid;
-        grid-template-columns: 1fr 1fr 0.5fr 0.5fr 0.5fr;
-        border-bottom: solid rgb(203, 248, 249);
+        grid-template-columns: 20% 30% 12% 10% 17% 5%;
+        gap: 2px;
         font-size: 0.8em;
-        white-space: wrap;
     }
 
 
@@ -1826,19 +1843,48 @@ Button:hover {
         font-size: 0.7em;
         color: red;
     }
+
+
+
+    header>.back-arrow {
+        display: none
+    }
+
+    .back-arrow2 {
+        display: none
+    }
+}
+
+@media (max-width:580px) {
+    .Shoppingbag>div>a>img {
+        width: 75px;
+    }
+
+    .Cart_Hedline {
+        grid-template-columns: 20% 13% 15% 17% 15%;
+        padding-left: 18%;
+        font-size: 0.5em;
+        gap: 15px;
+    }
+
+
+
+
+    .Cart-Bergolos {
+        grid-template-columns: 20% 20% 12% 10% 12% 5%;
+        gap: 10px;
+        font-size: 0.7em;
+    }
 }
 
 
-header>.back-arrow {
-    display: none
-}
-
-.back-arrow2 {
-    display: none
-}
 
 @media (max-width: 350px) {
     .Picture-side-menu>img {
         display: none;
+    }
+
+    .Shoppingbag>div>a>img {
+        width: 50px;
     }
 }
