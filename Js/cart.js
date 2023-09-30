@@ -19,7 +19,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       const jacketList = await fetchJackets(cartContainer);
       const favourites = getExistingFavs();
 
-      
+      if (cartItems.length=== 0){
+        const emptyCartMessage = document.createElement("p");
+        emptyCartMessage.textContent = "No jackets in cart";
+        emptyCartMessage.classList.add("Index__Sale")
+        cartContainer.appendChild(emptyCartMessage);
+      }else{
 
       cartItems.forEach((cartItem) => {
         const jacket = jacketList.find(
@@ -89,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
     }
-
+  }
     window.addEventListener("load", () => {});
   } catch (error) {
     console.error(error);

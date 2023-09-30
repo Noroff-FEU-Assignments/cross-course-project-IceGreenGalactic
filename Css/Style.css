@@ -1516,26 +1516,11 @@ Button:hover {
         grid-template-columns: 1fr 1fr 0.5fr 0.5fr 0.5fr;
         border-bottom: solid rgb(203, 248, 249);
         font-size: 0.8em;
-        white-space: nowrap;
+        white-space: wrap;
     }
 
 
 
-    .Cart-Arilo {
-        display: grid;
-        grid-template-columns: 1fr 1.fr 0.5fr 0.5fr 0.5fr;
-        border-bottom: solid rgb(203, 248, 249);
-        font-size: 0.8em;
-        white-space: nowrap;
-    }
-
-    .Cart_Fercospa {
-        display: grid;
-        grid-template-columns: 1fr 1.fr 0.5fr 0.5fr 0.5fr;
-        border-bottom: solid rgb(203, 248, 249);
-        font-size: 0.8em;
-        white-space: nowrap;
-    }
 
     .Cart_Total {
         font-size: 1em;

@@ -54,7 +54,7 @@ export function createHTML(info) {
                                     }
                                      <div class="Size-button"></div>
                                       <button class="Continue_button addedToCart"> Add to cart </button>
-                                      <button class="Remove_button"> Remove item </button>
+                                      <button class="cart_button"> </button>
                                     </div >
                                          <img  src="${info.image}" alt="${
     info.description
@@ -87,7 +87,7 @@ export function createHTML(info) {
   }
 
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
-  const removeButton = jacketContainer.querySelector(".Remove_button");
+  const cartButton = jacketContainer.querySelector(".cart_button");
   const storedButtonText = localStorage.getItem("addToCartButtonText");
 
   const cart = getCartFromLocalStorage();
@@ -96,10 +96,10 @@ export function createHTML(info) {
   if (isJacketInCart && storedButtonText && storedButtonText === "Added!") {
     currentTextIndex = 1;
     addToCartButton.style.display = "block";
-    removeButton.style.display = "block";
+    cartButton.style.display = "block";
   } else {
     currentTextIndex = 0;
-    removeButton.style.display = "none";
+    cartButton.style.display = "none";
   }
 
   addToCartButton.textContent = buttonTexts[currentTextIndex];
@@ -112,7 +112,7 @@ export function createHTML(info) {
       addToCart(info, selectedSize);
       updateButtonText();
       addToCartButton.style.display = "block";
-      removeButton.style.display = "block";
+      cartButton.style.display = "block";
     } else {
       addToCart(info, selectedSize);
       currentTextIndex = 0;
@@ -120,18 +120,18 @@ export function createHTML(info) {
      
     }
   });
-  removeButton.textContent = "Go to cart";
-  removeButton.className = "Continue_button Remove_button";
-  removeButton.addEventListener("click", () => {
+  cartButton.textContent = "Go to cart";
+  cartButton.className = "Continue_button cart_button";
+  cartButton.addEventListener("click", () => {
     window.location.href="Checkout/Cart.html"
   });
 
   function updateButtonText() {
     addToCartButton.textContent = buttonTexts[currentTextIndex];
     if (currentTextIndex === 0) {
-      removeButton.style.display = "none";
+      cartButton.style.display = "none";
     } else {
-      removeButton.style.display = "block";
+      cartButton.style.display = "block";
     }
     localStorage.setItem("addToCartButtonText", buttonTexts[currentTextIndex]);
   }
@@ -160,14 +160,6 @@ export function addToCart(jacket, selectedSize) {
   localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
 
-export function removeFromCart(jacket) {
-  const cart = getCartFromLocalStorage();
-  const itemIndex = cart.findIndex((cartItem) => cartItem.id === jacket.id);
-  if (itemIndex !== -1) {
-    cart.splice(itemIndex, 1);
-    saveCartToLocalStorage(cart);
-  }
-}
 
 export function saveCartToLocalStorage(cart) {
   localStorage.setItem("shoppingCart", JSON.stringify(cart));
