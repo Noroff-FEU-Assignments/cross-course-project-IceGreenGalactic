@@ -91,6 +91,7 @@ export function createHTML(info) {
   const storedButtonText = localStorage.getItem("addToCartButtonText");
 
   const cart = getCartFromLocalStorage();
+ 
   const isJacketInCart = cart.some((item) => item.id === info.id);
 
   if (isJacketInCart && storedButtonText && storedButtonText === "Added!") {
@@ -115,9 +116,9 @@ export function createHTML(info) {
       cartButton.style.display = "block";
     } else {
       addToCart(info, selectedSize);
-      currentTextIndex = 0;
-      addToCartButton.textContent = buttonTexts[currentTextIndex];
-     
+      // currentTextIndex = 0;
+      // addToCartButton.textContent = buttonTexts[currentTextIndex];
+      // cartButton.style.display="none"
     }
   });
   cartButton.textContent = "Go to cart";
