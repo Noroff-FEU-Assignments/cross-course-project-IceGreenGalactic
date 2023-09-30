@@ -657,7 +657,7 @@ Button:hover {
 }
 
 
-.Shoppingbag>div>img {
+.Shoppingbag>div>a>img {
     width: 150px;
 }
 
@@ -681,17 +681,6 @@ Button:hover {
     border-bottom: solid rgb(203, 248, 249);
 }
 
-.Cart-Arilo {
-    display: grid;
-    grid-template-columns: 1fr 0.7fr 1fr 1fr 0.5fr;
-    border-bottom: solid rgb(203, 248, 249)
-}
-
-.Cart_Fercospa {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr 1fr 1fr 0.5fr;
-    border-bottom: solid rgb(203, 248, 249)
-}
 
 .Cart_Total {
     font-size: 2em;
