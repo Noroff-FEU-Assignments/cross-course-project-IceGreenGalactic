@@ -97,9 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           cartItemDiv.appendChild(totalDiv);
 
           cartContainer.appendChild(cartItemDiv);
-
           
-
 
         }else{
           const errorMessage = "jacket not found in the cart";
