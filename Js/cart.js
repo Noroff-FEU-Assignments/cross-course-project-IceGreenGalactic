@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const totalDiv = document.createElement("div");
           const colorDiv = document.createElement("div");
           const titleAndTagsDiv = document.createElement("div");
+          const sizeDiv = document.createElement ("div");
 
 
           const titleH3 = document.createElement("h4");
@@ -76,14 +77,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           amountH4.classList.add("amount");
           amountH4.textContent = cartItem.quantity;
           color.textContent = jacket.baseColor;
-          sizeP.textContent = `size: ${cartItem.size}`;
+          sizeP.textContent = cartItem.size;
 
 
           priceDiv.appendChild(priceP);
           amountDiv.appendChild(amountH4);
           colorDiv.appendChild(color);
           titleAndTagsDiv.appendChild(titleH3);
-          titleAndTagsDiv.appendChild(tagsH3)
+          titleAndTagsDiv.appendChild(tagsH3);
+          sizeDiv.appendChild(sizeP);
 
           totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
 
@@ -93,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           cartItemDiv.appendChild(titleAndTagsDiv);
           cartItemDiv.appendChild(priceDiv);
           cartItemDiv.appendChild(amountDiv);
-          cartItemDiv.appendChild(colorDiv);
+          cartItemDiv.appendChild(sizeDiv);
           cartItemDiv.appendChild(totalDiv);
 
           cartContainer.appendChild(cartItemDiv);

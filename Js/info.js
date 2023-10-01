@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   NavbarClosing();
 });
 
+
 const jacketContainer = document.querySelector(".jacket-container");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -34,7 +35,9 @@ const storedButtonText = localStorage.getItem("addToCartButtonText");
 if (storedButtonText && buttonTexts.includes(storedButtonText)) {
   currentTextIndex = buttonTexts.indexOf(storedButtonText);
 }
-let quantity = parseInt(localStorage.getItem("quantity")) || 0;
+let quantity = parseInt(localStorage.getItem("quantity")) || 0; 
+let selectedSize ="";
+let sizeSelected = false; 
 
 export function createHTML(info) {
   
@@ -57,22 +60,17 @@ export function createHTML(info) {
                                       <button class="Continue_button addedToCart"> Add to cart </button>
                                       <button class="cart_button"> </button>
                                     </div >
-                                         <img  src="${info.image}" alt="${
-    info.description
-  }" />
+                                         <img  src="${info.image}" alt="${ info.description}" />
                                          </div>`;
 
   const sizeButtonsContainer = jacketContainer.querySelector(".Size-button");
   let selectedSizeButton = null;
-  let selectedSize ="";
 
   if (info.sizes) {
     info.sizes.forEach((size) => {
       const sizeButton = document.createElement("Button");
       sizeButton.textContent = size;
       sizeButton.className = "Size-button";
-
-    
 
       sizeButton.addEventListener("click", () => {
         if (selectedSizeButton) {
@@ -81,6 +79,9 @@ export function createHTML(info) {
         sizeButton.classList.toggle("clicked");
         selectedSizeButton = sizeButton;
         selectedSize = size;
+        sizeSelected = true;
+        resetButtonText();
+        updateButtonText();
       });
 
       sizeButtonsContainer.appendChild(sizeButton);
@@ -89,39 +90,41 @@ export function createHTML(info) {
 
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
   const cartButton = jacketContainer.querySelector(".cart_button");
-  const storedButtonText = localStorage.getItem("addToCartButtonText");
 
   const cart = getCartFromLocalStorage();
- 
-  const isJacketInCart = cart.some((item) => item.id === info.id);
+  const cartItem = cart.find((item)=> item.id === info.id && item.size === selectedSize);
+
     
-  if (isJacketInCart) {
+  if (cartItem) {
     currentTextIndex = 1;
+
+    addToCartButton.textContent = `Added (${cartItem.quantity})`;
     addToCartButton.style.display = "block";
     cartButton.style.display = "block";
-    const cartItem = cart.find((item)=> item.id === info.id);
-    quantity = cartItem.quantity;
   } else {
     currentTextIndex = 0;
+    addToCartButton.style.display ="block"
     cartButton.style.display = "none";
   }
 
-  updateButtonText();
 
 
   addToCartButton.addEventListener("click", () => {
+    if (sizeSelected){
     if (currentTextIndex === 0) {
       currentTextIndex = 1;
-      const selectedSizeButton = jacketContainer.querySelector(".Size-button .clicked");
-      const selectedSize = selectedSizeButton ? selectedSizeButton.textContent: "";
+      // const selectedSizeButton = jacketContainer.querySelector(".Size-button .clicked");
+      // const selectedSize = selectedSizeButton ? selectedSizeButton.textContent: "";
       addToCart(info, selectedSize);
-      quantity += 1;
-      updateButtonText();
-      addToCartButton.style.display = "block";
-      cartButton.style.display = "block";
-    } else  {
+    }else if (currentTextIndex === 1){
+    //   quantity += 1;
+    //   updateButtonText();
+    //   addToCartButton.style.display = "block";
+    //   cartButton.style.display = "block";
+    // } else  {
       addToCart(info, selectedSize);
-      
+    }
+    updateButtonText();
     }
   });
 
@@ -138,32 +141,36 @@ function updateButtonText() {
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
   const cartButton = jacketContainer.querySelector(".cart_button");
   const cart = getCartFromLocalStorage();
-  const matchingItems = cart.filter((item)=> item.id === id);
-  const totalQuantity = matchingItems.reduce ((total, item)=> total + item.quantity, 0);
+  const cartItem = cart.find((item)=> item.id === id && item.size === selectedSize);
 
-
-  if (currentTextIndex === 1) {
-    addToCartButton.textContent = `${buttonTexts[currentTextIndex]} (${totalQuantity})`;
-  } else {
-    addToCartButton.textContent = buttonTexts[currentTextIndex];
-  }
-
-
-  if (currentTextIndex === 0) {
-    cartButton.style.display = "none";
-  } else {
+  if (cartItem){
+    addToCartButton.textContent = `Added (${cartItem.quantity})`
+    addToCartButton.style.display ="block";
     cartButton.style.display = "block";
+  }else{
+    addToCartButton.textContent = "Add to cart";
+    addToCartButton.style.display="block";
+    cartButton.style.display= "none";
   }
   localStorage.setItem("addToCartButtonText", addToCartButton.textContent);
 }
+  function resetButtonText (){
+    const addToCartButton = jacketContainer.querySelector (".addedToCart");
+    addToCartButton.textContent = "Add to cart";
+    currentTextIndex = 0;
+    localStorage.setItem ("addToCartButtonText", addToCartButton.textContent)
+  }
+
+  
 
 export function addToCart(jacket, selectedSize) {
   const cart = getCartFromLocalStorage();
-  const itemIndex = cart.findIndex((item) => item.id === jacket.id);
+
+  const itemIndex = cart.findIndex((item) => item.id === jacket.id && item.size === selectedSize);
+
   if (itemIndex !== -1) {
     cart[itemIndex].quantity +=1;
     cart[itemIndex].totalPrice += jacket.price;
-    cart[itemIndex].size = selectedSize;
   }else{
   cart.push({
     id: jacket.id,
@@ -178,9 +185,14 @@ export function addToCart(jacket, selectedSize) {
 }
   saveCartToLocalStorage(cart);
 
-  quantity= cart.reduce((total,item)=> total + item.quantity, 0);
-  localStorage.setItem("quantity", JSON.stringify(quantity));
+  incrementQuantity(jacket, selectedSize);
   updateButtonText();
+}
+
+function incrementQuantity(jacket,selectedSize){
+  let quantity = parseInt(localStorage.getItem("quantity")) || 0;
+  quantity += 1;
+  localStorage.setItem("quantity", JSON.stringify(quantity));
 }
 
 
