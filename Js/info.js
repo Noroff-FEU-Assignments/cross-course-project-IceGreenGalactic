@@ -14,6 +14,7 @@ const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
 document.addEventListener("DOMContentLoaded", async()=>{
+  try{
   const jacketData = await fetchJackets();
   const jacketList = jacketData.find((jacket)=> jacket.id === id);
   if (jacketList){
@@ -25,6 +26,9 @@ document.addEventListener("DOMContentLoaded", async()=>{
     const messageType ="Error";
     displayMessage(messageType, errorMessage, ".jacket-container");
   }
+}
+}catch (error){
+  console.error(error);
 }
 });
 
@@ -200,7 +204,10 @@ export function saveCartToLocalStorage(cart) {
   localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
 export function getCartFromLocalStorage() {
+  try{
   const cart = localStorage.getItem("shoppingCart");
   return cart ? JSON.parse(cart) : [];
+}catch (error){
+  return[];
 }
-fetchJackets();
+}

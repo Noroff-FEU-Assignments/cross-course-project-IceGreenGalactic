@@ -1,45 +1,21 @@
 import { fetchJackets, createHTML } from "./jacketsList.js";
 import { getExistingFavs } from "./utils/favFunctions.js";
-import { getCartFromLocalStorage } from "./info.js";
+import { getCartFromLocalStorage, saveCartToLocalStorage } from "./info.js";
 import { NavbarClosing } from "./utils/hamburgerMenu.js";
 import { displayMessage } from "./utils/errorMessage.js";
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   NavbarClosing();
 });
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const cartContainer = document.querySelector(".Shoppingbag");
-  // const shoppingBag = document.querySelector (".Cart-Bergolos");
-
-  try {
-    if (cartContainer) {
-      cartContainer.innerHTML = "";
-      const cartItems = getCartFromLocalStorage();
-      const jacketList = await fetchJackets(cartContainer);
-      const favourites = getExistingFavs();
-
-      if (cartItems.length=== 0){
-        const emptyCartMessage = document.createElement("p");
-        emptyCartMessage.textContent = "No jackets in cart";
-        emptyCartMessage.classList.add("Index__Sale")
-        cartContainer.appendChild(emptyCartMessage);
-      }else{
-
-      cartItems.forEach((cartItem) => {
-        const jacket = jacketList.find(
-          (jacketItem) => jacketItem.id === cartItem.id
-        );
-
-        if (jacket) {
-          createHTML(jacket, cartContainer, favourites);
-
-          const cartItemDiv = document.createElement("div");
+function createCartItem (cartItem, jacket, cartContainer, favourites){
+  const cart = getCartFromLocalStorage();
+  const cartItemDiv = document.createElement("div");
           cartItemDiv.classList.add("Cart-Bergolos");
 
           const imgLink = document.createElement("a");
           imgLink.href= `/info.html?id=${jacket.id}`;
-          // imgLink.target ="_blank";
 
           const img = document.createElement("img");
           img.src = jacket.image;
@@ -51,7 +27,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           const priceDiv = document.createElement("div");
           const amountDiv = document.createElement("div");
           const totalDiv = document.createElement("div");
-          const colorDiv = document.createElement("div");
           const titleAndTagsDiv = document.createElement("div");
           const sizeDiv = document.createElement ("div");
 
@@ -61,35 +36,74 @@ document.addEventListener("DOMContentLoaded", async () => {
           const priceP = document.createElement("p");
           const amountH4 = document.createElement("h4");
           const totalP = document.createElement("p");
-          const color = document.createElement("h4");
           const sizeP = document.createElement ("p");
 
 
           titleH3.textContent = jacket.title;
           tagsH3.textContent = jacket.tags;
+
           if (jacket.onSale) {
             priceP.textContent = `$${jacket.discountedPrice}`;
-            cartItem.totalPrice = parseFloat(jacket.discountedPrice) * cartItem.quantity;
           }else{
             priceP.textContent = `$${jacket.price}`;
-            cartItem.totalPrice = parseFloat(jacket.price)* cartItem.quantity;
           }
-          amountH4.classList.add("amount");
-          amountH4.textContent = cartItem.quantity;
-          color.textContent = jacket.baseColor;
+
+          const minusButton = document.createElement("button");
+          minusButton.classList.add ("cart-button")
+          minusButton.textContent ="-";
+          minusButton.addEventListener("click", () =>{
+            if(cartItem.quantity>1){
+              cartItem.quantity --;
+              updateQuantity()
+              updateTotalPrice();
+              saveCartToLocalStorage(cart);
+            }
+          });
+
+          const quantitySpan = document.createElement ("span");
+          quantitySpan.textContent = cartItem.quantity;
+
+          const plussButton = document.createElement("button");
+          plussButton.classList.add ("cart-button")
+          plussButton.textContent ="+";
+          plussButton.addEventListener("click", () =>{
+            if(cartItem.quantity<10){
+              cartItem.quantity ++;
+              updateQuantity()
+              updateTotalPrice();
+              saveCartToLocalStorage(cart);
+            }
+          });
+
+          const removeButton = document.createElement ("button");
+          removeButton.classList.add ("cart-button-remove")
+          removeButton.textContent = "Remove";
+          removeButton.addEventListener("click", () =>{
+            removeItemFromCart (cartItem);
+          });
+
+
+
+
+          totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
           sizeP.textContent = cartItem.size;
 
+          
+        
+          amountDiv.classList.add("amount");
+          amountH4.textContent = cartItem.quantity;
 
           priceDiv.appendChild(priceP);
-          amountDiv.appendChild(amountH4);
-          colorDiv.appendChild(color);
+          amountDiv.appendChild(plussButton);
+          amountDiv.appendChild(quantitySpan);
+          amountDiv.appendChild(minusButton);
+          amountDiv.appendChild(removeButton);
+          totalDiv.appendChild(totalP);
+ 
           titleAndTagsDiv.appendChild(titleH3);
           titleAndTagsDiv.appendChild(tagsH3);
           sizeDiv.appendChild(sizeP);
 
-          totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
-
-          totalDiv.appendChild(totalP);
 
           cartItemDiv.appendChild(imgLink);
           cartItemDiv.appendChild(titleAndTagsDiv);
@@ -99,7 +113,63 @@ document.addEventListener("DOMContentLoaded", async () => {
           cartItemDiv.appendChild(totalDiv);
 
           cartContainer.appendChild(cartItemDiv);
-          
+
+          function updateTotalPrice(){
+            cartItem.totalPrice=
+            parseFloat(jacket.onSale ? jacket.discountedPrice : jacket.price) * cartItem.quantity;
+            totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
+          }
+
+
+          function updateQuantity(){
+            const cart = getCartFromLocalStorage();
+                        quantitySpan.textContent = cartItem.quantity;
+                        amountH4.textContent = cartItem.quantity;
+                        const index = cart.findIndex((item)=>  item.id === cartItem.id && item.size === cartItem.size);
+                        if (index !== -1){
+                          cart[index].quantity = cartItem.quantity;
+                          saveCartToLocalStorage(cart);
+                        }
+                        updateTotalPrice();
+                    }
+
+                      function removeItemFromCart(cartItem){
+                        const index = cart.findIndex((item)=> item.id === cartItem.id && item.size === cartItem.size);
+                        if (index !== -1){
+                          cart.splice(index,1);
+                          saveCartToLocalStorage (cart);
+                          cartContainer.removeChild(cartItemDiv);
+                        }
+                      }
+        }
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const cartContainer = document.querySelector(".Shoppingbag");
+  let cartItems = getCartFromLocalStorage();
+
+  try {
+    if (cartContainer) {
+      cartContainer.innerHTML = "";
+      cartItems = getCartFromLocalStorage();
+      const jacketList = await fetchJackets(cartContainer);
+      const favourites = getExistingFavs();
+
+      if (cartItems.length=== 0){
+        const emptyCartMessage = document.createElement("p");
+        emptyCartMessage.textContent = "No jackets in cart";
+        emptyCartMessage.classList.add("Index__Sale")
+        cartContainer.appendChild(emptyCartMessage);
+      }else{
+
+      cartItems.forEach((cartItem) => {
+        const jacket = jacketList.find((jacketItem) => jacketItem.id === cartItem.id);
+
+        if (jacket) {
+          createCartItem( cartItem, jacket, cartContainer, favourites);
 
         }else{
           const errorMessage = "jacket not found in the cart";
