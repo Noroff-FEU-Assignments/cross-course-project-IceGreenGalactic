@@ -148,9 +148,18 @@ function updateButtonText() {
   const cartItem = cart.find((item)=> item.id === id && item.size === selectedSize);
 
   if (cartItem){
-    addToCartButton.textContent = `Added (${cartItem.quantity})`
+    const itemQuantity = cartItem.quantity
+
+    addToCartButton.textContent = `Added ${itemQuantity}`;
     addToCartButton.style.display ="block";
     cartButton.style.display = "block";
+    
+    const quantitytext = addToCartButton.textContent;
+    const quantitySpan = document.createElement("span");
+    quantitySpan.textContent = itemQuantity;
+    quantitySpan.classList.add ("cart-quantity");
+    addToCartButton.innerHTML = quantitytext.replace(itemQuantity, quantitySpan.outerHTML);
+    
   }else{
     addToCartButton.textContent = "Add to cart";
     addToCartButton.style.display="block";
@@ -211,3 +220,4 @@ export function getCartFromLocalStorage() {
   return[];
 }
 }
+fetchJackets();

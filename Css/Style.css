@@ -725,6 +725,11 @@ Button:hover {
     font-size: 1em;
 }
 
+.cart-quantity {
+    font-size: 0.8em;
+    color: gray;
+}
+
 .Cart_Summary {
     background-image: linear-gradient(white, rgb(171, 251, 255), white);
     line-height: 50px;
