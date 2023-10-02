@@ -57,6 +57,8 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
               updateQuantity()
               updateTotalPrice();
               saveCartToLocalStorage(cart);
+              updateCartandSave();
+
             }
           });
 
@@ -72,6 +74,7 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
               updateQuantity()
               updateTotalPrice();
               saveCartToLocalStorage(cart);
+              updateCartandSave();
             }
           });
 
@@ -118,6 +121,14 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
             cartItem.totalPrice=
             parseFloat(jacket.onSale ? jacket.discountedPrice : jacket.price) * cartItem.quantity;
             totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
+          }
+
+          function updateCartandSave(){
+            const index = cart.findIndex((item)=> item.id === cartItem.id && item.size === cartItem.size);
+            if (index !== -1){
+              cart[index] = cartItem;
+              saveCartToLocalStorage(cart);
+            }
           }
 
 
