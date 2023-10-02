@@ -157,7 +157,7 @@ function updateButtonText() {
     const quantitytext = addToCartButton.textContent;
     const quantitySpan = document.createElement("span");
     quantitySpan.textContent = itemQuantity;
-    quantitySpan.classList.add ("cart-quantity");
+    quantitySpan.classList.add ("info-quantity");
     addToCartButton.innerHTML = quantitytext.replace(itemQuantity, quantitySpan.outerHTML);
     
   }else{

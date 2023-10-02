@@ -63,6 +63,7 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
           });
 
           const quantitySpan = document.createElement ("span");
+          quantitySpan.classList.add ("cart-quantity")
           quantitySpan.textContent = cartItem.quantity;
 
           const plussButton = document.createElement("button");
