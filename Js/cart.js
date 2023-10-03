@@ -55,7 +55,7 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
             if(cartItem.quantity>1){
               cartItem.quantity --;
               updateQuantity()
-              updateTotalPrice();
+              updateTotalPrice(cartItem, jacket);
               saveCartToLocalStorage(cart);
               updateCartandSave();
 
@@ -73,7 +73,7 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
             if(cartItem.quantity<10){
               cartItem.quantity ++;
               updateQuantity()
-              updateTotalPrice();
+              updateTotalPrice(cartItem, jacket);
               saveCartToLocalStorage(cart);
               updateCartandSave();
             }
@@ -118,9 +118,10 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
 
           cartContainer.appendChild(cartItemDiv);
 
-          function updateTotalPrice(){
-            cartItem.totalPrice=
-            parseFloat(jacket.onSale ? jacket.discountedPrice : jacket.price) * cartItem.quantity;
+          function updateTotalPrice( cartItem, jacket){
+            cartItem.totalPrice =
+            parseFloat(jacket.onSale ? jacket.discountedPrice : jacket.price) *
+            cartItem.quantity
             totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
           }
 
@@ -142,7 +143,7 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
                           cart[index].quantity = cartItem.quantity;
                           saveCartToLocalStorage(cart);
                         }
-                        updateTotalPrice();
+                        updateTotalPrice(cartItem, jacket);
                     }
 
                       function removeItemFromCart(cartItem){
@@ -204,43 +205,52 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-// const cartItems = getCartFromLocalStorage()
 
-// function updateCartSummary(cartItems){
-//   let subtotal = 0;
-//   let totalSavings = 0;
-//   let shipping = 'Free shipping';
-//   let inklTax = 0;
-//   let orderTotal = 0;
+const cartSummarySection = document.querySelector(".Cart_Summary");
 
-//   cartItems.forEach((cartItem)=>{
-//     subtotal += cartItem.totalPrice;
 
-//     if (cartItem.jacket && cartItem.jacket.onSale){
-//       totalSavings += ( parseFloat(cartItem.jacket.price) - parseFloat (cartItem.jacket.discountedPrice)) * cartItem.quantity;
-//     }
+function updateCartSummary(cartItems){
+  let subtotal = 0;
+  let totalSavings = 0;
+  let shipping = 'Free shipping';
+  let inklTax = 0;
+  let orderTotal = 0;
 
-//    inklTax += (cartItem.totalPrice * 0.5);
-//    orderTotal = subtotal + inklTax;
-//   })
+  cartItems.forEach((cartItem)=>{
+    subtotal += cartItem.totalPrice;
+    if (cartItem.onSale){
 
-//   const subtotalElement = document.getElementsByClassName(`.subtotal`);
-//   const totalSavingsElement = document.getElementsByClassName (`.total-savings`);
-//   const shippingElement = document.querySelector('.shipping');
-//   const inklTaxElement = document.getElementsByClassName (`.inkl-tax`);
-//   const orderTotalElement = document.getElementsByClassName (`order-total-price`);
+    
+  totalSavings += (cartItem.price - cartItem.discountedPrice) * cartItem.quantity
+}
+
+   inklTax += cartItem.totalPrice * 0.5;
+  });
+
+  if (subtotal < 100) {
+    shipping= 10; 
+    orderTotal = subtotal + shipping
+  }else{
+    orderTotal=subtotal;
+  }
+ 
+
+  const subtotalElement = cartSummarySection.querySelector(`.subtotal`);
+  const totalSavingsElement = cartSummarySection.querySelector (`.total-savings`);
+  const shippingElement = cartSummarySection.querySelector('.shipping');
+  const inklTaxElement = cartSummarySection.querySelector (`.inkl-tax`);
+  const orderTotalElement = cartSummarySection.querySelector (`.order-total-price`);
 
   
-//   if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`
-//   if (totalSavingsElement) totalSavingsElement.textContent = `$${totalSavings.toFixed(2)}`
-//   if (shippingElement) shippingElement.textContent =` Shipping`
-//   if (inklTaxElement) {
-//     orderTotal = subtotal + inklTax;
-//     inklTaxElement.textContent =`$${inklTax.toFixed(2)}`;
-//   if (orderTotalElement) orderTotalElement.textContent =`$${ orderTotal.toFixed(2)}`;
-//   }
-// }
+  if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`
+  if (totalSavingsElement) totalSavingsElement.textContent = `$${totalSavings.toFixed(2)}`
+  if (shippingElement) shippingElement.textContent = Shipping === `Free shipping` ? shipping : `$${shipping.toFxed(2)}`;
+  if (inklTaxElement) inklTaxElement.textContent = `$${inklTax.toFixed(2)}`
+  if (orderTotalElement) orderTotalElement.textContent =`$${ orderTotal.toFixed(2)}`;
+  
+}
 
-// updateCartSummary(cartItems);
+const cartItems = getCartFromLocalStorage();
+updateCartSummary(cartItems);
 
  

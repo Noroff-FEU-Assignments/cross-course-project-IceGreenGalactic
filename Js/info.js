@@ -193,7 +193,7 @@ export function addToCart(jacket, selectedSize) {
     onSale: jacket.onSale,
     size: selectedSize,
     quantity: 1,
-    totalPrice: jacket.price
+    totalPrice: jacket.onSale ? jacket.discountedPrice: jacket.price
   });
 }
   saveCartToLocalStorage(cart);
