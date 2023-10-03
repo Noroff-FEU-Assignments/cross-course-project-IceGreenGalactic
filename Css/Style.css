@@ -610,12 +610,11 @@ Button:hover {
 
 .Size-button {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     align-items: center;
     font-size: 1em;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     justify-content: center;
-
 
 }
 
@@ -1533,7 +1532,7 @@ Button:hover {
     }
 
     .Jacket_info>div>h1 {
-        font-size: 1em;
+        font-size: 1.5em;
         line-height: 5px;
     }
 
@@ -1549,6 +1548,7 @@ Button:hover {
         font-weight: 300;
         margin: 0% 10%;
         text-align: center;
+        line-height: 2em;
     }
 
     .Info_Bergolos {
@@ -1565,9 +1565,15 @@ Button:hover {
     }
 
     .Jacket_info>img {
-        max-width: 200px;
+        max-width: 400px;
     }
 
+    .Size-button {
+        grid-template-columns: auto auto auto auto auto auto;
+        margin-bottom: 20px;
+
+
+    }
 
 
 
