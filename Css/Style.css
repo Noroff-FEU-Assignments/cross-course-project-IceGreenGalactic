@@ -460,6 +460,7 @@ Button:hover {
     top: 0%;
     right: 20%;
     font-size: 1.5em;
+    padding: 10px;
 }
 
 .Index_Jackets-shop>div>i:hover,
@@ -1320,15 +1321,16 @@ Button:hover {
 
     .Index_Jackets-shop>div>i {
         position: absolute;
-        top: 5%;
-        right: 25%;
+
+        right: 10%;
         font-size: 1.5em;
+
     }
 
     .jackets-Shop>div>i {
         position: absolute;
         top: 20%;
-        right: 10%;
+        right: 8%;
         font-size: 1.5em;
     }
 
