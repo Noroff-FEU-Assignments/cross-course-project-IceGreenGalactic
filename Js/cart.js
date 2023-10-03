@@ -190,9 +190,57 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
     }
-  }
-    window.addEventListener("load", () => {});
+   
+    const goToCheckoutButton = document.createElement ("button");
+    goToCheckoutButton.textContent = "Checkout";
+    goToCheckoutButton.className="Continue_button "
+    goToCheckoutButton.addEventListener ("click", () =>{
+      window.location.href = "/Checkout/checkout.html"
+    });
+    cartContainer.appendChild(goToCheckoutButton);
+    }
   } catch (error) {
     console.error(error);
   }
 });
+
+// const cartItems = getCartFromLocalStorage()
+
+// function updateCartSummary(cartItems){
+//   let subtotal = 0;
+//   let totalSavings = 0;
+//   let shipping = 'Free shipping';
+//   let inklTax = 0;
+//   let orderTotal = 0;
+
+//   cartItems.forEach((cartItem)=>{
+//     subtotal += cartItem.totalPrice;
+
+//     if (cartItem.jacket && cartItem.jacket.onSale){
+//       totalSavings += ( parseFloat(cartItem.jacket.price) - parseFloat (cartItem.jacket.discountedPrice)) * cartItem.quantity;
+//     }
+
+//    inklTax += (cartItem.totalPrice * 0.5);
+//    orderTotal = subtotal + inklTax;
+//   })
+
+//   const subtotalElement = document.getElementsByClassName(`.subtotal`);
+//   const totalSavingsElement = document.getElementsByClassName (`.total-savings`);
+//   const shippingElement = document.querySelector('.shipping');
+//   const inklTaxElement = document.getElementsByClassName (`.inkl-tax`);
+//   const orderTotalElement = document.getElementsByClassName (`order-total-price`);
+
+  
+//   if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`
+//   if (totalSavingsElement) totalSavingsElement.textContent = `$${totalSavings.toFixed(2)}`
+//   if (shippingElement) shippingElement.textContent =` Shipping`
+//   if (inklTaxElement) {
+//     orderTotal = subtotal + inklTax;
+//     inklTaxElement.textContent =`$${inklTax.toFixed(2)}`;
+//   if (orderTotalElement) orderTotalElement.textContent =`$${ orderTotal.toFixed(2)}`;
+//   }
+// }
+
+// updateCartSummary(cartItems);
+
+ 
