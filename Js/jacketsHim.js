@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       } else {
         jacketContainer.innerHTML =
-          "<h2 class>We are expanding our collection to include men's jackets!! Stay tuned for the latest updates, in the meantime, feel free to explore our fabulous range of women's jackets<h2>";
+          "<h2 class=empty-container>We are expanding our collection to include men's jackets!! Stay tuned for the latest updates, in the meantime, feel free to explore our fabulous range of women's jackets<h2>";
       }
     }
   } catch (error) {

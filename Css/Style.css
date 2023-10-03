@@ -560,6 +560,12 @@ Button:hover {
     white-space: nowrap;
 }
 
+.empty-container {
+    padding: 0% 10% 0% 10%;
+    font-size: 1.2em;
+
+}
+
 .info_main {
     background-image: linear-gradient(white, rgb(171, 251, 255), white);
     text-align: center;
