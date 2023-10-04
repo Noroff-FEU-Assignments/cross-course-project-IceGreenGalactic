@@ -52,15 +52,14 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
           minusButton.classList.add ("cart-button")
           minusButton.textContent ="-";
           minusButton.addEventListener("click", () =>{
-            if(cartItem.quantity>1){
               cartItem.quantity --;
-              updateQuantity()
+              updateQuantity();
               updateTotalPrice(cartItem, jacket);
               saveCartToLocalStorage(cart);
               updateCartandSave();
+              updateCartSummary(cart);
 
-            }
-          });
+            });
 
           const quantitySpan = document.createElement ("span");
           quantitySpan.classList.add ("cart-quantity")
@@ -76,14 +75,16 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
               updateTotalPrice(cartItem, jacket);
               saveCartToLocalStorage(cart);
               updateCartandSave();
+              updateCartSummary(cart);
             }
           });
+          
 
           const removeButton = document.createElement ("button");
           removeButton.classList.add ("cart-button-remove")
-          removeButton.textContent = "Remove";
+          removeButton.innerHTML = '<i class="far fa-trash-can"></i>'
           removeButton.addEventListener("click", () =>{
-            removeItemFromCart (cartItem);
+            removeItemFromCart (cartItem, cartContainer);
           });
 
 
@@ -145,32 +146,51 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
                         }
                         updateTotalPrice(cartItem, jacket);
                     }
+                    
 
                       function removeItemFromCart(cartItem){
-                        const index = cart.findIndex((item)=> item.id === cartItem.id && item.size === cartItem.size);
-                        if (index !== -1){
-                          cart.splice(index,1);
-                          saveCartToLocalStorage (cart);
-                          cartContainer.removeChild(cartItemDiv);
+                        const indexesToRemove =[]
+
+                        cart.forEach ((item, index)=> {
+                          if (item.id === cartItem.id && item.size === cartItem.size){
+                            indexesToRemove.push(index);
+                          }
+                        });
+                        console.log (`Ìndexes to remove:`, indexesToRemove);
+                        for (let i = indexesToRemove.length -1; i>= 0; i--){
+                        const index = indexesToRemove[i];
+                        cart.splice (index, 1);
                         }
+                        saveCartToLocalStorage(cart);
+
+                        indexesToRemove.forEach((index) => {
+                          const cartItemDiv = cartContainer.querySelector (`.Cart-Bergolos:nth-child(${index + 1})`);
+                          console.log('Removing cartItemDiv:', cartItemDiv);
+                          if (cartItemDiv) {
+                            cartContainer.removeChild(cartItemDiv)
+                          }
+                        });
+                        saveCartToLocalStorage(cart)
+                        updateCartSummary(cart);
+                        
+                        updateTotalPrice(cartItem, jacket);
                       }
-        }
 
+                    }
 
-
-
-
+ 
 document.addEventListener("DOMContentLoaded", async () => {
   const cartContainer = document.querySelector(".Shoppingbag");
   let cartItems = getCartFromLocalStorage();
+  
 
   try {
     if (cartContainer) {
       cartContainer.innerHTML = "";
-      cartItems = getCartFromLocalStorage();
+     
       const jacketList = await fetchJackets(cartContainer);
       const favourites = getExistingFavs();
-
+       cartItems = getCartFromLocalStorage();
       if (cartItems.length=== 0){
         const emptyCartMessage = document.createElement("p");
         emptyCartMessage.textContent = "No jackets in cart";
@@ -195,10 +215,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const goToCheckoutButton = document.createElement ("button");
     goToCheckoutButton.textContent = "Checkout";
     goToCheckoutButton.className="Continue_button "
-    goToCheckoutButton.addEventListener ("click", () =>{
+    goToCheckoutButton.addEventListener ("click", () => {
       window.location.href = "/Checkout/checkout.html"
     });
     cartContainer.appendChild(goToCheckoutButton);
+
+    updateCartSummary(cartItems);
     }
   } catch (error) {
     console.error(error);
@@ -244,7 +266,7 @@ function updateCartSummary(cartItems){
   
   if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`
   if (totalSavingsElement) totalSavingsElement.textContent = `$${totalSavings.toFixed(2)}`
-  if (shippingElement) shippingElement.textContent = Shipping === `Free shipping` ? shipping : `$${shipping.toFxed(2)}`;
+  if (shippingElement) shippingElement.textContent = shipping === `Free shipping` ? shipping : `$${shipping.toFxed(2)}`;
   if (inklTaxElement) inklTaxElement.textContent = `$${inklTax.toFixed(2)}`
   if (orderTotalElement) orderTotalElement.textContent =`$${ orderTotal.toFixed(2)}`;
   

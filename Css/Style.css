@@ -718,20 +718,20 @@ Button:hover {
 
 .cart-quantity {
     text-align: center;
-    margin-left: 13px;
+    margin-left: 15px;
     display: flex;
-    margin-top: 13px;
+    margin-top: 10px;
 }
 
 .cart-button-remove {
-    height: 20px;
-    width: 30px;
+    height: 25px;
+    width: 20px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.7em;
-    margin-top: 17%;
+    font-size: 1em;
+    margin-top: 10%;
 
 }
 
@@ -778,8 +778,7 @@ Button:hover {
 
 .Shoppingbag_Summary {
     background-color: white;
-    display: grid;
-    grid-template-columns: auto auto;
+    display: block
     padding: 20px;
     max-height: 400px;
     max-width: fit-content;
