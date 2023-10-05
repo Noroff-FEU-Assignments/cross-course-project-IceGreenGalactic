@@ -14,53 +14,48 @@ function createCartItem (cartItem, jacket){
     
   const cartItemDiv = document.createElement("div");
           cartItemDiv.classList.add("Shoppingbag_Summary");
-
+          const textContainer = document.createElement("div");
 
           const img = document.createElement("img");
           img.src = jacket.image;
           img.alt = jacket.description;
           
-          const textContainer = document.createElement("div");
     
 
-          const titleH2 = document.createElement("h4");
-          const priceP = document.createElement("p");
-          const amountH4 = document.createElement("h4");
-          const totalP = document.createElement("p");
+          const titleH2 = document.createElement("h2");
+          const priceH2 = document.createElement("h2");
+          const amountP = document.createElement("p");
+          const totalH2 = document.createElement("h2");
           const sizeP = document.createElement ("p");
 
 
           titleH2.textContent = jacket.title;
 
           if (jacket.onSale) {
-            priceP.textContent = `$${jacket.discountedPrice}`;
+            priceH2.textContent = `$${jacket.discountedPrice}`;
           }else{
-            priceP.textContent = `$${jacket.price}`;
+            priceH2.textContent = `$${jacket.price}`;
           }
 
-      
-
-          const quantitySpan = document.createElement ("span");
-          quantitySpan.classList.add ("cart-quantity")
-          quantitySpan.textContent = cartItem.quantity;
+    
 
         
 
 
 
-          totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
+          totalH2.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
           sizeP.textContent = cartItem.size;
 
           
-          amountH4.textContent = cartItem.quantity;
-          amountH4.classList.add ("Amount")
+          amountP.textContent = `Amount: ${cartItem.quantity}`;
 
 
 
           textContainer.appendChild(titleH2);
-          textContainer.appendChild(priceP);
-          textContainer.appendChild(quantitySpan);
-          textContainer.appendChild(totalP);
+          textContainer.appendChild(priceH2);
+          textContainer.appendChild(sizeP);
+          textContainer.appendChild(amountP);
+          textContainer.appendChild(totalH2);
           cartItemDiv.appendChild(img);
           cartItemDiv.appendChild(textContainer);
 

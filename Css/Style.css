@@ -765,31 +765,47 @@ Button:hover {
 }
 
 
-.Shoppingbag_Summary>div>h2 {
+.Shoppingbag_Summary>div>h2,
+.Shoppingbag_Summary>div>p {
     font-size: 0.7em;
     line-height: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.Amount {
+    font-size: 9em;
 }
 
 .Checkout_Summary {
     background-image: linear-gradient(white, rgb(171, 251, 255), white);
-    max-width: fit-content;
+    max-width: 400px;
     max-height: 600px;
 }
 
 .Shoppingbag_Summary {
-    background-color: white;
-    display: block
-    padding: 20px;
+    display: block;
     max-height: 400px;
     max-width: fit-content;
-    overflow-y: scroll;
     margin: 30px;
+    justify-content: center;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+.Shoppingbag_Summary>div {
+    background-color: white;
+    padding: 20px 20px 0px 20px ;
+    overflow-y: hidden;
 }
 
 .Shoppingbag_Summary>div>img {
     max-height: 200px;
-    background-image: linear-gradient(white, rgb(171, 251, 255), white);
-    padding: 20px;
+    background-color: linear-gradient(white, rgb(171, 251, 255), white);
+    padding: 0px 30px 0px 30px;
+    align-items: center;
+    justify-content: center;
 }
 
 .Checkout_Main,
@@ -1669,7 +1685,7 @@ Button:hover {
 
 
 
-    .Shoppingbag_Summary>div>h {
+    .Shoppingbag_Summary>div>h2 {
         font-size: 0.6em;
         line-height: 10px;
     }
