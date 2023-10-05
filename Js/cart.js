@@ -57,7 +57,7 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
               updateTotalPrice(cartItem, jacket);
               saveCartToLocalStorage(cart);
               updateCartandSave();
-              updateCartSummary(cart, che);
+              updateCartSummary(cart, checkoutSummarySection);
 
             });
 
@@ -220,6 +220,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     cartContainer.appendChild(goToCheckoutButton);
 
+    let orderTotal= 0;
+    cartItems.forEach((cartItem) =>{
+      orderTotal += cartItem.totalPrice;
+    });
+    
+    
+    const orderTotalElement = document.createElement("p");
+    orderTotalElement.textContent= `Total: $${orderTotal.toFixed(2)}`;
+    orderTotalElement.classList.add("Cart_Total")
+
+    checkoutSummarySection.insertBefore(orderTotalElement, goToCheckoutButton)
+
+
+
     updateCartSummary(cartItems);
     }
   } catch (error) {
@@ -229,7 +243,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 const cartSummarySection = document.querySelector(".Cart_Summary");
-
+const shoppingCartSection = document.querySelector(".Shoppingbag");
 
 function updateCartSummary(cartItems, targetElement){
   let subtotal = 0;
@@ -275,8 +289,7 @@ function updateCartSummary(cartItems, targetElement){
   }
   
 }
-const checkoutSummarySection = document.querySelector (".Checkout_Summary");
+const checkoutSummarySection = document.querySelector (".Shoppingbag");
 const cartItems = getCartFromLocalStorage();
 updateCartSummary(cartItems, checkoutSummarySection);
-
- 
+updateCartSummary(cartItems, shoppingCartSection)
