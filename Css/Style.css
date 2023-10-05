@@ -17,11 +17,18 @@ h5 {
     font-weight: 500;
 }
 
+
 body {
-    margin: 0%
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0%;
+    padding: 0%;
 }
 
-
+main {
+    flex-grow: 1;
+}
 
 header>a>img {
     max-width: 300px;
@@ -675,7 +682,8 @@ Button:hover {
 
 .Cart_Hedline {
     background-image: linear-gradient(white, rgb(171, 251, 255), white);
-    padding-bottom: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     display: grid;
     grid-template-columns: 20% 15% 20% 20% 20%;
     gap: 20px;
@@ -698,28 +706,30 @@ Button:hover {
 .amount {
     display: grid;
     grid-template-columns: auto auto;
-    max-height: 10px;
-    justify-content: center;}
+    max-height: 20px;
+    justify-content: center;
+}
 
-    .cart-button-remove {
-        height: 25px;
-        width: 20px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 0.8em;
-        margin-top: 10%;
-    
-    }
-    .cart-quantity {
-        text-align: center;
-        margin-left: 5px;
-        display: flex;
-        margin-top: 10px;
-        width: 50px;
-    }
-    
+.cart-button-remove {
+    height: 25px;
+    width: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    margin-top: 10%;
+
+}
+
+.cart-quantity {
+    text-align: center;
+    margin-left: 5px;
+    display: flex;
+    margin-top: 10px;
+    width: 50px;
+}
+
 .cart-button {
     border-color: rgb(78, 228, 255);
     padding-left: 20px;
@@ -856,8 +866,8 @@ Button:hover {
 .Checkout_form__input {
     margin: 2%;
     padding: 4%;
-    padding-right: 20%;
     width: 100%;
+    text-align: left;
 }
 
 .Checkout_Main>section>div>h1 {
@@ -960,19 +970,20 @@ Button:hover {
 }
 
 .Completed_order {
-    display: grid;
-    justify-content: center;
-    text-align: center;
-    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8em;
     color: rgb(49, 175, 145);
-    margin-bottom: 50px;
+    text-align: center;
+    align-items: center;
+
 }
 
 .Completed_order>img {
-    max-width: 60%;
-    margin-left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 120px;
+    max-width: 30%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 
 
@@ -1098,10 +1109,6 @@ Button:hover {
 
     }
 
-    .cart-button-remove {
-        padding-left: 25px;
-        padding-right: 25px;
-    }
 
 
 }
@@ -1203,6 +1210,17 @@ Button:hover {
     .Cart-Bergolos {
 
         grid-template-columns: 20% 15% 3% 25% 15% 10%;
+
+    }
+
+    .Delivery>div>h2 {
+        font-size: 1em;
+        line-height: 1em;
+
+    }
+
+    .Delivery>div>h1 {
+        font-size: 1.3em;
 
     }
 
@@ -1617,13 +1635,13 @@ Button:hover {
     }
 
     .Cart_Hedline {
-        grid-template-columns: 20% 10% 12% 13% 10%;
+        grid-template-columns: 23% 15% 20% 10% 5%;
 
     }
 
 
     .Cart-Bergolos {
-        grid-template-columns: 20% 25% 10% 15% 12% 5%;
+        grid-template-columns: 18% 25% 2% 35% 10% 5%;
         gap: 2px;
         font-size: 0.8em;
     }
@@ -1631,8 +1649,29 @@ Button:hover {
 
 
     .amount {
-        display: block;
+        display: flex;
         justify-content: center;
+        margin-top: 5px;
+
+    }
+
+    .cart-quantity {
+        margin-left: 20px;
+        display: flex;
+        margin-top: 0px;
+        font-size: 1em;
+        width: 40px;
+    }
+
+    .cart-button-remove {
+        height: 20px;
+        padding: 0px 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.7em;
+        margin-top: 0px;
 
     }
 
@@ -1648,26 +1687,6 @@ Button:hover {
         align-items: center;
         margin-top: 0%;
     }
-
-    .cart-quantity {
-        margin-left: 20px;
-        display: flex;
-        margin-top: 0px;
-    }
-
-    .cart-button-remove {
-        height: 20px;
-        width: 30px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 0.7em;
-        margin-top: 17%;
-
-    }
-
-
 
 
     .Cart_Total {
@@ -1772,20 +1791,19 @@ Button:hover {
     }
 
     .Checkout {
-        display: block;
-        width: 100%;
-        margin-bottom: 30px;
-        justify-content: center;
-        margin-left: 0px;
-        background-image: linear-gradient(white, rgb(171, 251, 255), white);
-        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+
     }
 
     .Checkout_Address,
     .Checkout_form__input {
+        display: flex;
+        flex-direction: column;
         margin: 10px;
         padding: 5px;
-        padding-right: 40%;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .Checkout_Summary {
@@ -1800,6 +1818,7 @@ Button:hover {
     .Delivery {
         text-align: center;
         margin: 0px;
+        font-size: 1em;
     }
 
     .Delivery>div {
@@ -1854,10 +1873,7 @@ Button:hover {
         width: 30%;
     }
 
-    .Completed_order>img {
-        max-width: 100px;
-        margin-left: 40%;
-    }
+
 
     .Picture-side-menu>img {
         display: block;
@@ -2003,19 +2019,22 @@ Button:hover {
     }
 
     .Cart_Hedline {
-        grid-template-columns: 20% 15% 15% 10% 10%;
+        grid-template-columns: 20% 15% 20% 10% 10%;
         padding-left: 18%;
-        font-size: 0.5em;
-        gap: 15px;
+        font-size: 0.6em;
+        gap: 20px;
+
     }
 
 
-
-
     .Cart-Bergolos {
-        grid-template-columns: 20% 20% 12% 15% 10% 5%;
-        gap: 10px;
-        font-size: 0.7em;
+        grid-template-columns: 15% 20% 5% 25% 5% 5%;
+        gap: 20px;
+        font-size: 0.9em;
+    }
+
+    .cart-quantity {
+        font-size: 0.8em;
     }
 }
 
