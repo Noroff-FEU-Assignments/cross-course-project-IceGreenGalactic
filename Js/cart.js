@@ -48,34 +48,51 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
             priceP.textContent = `$${jacket.price}`;
           }
 
-          const minusButton = document.createElement("button");
-          minusButton.classList.add ("cart-button")
-          minusButton.textContent ="-";
-          minusButton.addEventListener("click", () =>{
-              cartItem.quantity --;
-              updateQuantity();
+          // const minusButton = document.createElement("button");
+          // minusButton.classList.add ("cart-button")
+          // minusButton.textContent ="-";
+          // minusButton.addEventListener("click", () =>{
+          //     cartItem.quantity --;
+          //     updateQuantity();
+          //     updateTotalPrice(cartItem, jacket);
+          //     saveCartToLocalStorage(cart);
+          //     updateCartandSave();
+          //     updateCartSummary(cart, checkoutSummarySection);
+
+          //   });
+
+          // const quantitySpan = document.createElement ("span");
+          // quantitySpan.classList.add ("cart-quantity")
+          // quantitySpan.textContent = cartItem.quantity;
+
+          // const plussButton = document.createElement("button");
+          // plussButton.classList.add ("cart-button")
+          // plussButton.textContent ="+";
+          // plussButton.addEventListener("click", () =>{
+          //   if(cartItem.quantity<10){
+          //     cartItem.quantity ++;
+          //     updateQuantity()
+          //     updateTotalPrice(cartItem, jacket);
+          //     saveCartToLocalStorage(cart);
+          //     updateCartandSave();
+          //     updateCartSummary(cart);
+          //   }
+          // });
+          
+          const quantityStepper = document.createElement("input");
+          quantityStepper.type ="number";
+          quantityStepper.value= cartItem.quantity;
+          quantityStepper.min =1;
+          quantityStepper.max = 20;
+          quantityStepper.classList.add ("cart-quantity");
+          quantityStepper.addEventListener ("input", () => {
+            const newQuantity = parseInt (quantityStepper.value);
+            if (!isNan (newQuantity)&& newQuantity >= 1 && newQuantity <=20){
+              cartItem.quantity = newQuantity;
               updateTotalPrice(cartItem, jacket);
               saveCartToLocalStorage(cart);
               updateCartandSave();
-              updateCartSummary(cart, checkoutSummarySection);
-
-            });
-
-          const quantitySpan = document.createElement ("span");
-          quantitySpan.classList.add ("cart-quantity")
-          quantitySpan.textContent = cartItem.quantity;
-
-          const plussButton = document.createElement("button");
-          plussButton.classList.add ("cart-button")
-          plussButton.textContent ="+";
-          plussButton.addEventListener("click", () =>{
-            if(cartItem.quantity<10){
-              cartItem.quantity ++;
-              updateQuantity()
-              updateTotalPrice(cartItem, jacket);
-              saveCartToLocalStorage(cart);
-              updateCartandSave();
-              updateCartSummary(cart);
+              updateCartSummary();
             }
           });
           
@@ -99,9 +116,7 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
           amountH4.textContent = cartItem.quantity;
 
           priceDiv.appendChild(priceP);
-          amountDiv.appendChild(plussButton);
-          amountDiv.appendChild(quantitySpan);
-          amountDiv.appendChild(minusButton);
+          amountDiv.appendChild(quantityStepper);
           amountDiv.appendChild(removeButton);
           totalDiv.appendChild(totalP);
  
