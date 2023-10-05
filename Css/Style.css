@@ -2019,7 +2019,7 @@ Button:hover {
     }
 
     .Cart_Hedline {
-        grid-template-columns: 20% 15% 20% 10% 10%;
+        grid-template-columns: 20% 15% 20% 5% 15%;
         padding-left: 18%;
         font-size: 0.6em;
         gap: 20px;
@@ -2028,13 +2028,14 @@ Button:hover {
 
 
     .Cart-Bergolos {
-        grid-template-columns: 15% 20% 5% 25% 5% 5%;
+        grid-template-columns: 15% 15% 5% 25% 5% 5%;
         gap: 20px;
         font-size: 0.9em;
     }
 
     .cart-quantity {
         font-size: 0.8em;
+        width: 50px;
     }
 }
 
