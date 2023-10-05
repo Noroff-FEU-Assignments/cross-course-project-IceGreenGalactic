@@ -56,14 +56,14 @@ export function createHTML(info) {
                                     ${
                                       info.onSale
                                         ? ` <p class="info_Price_original"> $${info.price}  </p>
-                                      <p class = "info_onSale_price">  $${info.discountedPrice}</p>
-                                      `
+                                      <p class = "info_onSale_price">  $${info.discountedPrice}</p>`
                                         : `<p class= "info_Price "> $${info.price}</p>`
                                     }
                                      <div class="Size-button"></div>
                                       <button class="Continue_button addedToCart"> Add to cart </button>
                                       <button class="cart_button"> </button>
-                                    </div >
+                                      <button class="cart-button-remove info-button-remove" style="display: none;"><i class="far fa-trash-can"></i></button> 
+                                                                         </div >
                                          <img  src="${info.image}" alt="${ info.description}" />
                                          </div>`;
 
@@ -94,6 +94,7 @@ export function createHTML(info) {
 
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
   const cartButton = jacketContainer.querySelector(".cart_button");
+  const removeButton =jacketContainer.querySelector(".cart-button-remove");
 
   const cart = getCartFromLocalStorage();
   const cartItem = cart.find((item)=> item.id === info.id && item.size === selectedSize);
@@ -105,10 +106,12 @@ export function createHTML(info) {
     addToCartButton.textContent = `Added (${cartItem.quantity})`;
     addToCartButton.style.display = "block";
     cartButton.style.display = "block";
+    removeButton.style.display ="block"
   } else {
     currentTextIndex = 0;
     addToCartButton.style.display ="block"
     cartButton.style.display = "none";
+    removeButton.style.display ="none"
   }
 
 
@@ -117,15 +120,8 @@ export function createHTML(info) {
     if (sizeSelected){
     if (currentTextIndex === 0) {
       currentTextIndex = 1;
-      // const selectedSizeButton = jacketContainer.querySelector(".Size-button .clicked");
-      // const selectedSize = selectedSizeButton ? selectedSizeButton.textContent: "";
       addToCart(info, selectedSize);
     }else if (currentTextIndex === 1){
-    //   quantity += 1;
-    //   updateButtonText();
-    //   addToCartButton.style.display = "block";
-    //   cartButton.style.display = "block";
-    // } else  {
       addToCart(info, selectedSize);
     }
     updateButtonText();
@@ -138,12 +134,19 @@ export function createHTML(info) {
   cartButton.addEventListener("click", () => {
     window.location.href="Checkout/Cart.html"
   });
+
+  removeButton.addEventListener("click", () => {
+    removeFromCart(info.id, selectedSize);
+    updateButtonText();
+    removeButton.style.display= "none";
+});
 }
 
 
 function updateButtonText() {
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
   const cartButton = jacketContainer.querySelector(".cart_button");
+  const removeButton =jacketContainer.querySelector(".cart-button-remove");
   const cart = getCartFromLocalStorage();
   const cartItem = cart.find((item)=> item.id === id && item.size === selectedSize);
 
@@ -153,7 +156,8 @@ function updateButtonText() {
     addToCartButton.textContent = `Added ${itemQuantity}`;
     addToCartButton.style.display ="block";
     cartButton.style.display = "block";
-    
+    removeButton.style.display = "block";
+
     const quantitytext = addToCartButton.textContent;
     const quantitySpan = document.createElement("span");
     quantitySpan.textContent = itemQuantity;
@@ -164,6 +168,7 @@ function updateButtonText() {
     addToCartButton.textContent = "Add to cart";
     addToCartButton.style.display="block";
     cartButton.style.display= "none";
+    removeButton.style.display = "none";
   }
   localStorage.setItem("addToCartButtonText", addToCartButton.textContent);
 }
@@ -174,7 +179,16 @@ function updateButtonText() {
     localStorage.setItem ("addToCartButtonText", addToCartButton.textContent)
   }
 
-  
+  function removeFromCart(jacket, selectedSize){
+    const cart = getCartFromLocalStorage();
+    const itemIndex = cart.findIndex((item) => item.id && item.size === selectedSize);
+
+    if (itemIndex !== -1){
+      cart.splice(itemIndex, 1);
+      saveCartToLocalStorage();
+    }
+updateButtonText();
+  }
 
 export function addToCart(jacket, selectedSize) {
   const cart = getCartFromLocalStorage();

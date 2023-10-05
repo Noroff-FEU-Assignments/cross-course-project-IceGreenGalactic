@@ -722,6 +722,16 @@ Button:hover {
 
 }
 
+.info-button-remove {
+    margin-left: 65%;
+    transform: translate(-50%, -50%);
+    margin-top: -90px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
 .cart-quantity {
     text-align: center;
     margin-left: 5px;
@@ -2020,9 +2030,8 @@ Button:hover {
     .amount {
         display: block;
     }
-    .cart-button-remove{
-        
-    }
+
+    .cart-button-remove {}
 
     .Cart_Hedline {
         grid-template-columns: 20% 15% 15% 5% 15%;
