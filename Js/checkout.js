@@ -16,6 +16,7 @@ function createCartItem (cartItem, jacket){
           cartItemDiv.classList.add("Shoppingbag_Summary");
           const textContainer = document.createElement("div");
 
+          
           const img = document.createElement("img");
           img.src = jacket.image;
           img.alt = jacket.description;
@@ -27,7 +28,7 @@ function createCartItem (cartItem, jacket){
           const amountP = document.createElement("p");
           const totalH2 = document.createElement("h2");
           const sizeP = document.createElement ("p");
-
+          
 
           titleH2.textContent = jacket.title;
 
@@ -38,7 +39,6 @@ function createCartItem (cartItem, jacket){
           }
 
     
-
         
 
 
@@ -50,7 +50,7 @@ function createCartItem (cartItem, jacket){
           amountP.textContent = `Amount: ${cartItem.quantity}`;
 
 
-
+          
           textContainer.appendChild(titleH2);
           textContainer.appendChild(priceH2);
           textContainer.appendChild(sizeP);
@@ -63,7 +63,7 @@ function createCartItem (cartItem, jacket){
 
     }
 
- 
+    
 document.addEventListener("DOMContentLoaded", async () => {
   const cartContainer = document.querySelector(".Shoppingbag_Summary");
   let cartItems = getCartFromLocalStorage();
@@ -101,3 +101,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error(error);
   }
 });
+
+
+// const summaryDiv = document.createElement("div")
+//           summaryDiv.classList.add ("Checkout_Summary")
+//           const totalPrice = document.createElement("p")
+//           totalPrice.textContent = `Total Price: $${cartItem.itemTotal}`
+//           summaryDiv.appendChild(totalPrice);
+//           textContainer.appendChild(summaryDiv)

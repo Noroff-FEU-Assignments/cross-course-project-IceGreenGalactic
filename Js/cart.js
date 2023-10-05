@@ -57,7 +57,7 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
               updateTotalPrice(cartItem, jacket);
               saveCartToLocalStorage(cart);
               updateCartandSave();
-              updateCartSummary(cart);
+              updateCartSummary(cart, che);
 
             });
 
@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 const cartSummarySection = document.querySelector(".Cart_Summary");
 
 
-function updateCartSummary(cartItems){
+function updateCartSummary(cartItems, targetElement){
   let subtotal = 0;
   let totalSavings = 0;
   let shipping = 'Free shipping';
@@ -269,10 +269,14 @@ function updateCartSummary(cartItems){
   if (shippingElement) shippingElement.textContent = shipping === `Free shipping` ? shipping : `$${shipping.toFxed(2)}`;
   if (inklTaxElement) inklTaxElement.textContent = `$${inklTax.toFixed(2)}`
   if (orderTotalElement) orderTotalElement.textContent =`$${ orderTotal.toFixed(2)}`;
+  if(targetElement){
+    const subtotalElement = targetElement.querySelector(".subtotal");
+    if (subtotalElement) subtotalElement.textContent = `total: $${subtotal.toFixed(2)}`;
+  }
   
 }
-
+const checkoutSummarySection = document.querySelector (".Checkout_Summary");
 const cartItems = getCartFromLocalStorage();
-updateCartSummary(cartItems);
+updateCartSummary(cartItems, checkoutSummarySection);
 
  
