@@ -85,14 +85,15 @@ function createCartItem (cartItem, jacket, cartContainer, favourites){
           quantityStepper.min =1;
           quantityStepper.max = 20;
           quantityStepper.classList.add ("cart-quantity");
+
           quantityStepper.addEventListener ("input", () => {
             const newQuantity = parseInt (quantityStepper.value);
-            if (!isNan (newQuantity)&& newQuantity >= 1 && newQuantity <=20){
+            if (!isNaN (newQuantity)&& newQuantity >= 1 && newQuantity <=20){
               cartItem.quantity = newQuantity;
               updateTotalPrice(cartItem, jacket);
               saveCartToLocalStorage(cart);
               updateCartandSave();
-              updateCartSummary();
+              updateCartSummary(cart);
             }
           });
           
@@ -205,7 +206,7 @@ document.addEventListener("DOMContentLoaded", async () => {
      
       const jacketList = await fetchJackets(cartContainer);
       const favourites = getExistingFavs();
-       cartItems = getCartFromLocalStorage();
+      
       if (cartItems.length=== 0){
         const emptyCartMessage = document.createElement("p");
         emptyCartMessage.textContent = "No jackets in cart";
@@ -243,13 +244,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     const orderTotalElement = document.createElement("p");
     orderTotalElement.textContent= `Total: $${orderTotal.toFixed(2)}`;
-    orderTotalElement.classList.add("Cart_Total")
+    orderTotalElement.classList.add("Cart_Total");
 
-    checkoutSummarySection.insertBefore(orderTotalElement, goToCheckoutButton)
+    checkoutSummarySection.insertBefore(orderTotalElement, goToCheckoutButton);
 
-
-
-    updateCartSummary(cartItems);
+    updateCartSummary(cartItems, checkoutSummarySection);
+    updateCartSummary(cartItems, shoppingCartSection);
     }
   } catch (error) {
     console.error(error);
@@ -263,7 +263,7 @@ const shoppingCartSection = document.querySelector(".Shoppingbag");
 function updateCartSummary(cartItems, targetElement){
   let subtotal = 0;
   let totalSavings = 0;
-  let shipping = 'Free shipping';
+  let shipping = 0;
   let inklTax = 0;
   let orderTotal = 0;
 
@@ -278,12 +278,13 @@ function updateCartSummary(cartItems, targetElement){
    inklTax += cartItem.totalPrice * 0.5;
   });
 
-  if (subtotal < 100) {
+  if (subtotal < 500) {
     shipping= 10; 
     orderTotal = subtotal + shipping
   }else{
+    shipping = "Free shipping"
     orderTotal=subtotal;
-  }
+  } 
  
 
   const subtotalElement = cartSummarySection.querySelector(`.subtotal`);
@@ -295,7 +296,7 @@ function updateCartSummary(cartItems, targetElement){
   
   if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`
   if (totalSavingsElement) totalSavingsElement.textContent = `$${totalSavings.toFixed(2)}`
-  if (shippingElement) shippingElement.textContent = shipping === `Free shipping` ? shipping : `$${shipping.toFxed(2)}`;
+  if (shippingElement) shippingElement.textContent = shipping;
   if (inklTaxElement) inklTaxElement.textContent = `$${inklTax.toFixed(2)}`
   if (orderTotalElement) orderTotalElement.textContent =`$${ orderTotal.toFixed(2)}`;
   if(targetElement){
