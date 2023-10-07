@@ -198,11 +198,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       const toggleButton = document.createElement("button");
       toggleButton.innerHTML = `<i class="fa-solid fa-angles-down"></i>`;
       toggleButton.className = "toggle-summary-button ";
+      
 
       const cartSummarySection = document.querySelector(".Cart_Summary");
-      if (cartSummarySection) {
+      if (cartSummarySection){        
         toggleButton.addEventListener("click", () => {
           cartSummarySection.classList.toggle("cart-summary-visible");
+
+      if (cartSummarySection.classList.contains("cart-summary-visible")) {
+        cartSummarySection.appendChild(goToCheckoutButton);
+      }else{
+        shoppingCartSection.appendChild(goToCheckoutButton);
+      }
         });
 
       }
