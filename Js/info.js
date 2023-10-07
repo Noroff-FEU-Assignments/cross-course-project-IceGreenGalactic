@@ -23,9 +23,7 @@ document.addEventListener("DOMContentLoaded", async()=>{
     document.title = ` ${jacket.title}`;
     createHTML(jacket);
 
-    const jacketTitle = jacket.title.replace (/ /g, "-").toLowerCase();
-    const newUrl = `info.html?id=${jacketTitle}`;
-    history.pushState({}, "", newUrl);
+  
     
   }else{
     if(window.location.pathname.includes("info.html")){
