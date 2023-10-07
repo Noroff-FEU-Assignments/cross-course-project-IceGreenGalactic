@@ -13,12 +13,19 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
+
 document.addEventListener("DOMContentLoaded", async()=>{
   try{
   const jacketData = await fetchJackets();
-  const jacketList = jacketData.find((jacket)=> jacket.id === id);
-  if (jacketList){
-    createHTML(jacketList);
+  const jacket = jacketData.find((jacket)=> jacket.id === id);
+
+  if (jacket){
+    document.title = ` ${jacket.title}`;
+    createHTML(jacket);
+
+    const jacketTitle = jacket.title.replace (/ /g, "-").toLowerCase();
+    const newUrl = `info.html?id=${jacketTitle}`;
+    history.pushState({}, "", newUrl);
     
   }else{
     if(window.location.pathname.includes("info.html")){
@@ -45,7 +52,7 @@ let sizeSelected = false;
 
 export function createHTML(info) {
   
-  let cssClass = "far";
+ 
   jacketContainer.innerHTML += `
                               <div class="Jacket_info ">
                                <div >
