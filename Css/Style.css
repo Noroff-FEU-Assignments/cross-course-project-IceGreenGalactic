@@ -1400,11 +1400,11 @@ Button:hover {
     .Index_Jackets-shop>div>i {
         position: absolute;
 
-.Index_Jackets-shop>div>a>img {
-    max-width: 150px;
-    height: 180px;
-    margin-bottom: 40px;
-}
+        .Index_Jackets-shop>div>a>img {
+            max-width: 150px;
+            height: 180px;
+            margin-bottom: 40px;
+        }
 
     }
 
@@ -1525,7 +1525,7 @@ Button:hover {
     .hamburger_bars {
         background-color: rgb(171, 251, 255);
         display: block;
-        padding: 10px 100% 10px 10px;
+        padding: 10px 100% 30px 10px;
         position: fixed;
         bottom: 0;
         left: 1;
