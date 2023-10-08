@@ -759,11 +759,6 @@ Button:hover {
 }
 
 
-
-
-
-
-
 .info-quantity {
     font-size: 0.8em;
     color: gray;
@@ -1358,7 +1353,7 @@ Button:hover {
         margin-left: 60%;
         margin-top: -60px;
     }
-}
+
 
 .CTA-Button {
     font-family: "Hind";
@@ -1503,7 +1498,6 @@ Button:hover {
 
 
 .checkbox_menu {
-    ;
     display: block;
 }
 
@@ -1780,7 +1774,6 @@ nav {
     max-height: 200px;
     background-image: linear-gradient(white, rgb(171, 251, 255), white);
     padding: 20px;
-    display: ;
 }
 
 .Checkout_Main,
@@ -2056,7 +2049,7 @@ header>.back-arrow {
 .back-arrow2 {
     display: none
 }
-}
+
 
 @media (max-width:580px) {
     .Shoppingbag>div>a>img {
@@ -2067,7 +2060,6 @@ header>.back-arrow {
         display: block;
     }
 
-    .cart-button-remove {}
 
     .Cart_Hedline {
         grid-template-columns: 20% 15% 15% 5% 15%;

@@ -256,21 +256,17 @@ const shoppingCartSection = document.querySelector(".Shoppingbag");
 
 function updateCartSummary(cartItems) {
   let subtotal = 0;
-  let totalSavings = 0;
   let shipping = 0;
   let inklTax = 0;
   let orderTotal = 0;
 
   cartItems.forEach((cartItem) => {
     subtotal += cartItem.totalPrice;
-    if (cartItem.onSale) {
-      totalSavings +=
-        (cartItem.price - cartItem.discountedPrice) * cartItem.quantity;
-    }
+  
 
     inklTax += cartItem.totalPrice * 0.5;
+    
   });
-
   if (subtotal < 500) {
     shipping = 10;
     orderTotal = subtotal + shipping;
@@ -280,17 +276,14 @@ function updateCartSummary(cartItems) {
   }
 
   const subtotalElement = cartSummarySection.querySelector(`.subtotal`);
-  const totalSavingsElement =
-    cartSummarySection.querySelector(`.total-savings`);
   const shippingElement = cartSummarySection.querySelector(".shipping");
   const inklTaxElement = cartSummarySection.querySelector(`.inkl-tax`);
-  const orderTotalElement = cartSummarySection.querySelector(`.Cart_Total`);
+  const orderTotalElement = cartSummarySection.querySelector(`.order-total-price`);
 
   if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-  if (totalSavingsElement)
-    totalSavingsElement.textContent = `$${totalSavings.toFixed(2)}`;
-  if (shippingElement) shippingElement.textContent = shipping;
+  if (shippingElement) shippingElement.textContent = typeof shipping === "string" ? shipping : `$${shipping.toFixed(2)}`;
   if (inklTaxElement) inklTaxElement.textContent = `$${inklTax.toFixed(2)}`;
-  if (orderTotalElement)
-    orderTotalElement.textContent = `$${orderTotal.toFixed(2)}`;
+  if (orderTotalElement)orderTotalElement.textContent = `$${orderTotal.toFixed(2)}`;
+
 }
+ 
