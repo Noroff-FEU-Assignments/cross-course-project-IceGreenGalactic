@@ -1604,7 +1604,7 @@ Button:hover {
 
     .Jacket_info {
         display: flex;
-        min-height: 100vh;
+        min-height: 00vh;
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
