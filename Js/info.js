@@ -67,7 +67,7 @@ export function createHTML(info) {
                                      <div class="Size-button"></div>
                                       <button class="Continue_button addedToCart"> Add to cart </button>
                                       <button class="cart_button"> </button>
-                                      <button class="cart-button-remove info-button-remove" style="display: none;"><i class="far fa-trash-can"></i></button> 
+                                      <button class="info-button-remove" style="display: none;"><i class="far fa-trash-can"></i></button> 
                                                                          </div >
                                          <img  src="${info.image}" alt="${ info.description}" />
                                          </div>`;
@@ -99,7 +99,7 @@ export function createHTML(info) {
 
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
   const cartButton = jacketContainer.querySelector(".cart_button");
-  const removeButton =jacketContainer.querySelector(".cart-button-remove");
+  const removeButton =jacketContainer.querySelector(".info-button-remove");
 
   const cart = getCartFromLocalStorage();
   const cartItem = cart.find((item)=> item.id === info.id && item.size === selectedSize);
@@ -151,7 +151,7 @@ export function createHTML(info) {
 function updateButtonText() {
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
   const cartButton = jacketContainer.querySelector(".cart_button");
-  const removeButton =jacketContainer.querySelector(".cart-button-remove");
+  const removeButton =jacketContainer.querySelector(".info-button-remove");
   const cart = getCartFromLocalStorage();
   const cartItem = cart.find((item)=> item.id === id && item.size === selectedSize);
 
