@@ -15,7 +15,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             const jacketList = await fetchJackets(jacketContainer)
             let favourites = getExistingFavs();
 
-            const femaleJackets = jacketList.filter((jacket) => jacket.gender === "Female");
+            
+
+            const femaleJackets = jacketList.filter((jacket) => {
+            return jacket.categories.some ((category) => category.name === "Female");
+        });
 
 
             if (femaleJackets.length > 0) {
