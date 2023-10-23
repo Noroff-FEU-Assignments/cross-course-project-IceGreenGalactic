@@ -17,10 +17,10 @@ const id = params.get("id");
 document.addEventListener("DOMContentLoaded", async()=>{
   try{
   const jacketData = await fetchJackets();
-  const jacket = jacketData.find((jacket)=> jacket.id === id);
+  const jacket = jacketData.find((jacket)=> jacket.id === parseInt(id,10));
 
   if (jacket){
-    document.title = ` ${jacket.title}`;
+    document.name = ` ${jacket.name}`;
     createHTML(jacket);
 
   
@@ -49,27 +49,37 @@ let selectedSize ="";
 let sizeSelected = false; 
 
 export function createHTML(info) {
+const image = info.images[0].src 
+const altText= info.images[0].alt
+  const price= (parseInt(info.prices.price, 10) /100).toLocaleString( 'nb-NO',{
+  style:`currency`,
+  currency: `NOK`
+
+ });
+ const discountedPrice= (parseInt(info.prices.sale_price, 10) /100).toLocaleString( 'nb-NO',{
+  style:`currency`,
+  currency: `NOK`
+ });
   
- 
   jacketContainer.innerHTML += `
                               <div class="Jacket_info ">
                                <div >
-                                 <h1 >${info.title}</h1>
+                                 <h1 >${info.name}</h1>
                                   <h2> Color: ${info.baseColor}</h2>
                                     <h3>${info.description}</h3>
                                     
                                     ${
                                       info.onSale
-                                        ? ` <p class="info_Price_original"> $${info.price}  </p>
-                                      <p class = "info_onSale_price">  $${info.discountedPrice}</p>`
-                                        : `<p class= "info_Price "> $${info.price}</p>`
+                                        ? ` <p class="info_Price_original"> ${price}  </p>
+                                      <p class = "info_onSale_price">  ${discountedPrice}</p>`
+                                        : `<p class= "info_Price "> ${price}</p>`
                                     }
                                      <div class="Size-button"></div>
                                       <button class="Continue_button addedToCart"> Add to cart </button>
                                       <button class="cart_button"> </button>
                                       <button class="info-button-remove" style="display: none;"><i class="far fa-trash-can"></i></button> 
                                                                          </div >
-                                         <img  src="${info.image}" alt="${ info.description}" />
+                                         <img  src="${image}" alt="${ altText}" />
                                          </div>`;
 
   const sizeButtonsContainer = jacketContainer.querySelector(".Size-button");
@@ -206,7 +216,7 @@ export function addToCart(jacket, selectedSize) {
   }else{
   cart.push({
     id: jacket.id,
-    title: jacket.title,
+    name: jacket.name,
     price: jacket.price,
     image: jacket.image,
     onSale: jacket.onSale,
