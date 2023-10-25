@@ -18,7 +18,6 @@ export async function fetchJackets() {
     }
     const jacketlist= await response.json();
     hideLoader();
-    console.log (jacketlist)
     return jacketlist;
   
       }catch (error){

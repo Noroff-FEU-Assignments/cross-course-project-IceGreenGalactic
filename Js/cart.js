@@ -8,8 +8,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   NavbarClosing();
 });
 
-function createCartItem(cartItem, jacket, cartContainer, favourites) {
+
+let orderTotal = 0;
+
+function createCartItem(cartItem, jacket, cartContainer, cartItems) {
+  const jacketTotalPrice = parseFloat(jacket.on_sale ? jacket.prices.sale_price : jacket.prices.regular_price);
+  cartItem.totalPrice = jacketTotalPrice * cartItem.quantity;
+
+
+cartItems.forEach((cartItem) =>{
+  orderTotal += cartItem.totalPrice;
+});
+console.log ("orderTotal:" , orderTotal);
+ 
+   cartItems.forEach((cartItem)=>{
+    orderTotal += cartItem.totalPrice
+   })
+console.log ("orderTotal:", orderTotal);
+
+
   const cart = getCartFromLocalStorage();
+  cart.forEach(cartItem =>{
+    cartItem.totalPrice = parseFloat(cartItem.totalPrice);
+  });
   const cartItemDiv = document.createElement("div");
   cartItemDiv.classList.add("Cart-Bergolos");
 
@@ -17,9 +38,8 @@ function createCartItem(cartItem, jacket, cartContainer, favourites) {
   imgLink.href = `/info.html?id=${jacket.id}`;
 
   const img = document.createElement("img");
-  img.src = jacket.image;
-  img.alt = jacket.description;
-
+  img.src = jacket.images[0].src 
+  img.alt = jacket.images[0].alt
   imgLink.appendChild(img);
 
   const priceDiv = document.createElement("div");
@@ -35,13 +55,13 @@ function createCartItem(cartItem, jacket, cartContainer, favourites) {
   const totalP = document.createElement("p");
   const sizeP = document.createElement("p");
 
-  titleH4.textContent = jacket.title;
+  titleH4.textContent = jacket.name;
   tagsH4.textContent = jacket.tags;
 
-  if (jacket.onSale) {
-    priceP.textContent = `$${jacket.discountedPrice}`;
+  if (jacket.on_sale) {
+    priceP.textContent = `$${jacket.prices.sale_price}`;
   } else {
-    priceP.textContent = `$${jacket.price}`;
+    priceP.textContent = `$${jacket.prices.price}`;
   }
 
   const quantityStepper = document.createElement("input");
@@ -55,7 +75,9 @@ function createCartItem(cartItem, jacket, cartContainer, favourites) {
     const newQuantity = parseInt(quantityStepper.value);
     if (!isNaN(newQuantity) && newQuantity >= 1 && newQuantity <= 20) {
       cartItem.quantity = newQuantity;
-      updateTotalPrice(cartItem, jacket);
+
+      cartItem.totalPrice = jacketTotalPrice * cartItem.quantity;
+      // updateTotalPrice(cartItem, jacket);
       saveCartToLocalStorage(cart);
       updateCartandSave();
       updateOrderTotal(cart);
@@ -63,15 +85,16 @@ function createCartItem(cartItem, jacket, cartContainer, favourites) {
     }
   });
 
-  const removeButton = document.createElement("button");
+  const removeButton = document.createElement("button");  
   removeButton.classList.add("cart-button-remove");
   removeButton.innerHTML = '<i class="far fa-trash-can"></i>';
   removeButton.addEventListener("click", () => {
     removeItemFromCart(cartItem, cartContainer);
   });
+  const size = jacket.attributes.find((attr)=> attr.name === "size");
 
-  totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
-  sizeP.textContent = cartItem.size;
+  totalP.textContent = `${cartItem.totalPrice.toFixed(2)}`;
+  sizeP.textContent = size;
 
   amountDiv.classList.add("amount");
   amountH4.textContent = cartItem.quantity;
@@ -96,14 +119,14 @@ function createCartItem(cartItem, jacket, cartContainer, favourites) {
 
   function updateTotalPrice(cartItem, jacket) {
     cartItem.totalPrice =
-      parseFloat(jacket.onSale ? jacket.discountedPrice : jacket.price) *
+      parseFloat(jacket.on_sale ? jacket.prices.sale_price : jacket.prices.price) *
       cartItem.quantity;
     totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
   }
 
   function updateCartandSave() {
     const index = cart.findIndex(
-      (item) => item.id === cartItem.id && item.size === cartItem.size
+      (item) => item.id === cartItem.id && cartItem.size === cartItem.size
     );
     if (index !== -1) {
       cart[index] = cartItem;
@@ -116,7 +139,7 @@ function createCartItem(cartItem, jacket, cartContainer, favourites) {
     quantitySpan.textContent = cartItem.quantity;
     amountH4.textContent = cartItem.quantity;
     const index = cart.findIndex(
-      (item) => item.id === cartItem.id && item.size === cartItem.size
+      (item) => item.id === cartItem.id && cartItem.size === cartItem.size
     );
     if (index !== -1) {
       cart[index].quantity = cartItem.quantity;
@@ -130,7 +153,7 @@ function createCartItem(cartItem, jacket, cartContainer, favourites) {
     const indexesToRemove = [];
 
     cart.forEach((item, index) => {
-      if (item.id === cartItem.id && item.size === cartItem.size) {
+      if (item.id === cartItem.id && cartItem.size === cartItem.size) {
         indexesToRemove.push(index);
       }
     });
@@ -172,13 +195,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         emptyCartMessage.classList.add("Index__Sale");
         cartContainer.appendChild(emptyCartMessage);
       } else {
-        cartItems.forEach((cartItem) => {
-          const jacket = jacketList.find(
-            (jacketItem) => jacketItem.id === cartItem.id
-          );
+        cartItems.forEach((cartItem) => {const jacket = jacketList.find((jacketItem) => jacketItem.id === cartItem.id);
 
           if (jacket) {
-            createCartItem(cartItem, jacket, cartContainer, favourites);
+            createCartItem(cartItem, jacket, cartContainer, favourites, cartItems);
           } else {
             const errorMessage = "jacket not found in the cart";
             const messageType = "Error";
@@ -218,7 +238,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       cartItems.forEach((cartItem) => {
         orderTotal += cartItem.totalPrice;
       });
-
+      
+      console.log("orderTotal:", orderTotal);
       const orderTotalElement = document.createElement("p");
       orderTotalElement.classList.add("Cart_Total");
       orderTotalElement.textContent = `Total: $${orderTotal.toFixed(2)}`;
@@ -234,6 +255,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       shoppingCartSection.appendChild(goToCheckoutButton);
 
       updateCartSummary(cartItems, shoppingCartSection);
+      
     }
   } catch (error) {
     console.error(error);
@@ -247,6 +269,7 @@ function updateOrderTotal(cartItems) {
   });
   const orderTotalElement = document.querySelector(".Cart_Total");
   if (orderTotalElement) {
+    console.log("Updating orderTotalElement:", orderTotal.toFixed(2));
     orderTotalElement.textContent = `Total: $${orderTotal.toFixed(2)}`;
   }
 }
@@ -254,7 +277,7 @@ function updateOrderTotal(cartItems) {
 const cartSummarySection = document.querySelector(".Cart_Summary");
 const shoppingCartSection = document.querySelector(".Shoppingbag");
 
-function updateCartSummary(cartItems) {
+function updateCartSummary(cartItems,cartSummarySection) {
   let subtotal = 0;
   let shipping = 0;
   let inklTax = 0;
@@ -262,18 +285,19 @@ function updateCartSummary(cartItems) {
 
   cartItems.forEach((cartItem) => {
     subtotal += cartItem.totalPrice;
-  
-
     inklTax += cartItem.totalPrice * 0.5;
     
   });
   if (subtotal < 500) {
     shipping = 10;
-    orderTotal = subtotal + shipping;
   } else {
-    shipping = "Free shipping";
-    orderTotal = subtotal;
+    shipping =0;
+    
   }
+orderTotal = subtotal + shipping;
+console.log("subtotal:", subtotal);
+console.log("shipping:", shipping);
+console.log("orderTotal:", orderTotal);
 
   const subtotalElement = cartSummarySection.querySelector(`.subtotal`);
   const shippingElement = cartSummarySection.querySelector(".shipping");
@@ -281,7 +305,7 @@ function updateCartSummary(cartItems) {
   const orderTotalElement = cartSummarySection.querySelector(`.order-total-price`);
 
   if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-  if (shippingElement) shippingElement.textContent = typeof shipping === "string" ? shipping : `$${shipping.toFixed(2)}`;
+  if (shippingElement) shippingElement.textContent = shipping === 0 ? "Free shipping" : `$${shipping.toFixed(2)}`;
   if (inklTaxElement) inklTaxElement.textContent = `$${inklTax.toFixed(2)}`;
   if (orderTotalElement)orderTotalElement.textContent = `$${orderTotal.toFixed(2)}`;
 
