@@ -10,6 +10,7 @@ let sizeSelected = false;
 let currentTextIndex = 0;
 
 
+
 document.addEventListener("DOMContentLoaded", async () => {
   NavbarClosing();
 });
@@ -45,10 +46,11 @@ document.addEventListener("DOMContentLoaded", async()=>{
 
 const buttonTexts = ["Add to cart", "Added!"];
 
-// const storedButtonText = localStorage.getItem("addToCartButtonText");
-// if (storedButtonText && buttonTexts.includes(storedButtonText)) {
-//   currentTextIndex = buttonTexts.indexOf(storedButtonText);
-// }
+const storedButtonText = localStorage.getItem("addToCartButtonText");
+if (storedButtonText && buttonTexts.includes(storedButtonText)) {
+  currentTextIndex = buttonTexts.indexOf(storedButtonText);
+}
+
 
 export function createHTML(info) {
 const image = info.images[0].src 
@@ -114,15 +116,13 @@ const altText= info.images[0].alt
       sizeButtonsContainer.appendChild(sizeButton);
     });
   } 
-  }
+  }   
 
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
-
-  
   const cartButton = jacketContainer.querySelector(".cart_button");
   const removeButton =jacketContainer.querySelector(".info-button-remove");
   const cart = getCartFromLocalStorage();
-  const cartItem = cart.find((item)=> item.id === item.id && item.size === selectedSize);
+  const cartItem = cart.find((item)=> item.id === info.id && item.size === selectedSize);
 
   if (cartItem) {
     currentTextIndex = 1;
@@ -150,17 +150,12 @@ console.log ("quantity", quantity);
 console.log("cart content", cart);
 
   addToCartButton.addEventListener("click", () => {
-    console.log("Add to cart button clicked");
 
-    if (sizeSelected) {
-     if (currentTextIndex === 0) {
+    if (sizeSelected){
        addToCart(info, selectedSize);
       currentTextIndex = 1;
       updateButtonText (quantity, cartItem);
-    }else if (currentTextIndex === 1){
-      const cartItem = addToCart(info, selectedSize);
-      addToCart(info, selectedSize);
-    }
+   
     }
   });
 
@@ -181,8 +176,6 @@ console.log("cart content", cart);
 export function addToCart(jacket, selectedSize) {
   const cart = getCartFromLocalStorage();
   cartItem = cart.find((item)=> item.id === jacket.id && item.size === selectedSize);
-
-  // const itemIndex = cart.findIndex((item) => item.id === jacket.id && item.size === selectedSize);
   
   if (cartItem){
     cartItem.quantity +=1;
@@ -205,6 +198,7 @@ export function addToCart(jacket, selectedSize) {
 }
 cartItem.totalPrice = cartItem.itemPrice * cartItem.quantity;
   saveCartToLocalStorage(cart);
+  return cartItem;
 
   incrementQuantity(jacket, selectedSize);
   updateButtonText(cartItem);
