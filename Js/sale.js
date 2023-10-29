@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       jacketList = await fetchJackets();
 
       let favourites = getExistingFavs();
-      const onSaleJackets = jacketList.filter((jacket) => jacket.onSale);
+      const onSaleJackets = jacketList.filter((jacket) => jacket.on_sale);
 
       if (onSaleJackets.length > 0) {
         displayJackets(
