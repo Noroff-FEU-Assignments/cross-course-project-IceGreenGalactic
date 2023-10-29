@@ -50,7 +50,6 @@ if (storedButtonText && buttonTexts.includes(storedButtonText)) {
 }
 
 export function createHTML(info, cartItem) {
-  console.log("Creating HTML for jacket with info:", info);
   const image = info.images[0].src;
   const altText = info.images[0].alt;
   const price = (parseInt(info.prices.regular_price, 10) / 100).toLocaleString('nb-NO', {
@@ -161,7 +160,6 @@ export function addToCart(jacket, selectedSize) {
   const cart = getCartFromLocalStorage();
   let itemIndex = cart.findIndex((item) => item.id === jacket.id && item.size === selectedSize);
   let cartItem;
-  console.log("Adding item to the cart:", jacket, selectedSize);
   
   if (itemIndex !== -1){
     cartItem = cart[itemIndex];
@@ -207,7 +205,6 @@ export function addToCart(jacket, selectedSize) {
 function updateButtonText(jacket, selectedSize) {
   const cart = getCartFromLocalStorage ();
   const cartItem = cart.find (item => item.id === jacket.id && item.size === selectedSize)
-  console.log("Updating button text with cart item:", itemQuantity);
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
   const cartButton = jacketContainer.querySelector(".cart_button");
   const removeButton = jacketContainer.querySelector(".info-button-remove");
@@ -227,7 +224,6 @@ function updateButtonText(jacket, selectedSize) {
     addToCartButton.innerHTML = quantitytext.replace(itemQuantity, quantitySpan.outerHTML);
     
 
-    console.log ("itemQuantity", itemQuantity)
    
   } else {
     addToCartButton.textContent = "Add to cart";

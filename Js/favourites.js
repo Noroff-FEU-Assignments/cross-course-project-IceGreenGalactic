@@ -2,16 +2,12 @@ import { createHTML, handleClick } from "./jacketsList.js";
 import { getExistingFavs, toggleFavorite } from "./utils/favFunctions.js";
 import { NavbarClosing } from "./utils/hamburgerMenu.js";
 
-
-
 document.addEventListener("DOMContentLoaded", async () => {
   NavbarClosing();
 });
-
 document.addEventListener("DOMContentLoaded", () => {
   let favourites = getExistingFavs();
   const jacketContainer = document.querySelector(".jackets-Shop");
-  
 
   if (favourites.length === 0) {
     jacketContainer.innerHTML = "favourites is empty";

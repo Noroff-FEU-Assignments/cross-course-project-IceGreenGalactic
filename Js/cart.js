@@ -24,12 +24,12 @@ function createCartItem(cartItem, jacket, cartContainer, cartItems, cartSummaryS
 cartItems.forEach((cartItem) =>{
   orderTotal += cartItem.totalPrice;
 });
-console.log ("orderTotal:" , orderTotal);
+
  
    cartItems.forEach((cartItem)=>{
     orderTotal += cartItem.totalPrice
    })
-console.log ("orderTotal:", orderTotal);
+
 
 
   const cart = getCartFromLocalStorage();
@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         orderTotal += cartItem.totalPrice;
       });
       
-      console.log("orderTotal:", orderTotal);
+
       const orderTotalElement = document.createElement("p");
       orderTotalElement.classList.add("Cart_Total");
       orderTotalElement.textContent = `Total: ${formatPrice(orderTotal)}`;
@@ -274,7 +274,6 @@ function updateOrderTotal(cartItems) {
   });
   const orderTotalElement = document.querySelector(".Cart_Total");
   if (orderTotalElement) {
-    console.log("Updating orderTotalElement:", orderTotal.toFixed(2));
     orderTotalElement.textContent = `Total: $${orderTotal.toFixed(2)}`;
   }
 }
@@ -299,9 +298,6 @@ function updateCartSummary(cartItems, cartSummarySection,cartSummaryPrice) {
     
   }
 orderTotal = subtotal + shipping;
-console.log("subtotal:", subtotal);
-console.log("shipping:", shipping);
-console.log("orderTotal:", orderTotal);
 
   const subtotalElement = cartSummarySection.querySelector(`.subtotal`);
   const shippingElement = cartSummarySection.querySelector(".shipping");

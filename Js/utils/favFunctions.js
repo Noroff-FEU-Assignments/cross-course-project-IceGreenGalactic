@@ -7,9 +7,7 @@ export function toggleFavorite(jacket) {
     const existingItemIndex = filterFavs.findIndex(
       (fav) => fav.id === jacket.id
     );
-    console.log("jacket.id:", jacket.id);
-    console.log("currentFavs:", currentFavs);
-    console.log("existingItemIndex:", existingItemIndex);
+
     if (existingItemIndex === -1) {
       jacket.favorite = true;
       currentFavs.push(jacket);

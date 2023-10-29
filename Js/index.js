@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const favJackets = jacketList.filter((jacket) => {
         return jacket.tags.some((tag) => tag.name === `favorite` );
       }); 
-      console.log (favJackets)
+   
       if (favJackets.length > 0) {
         displayJackets(
           favJackets.length > 0 ? favJackets : favJackets.slice(0, 5),
