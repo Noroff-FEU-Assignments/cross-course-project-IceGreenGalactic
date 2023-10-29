@@ -4,7 +4,7 @@ import { hideLoader, showLoader } from "./utils/loader.js";
 import { displayMessage } from "./utils/errorMessage.js";
 import { NavbarClosing } from "./utils/hamburgerMenu.js";
 
-const url = "http://rainydays.local/wp-json/wc/store/products?per_page=100";
+const url = "https://www.galacticvortexcode.no/wp-json/wc/store/products?per_page=100";
 
 document.addEventListener("DOMContentLoaded", async()=>{
     NavbarClosing();
@@ -64,10 +64,7 @@ const altText = jacket.images[0].alt
         <a href="Info.html?id=${jacket.id} "class= "Jacket_info">
         <img  src="${image}" alt="${altText}" />
         <h2 >${jacket.name}</h2></a>
-        ${
-          jacket.onSale
-          ?
-          ` <p class="Price original-price"> ${price} kr  </p>
+        ${jacket.onSale?` <p class="Price original-price"> ${price} kr  </p>
           <p class = "onSale-price">  ${discountedPrice} kr</p>
           `
           : `<p class= "Price"> ${price} kr</p>`
