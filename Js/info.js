@@ -1,8 +1,6 @@
-import { hideLoader, showLoader } from "./utils/loader.js";
 import { displayMessage } from "./utils/errorMessage.js";
 import { NavbarClosing } from "./utils/hamburgerMenu.js";
 import { fetchJackets } from "./jacketsList.js";
-
 
 let quantity = parseInt(localStorage.getItem("quantity")) || 0;
 let selectedSize = "";
@@ -10,24 +8,27 @@ let sizeSelected = false;
 let currentTextIndex = 0;
 let jacket;
 
-document.addEventListener("DOMContentLoaded", async () => {
-  NavbarClosing();
-});
+
 
 const jacketContainer = document.querySelector(".jacket-container");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
+const url = `https://www.galacticvortexcode.no/wp-json/wc/store/products/${id}`;
 
 document.addEventListener("DOMContentLoaded", async () => {
+  NavbarClosing();
   try {
-    const jacketData = await fetchJackets();
-    jacket = jacketData.find((jacket) => jacket.id === parseInt(id, 10));
-
+    const response = await fetch(url)
+    const jacketData = await response.json();
+    jacket = jacketData;
+    
     if (jacket) {
       document.title = `${jacket.name}`;
       const cart = getCartFromLocalStorage();
-      const cartItem = cart.find((item) => item.id === jacket.id && item.size === selectedSize);
+      const cartItem = cart.find(
+        (item) => item.id === jacket.id && item.size === selectedSize
+      );
 
       createHTML(jacket, cartItem);
     } else {
@@ -52,11 +53,16 @@ if (storedButtonText && buttonTexts.includes(storedButtonText)) {
 export function createHTML(info, cartItem) {
   const image = info.images[0].src;
   const altText = info.images[0].alt;
-  const price = (parseInt(info.prices.regular_price, 10) / 100).toLocaleString('nb-NO', {
-    style: "currency",
-    currency: "NOK",
-  });
-  const discountedPrice = (parseInt(info.prices.sale_price, 10) / 100).toLocaleString('nb-NO', {
+  const price = (parseInt(info.prices.regular_price, 10) / 100).toLocaleString(
+    "nb-NO",
+    {
+      style: "currency",
+      currency: "NOK",
+    }
+  );
+  const discountedPrice = (
+    parseInt(info.prices.sale_price, 10) / 100
+  ).toLocaleString("nb-NO", {
     style: "currency",
     currency: "NOK",
   });
@@ -105,7 +111,9 @@ export function createHTML(info, cartItem) {
           resetButtonText();
 
           const cart = getCartFromLocalStorage();
-          const cartItem = cart.find ((item)=> item.id === jacket.id && item.size === selectedSize);
+          const cartItem = cart.find(
+            (item) => item.id === jacket.id && item.size === selectedSize
+          );
           itemQuantity = cartItem ? cartItem.quantity : 0;
           updateButtonText(jacket, selectedSize);
         });
@@ -135,12 +143,10 @@ export function createHTML(info, cartItem) {
   }
 
   addToCartButton.addEventListener("click", () => {
-
-    if (sizeSelected){
-       addToCart(info, selectedSize);
+    if (sizeSelected) {
+      addToCart(info, selectedSize);
       currentTextIndex = 1;
       updateButtonText(jacket, selectedSize);
-   
     }
   });
 
@@ -158,19 +164,23 @@ export function createHTML(info, cartItem) {
 let itemQuantity = 0;
 export function addToCart(jacket, selectedSize) {
   const cart = getCartFromLocalStorage();
-  let itemIndex = cart.findIndex((item) => item.id === jacket.id && item.size === selectedSize);
+  let itemIndex = cart.findIndex(
+    (item) => item.id === jacket.id && item.size === selectedSize
+  );
   let cartItem;
-  
-  if (itemIndex !== -1){
+
+  if (itemIndex !== -1) {
     cartItem = cart[itemIndex];
     cartItem.quantity += 1;
-    itemQuantity = cartItem.quantity
-   cartItem.totalPrice += jacket.prices.price;
-    
+    itemQuantity = cartItem.quantity;
+    cartItem.totalPrice += jacket.prices.price;
+
     saveCartToLocalStorage(cart);
     updateButtonText(jacket, selectedSize);
   } else {
-    const itemPrice = jacket.on_sale ? parseFloat(jacket.prices.sale_price) : parseFloat(jacket.prices.regular_price);
+    const itemPrice = jacket.on_sale
+      ? parseFloat(jacket.prices.sale_price)
+      : parseFloat(jacket.prices.regular_price);
 
     cart.push({
       id: jacket.id,
@@ -195,7 +205,7 @@ export function addToCart(jacket, selectedSize) {
   const cartButton = jacketContainer.querySelector(".cart_button");
   const removeButton = jacketContainer.querySelector(".info-button-remove");
 
-  addToCartButton.style.display ="block";
+  addToCartButton.style.display = "block";
   cartButton.style.display = "block";
   removeButton.style.display = "block";
 
@@ -203,49 +213,51 @@ export function addToCart(jacket, selectedSize) {
 }
 
 function updateButtonText(jacket, selectedSize) {
-  const cart = getCartFromLocalStorage ();
-  const cartItem = cart.find (item => item.id === jacket.id && item.size === selectedSize)
+  const cart = getCartFromLocalStorage();
+  const cartItem = cart.find(
+    (item) => item.id === jacket.id && item.size === selectedSize
+  );
   const addToCartButton = jacketContainer.querySelector(".addedToCart");
   const cartButton = jacketContainer.querySelector(".cart_button");
   const removeButton = jacketContainer.querySelector(".info-button-remove");
 
-  if (cartItem){
-   
-
+  if (cartItem) {
     addToCartButton.textContent = `Added ${itemQuantity}`;
-    addToCartButton.style.display ="block";
+    addToCartButton.style.display = "block";
     cartButton.style.display = "block";
     removeButton.style.display = "block";
 
     const quantitytext = addToCartButton.textContent;
     const quantitySpan = document.createElement("span");
     quantitySpan.textContent = itemQuantity;
-    quantitySpan.classList.add ("info-quantity");
-    addToCartButton.innerHTML = quantitytext.replace(itemQuantity, quantitySpan.outerHTML);
-    
-
-   
+    quantitySpan.classList.add("info-quantity");
+    addToCartButton.innerHTML = quantitytext.replace(
+      itemQuantity,
+      quantitySpan.outerHTML
+    );
   } else {
     addToCartButton.textContent = "Add to cart";
-    addToCartButton.style.display="block";
-    cartButton.style.display= "none";
+    addToCartButton.style.display = "block";
+    cartButton.style.display = "none";
     removeButton.style.display = "none";
   }
   localStorage.setItem("addToCartButtonText", addToCartButton.textContent);
 }
 
-function resetButtonText (){
-  const addToCartButton = jacketContainer.querySelector (".addedToCart");
+function resetButtonText() {
+  const addToCartButton = jacketContainer.querySelector(".addedToCart");
   addToCartButton.textContent = "Add to cart";
   currentTextIndex = 0;
-  localStorage.setItem ("addToCartButtonText", addToCartButton.textContent)
+  localStorage.setItem("addToCartButtonText", addToCartButton.textContent);
 }
 
-function removeFromCart(jacket, selectedSize){
+function removeFromCart(jacket, selectedSize) {
   const cart = getCartFromLocalStorage();
-  let itemIndex = cart.findIndex((item) => item.id === jacket.id && item.size === selectedSize);
+  let itemIndex = cart.findIndex(
+    (item) => item.id === jacket.id && item.size === selectedSize
+  );
 
-  if (itemIndex !== -1){
+  if (itemIndex !== -1) {
     cart.splice(itemIndex, 1);
     saveCartToLocalStorage(cart);
   }
@@ -258,7 +270,7 @@ export function saveCartToLocalStorage(cart) {
 export function getCartFromLocalStorage() {
   try {
     const cart = localStorage.getItem("shoppingCart");
-    return Array.isArray(cart) ? cart : JSON.parse (cart) || [];
+    return Array.isArray(cart) ? cart : JSON.parse(cart) || [];
   } catch (error) {
     return [];
   }

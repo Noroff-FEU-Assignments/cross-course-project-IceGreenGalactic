@@ -61,7 +61,7 @@ cartItems.forEach((cartItem) =>{
   const sizeP = document.createElement("p");
 
   titleH4.textContent = jacket.name;
-  tagsH4.textContent = jacket.tags[0];
+  tagsH4.textContent = jacket.categories[0].name;
 
   
   if (jacket.on_sale) {
