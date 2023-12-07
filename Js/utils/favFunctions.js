@@ -1,22 +1,22 @@
 export function toggleFavorite(jacket) {
   try {
-    if(jacket && jacket.id){
+    if (jacket && jacket.id) {
       jacket.id = parseInt(jacket.id, 10);
-    const currentFavs = getExistingFavs();
-    const filterFavs = currentFavs.filter((fav) => fav);
-    const existingItemIndex = filterFavs.findIndex(
-      (fav) => fav.id === jacket.id
-    );
+      const currentFavs = getExistingFavs();
+      const filterFavs = currentFavs.filter((fav) => fav);
+      const existingItemIndex = filterFavs.findIndex(
+        (fav) => fav.id === jacket.id
+      );
 
-    if (existingItemIndex === -1) {
-      jacket.favorite = true;
-      currentFavs.push(jacket);
-    } else {
-      jacket.favorite = false;
-      currentFavs.splice(existingItemIndex, 1);
+      if (existingItemIndex === -1) {
+        jacket.favorite = true;
+        currentFavs.push(jacket);
+      } else {
+        jacket.favorite = false;
+        currentFavs.splice(existingItemIndex, 1);
+      }
+      saveFavs(currentFavs);
     }
-    saveFavs(currentFavs);
-  }
   } catch (error) {
     console.error("Error toggling favorite:", error);
   }
