@@ -1,6 +1,6 @@
 # RainyDays
 
-![image](images/RainyDays-Home-Screenshot.png)
+![image](./Images/RainyDays-Home-Screenshot.png)
 
 A web shop to sell RainyDays jackets
 
