@@ -5,8 +5,9 @@
 A web shop to sell RainyDays jackets
 
 ## Description
+Create a captivating online store for men's and women's jackets, emphasizing durability and versatility for outdoor activities.
 
-Want to sell the jakets for RainyDays to target audience men and women aged 30-50 whose interests are: being outdoors, hiking, exploring, skiing, camping, canoeing.
+Target audience men and women aged 30-50 whose interests are: being outdoors, hiking, exploring, skiing, camping, canoeing.
 
 - Sell jackets
 - Show favourites
@@ -50,6 +51,7 @@ npm open index with "open with live server" or Alt+L Alt+O
 
 
 ## Contact
+[My LinkedIn page](https://www.linkedin.com/in/kristine-tyrholm-7902172a4)
 
 
 
