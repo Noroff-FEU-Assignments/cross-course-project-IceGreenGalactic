@@ -755,6 +755,7 @@ Button:hover {
 }
 
 .Checkout_Summary {
+  display: block;
   background-image: linear-gradient(white, rgb(171, 251, 255), white);
   max-width: 400px;
 
@@ -765,7 +766,7 @@ Button:hover {
 .Shoppingbag_Summary {
   display: block;
   max-height: 600px;
-  max-width: fit-content;
+  max-width: 350px;
   margin: 30px;
   justify-content: center;
   text-align: center;
@@ -1138,6 +1139,33 @@ Button:hover {
     margin-left: 65%;
     margin-top: -80px;
   }
+
+  
+.Checkout_Summary {
+  display: block;
+  background-image: linear-gradient(white, rgb(171, 251, 255), white);
+  max-width: 350px;
+}
+
+.Shoppingbag_Summary {
+
+  max-width: 300px;
+  margin: 30px;
+ 
+}
+
+.Shoppingbag_Summary > div {
+  padding: 10px 0px 0px 0px;
+
+}
+
+.Shoppingbag_Summary > div > img {
+  max-height: 180px;
+
+  padding: 0px 20px 0px 20px;
+
+}
+
 }
 
 @media (max-width: 785px) {
@@ -1163,6 +1191,23 @@ Button:hover {
   .Delivery > div > h1 {
     font-size: 1.3em;
   }
+  
+
+.Shoppingbag_Summary {
+  display: block;
+  max-height: 600px;
+  max-width: 300px;
+  margin: 20px;
+
+}
+
+
+
+.Shoppingbag_Summary > div > img {
+  max-height: 140px;
+
+}
+
 }
 
 @media (max-width: 675px) {

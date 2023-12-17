@@ -17,11 +17,17 @@ function createCartItem (cartItem, jacket){
           const textContainer = document.createElement("div");
 
           
-          const img = document.createElement("img");
-          img.src = jacket.image;
-          img.alt = jacket.description;
-          
+          function formatPrice(price) {
+            return (price / 100).toLocaleString("nb-NO", {
+              style: "currency",
+              currency: "NOK",
+            });
+          }
     
+  const img = document.createElement("img");
+  img.src = jacket.images[0].src;
+  img.alt = jacket.images[0].alt;
+
 
           const titleH2 = document.createElement("h2");
           const priceH2 = document.createElement("h2");
@@ -32,10 +38,10 @@ function createCartItem (cartItem, jacket){
 
           titleH2.textContent = jacket.title;
 
-          if (jacket.onSale) {
-            priceH2.textContent = `$${jacket.discountedPrice}`;
+          if (jacket.on_sale) {
+            priceH2.textContent = formatPrice (jacket.prices.sale_price);
           }else{
-            priceH2.textContent = `$${jacket.price}`;
+            priceH2.textContent = formatPrice(jacket.prices.regular_price);
           }
 
     
@@ -43,7 +49,7 @@ function createCartItem (cartItem, jacket){
 
 
 
-          totalH2.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
+          totalH2.textContent = formatPrice (cartItem.totalPrice);
           sizeP.textContent = cartItem.size;
 
           
