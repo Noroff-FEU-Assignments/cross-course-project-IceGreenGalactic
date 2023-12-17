@@ -1,9 +1,5 @@
 import { fetchJackets, createHTML, handleClick } from "./jacketsList.js";
-import {
-  getExistingFavs,
-  toggleFavorite,
-  saveFavs,
-} from "./utils/favFunctions.js";
+import {  getExistingFavs, toggleFavorite,  saveFavs,} from "./utils/favFunctions.js";
 import { NavbarClosing } from "./utils/hamburgerMenu.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -17,28 +13,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (jacketContainer) {
       jacketList = await fetchJackets();
 
-      let favourites = getExistingFavs();
-      const favJackets = jacketList.filter((jacket) => {
+      let userFavorites = getExistingFavs();
+      const apiFavorites = jacketList.filter((jacket) => {
         return jacket.tags.some((tag) => tag.name === `favorite` );
       }); 
    
-      if (favJackets.length > 0) {
+      if (apiFavorites.length > 0) {
         displayJackets(
-          favJackets.length > 0 ? favJackets : favJackets.slice(0, 5),
+          apiFavorites.length > 0 ? apiFavorites : apiFavorites.slice(0, 5),
           jacketContainer,
-          favourites
+          userFavorites
         );
         jacketContainer.addEventListener("click", (e) => {
           if (e.target.classList.contains("fa-heart")) {
             const clicketJacketID = e.target.dataset.id;
-            const clicketJacket = favJackets.find(
+            const clicketJacket = apiFavorites.find(
               (jacket) => jacket.id === clicketJacketID
             );
 
-            handleClick(e.target, favourites, jacketContainer);
+            handleClick(e.target, userFavorites, jacketContainer);
             toggleFavorite(clicketJacket);
 
-            favourites = getExistingFavs();
+            userFavorites = getExistingFavs();
           }
         });
       } else {
@@ -51,11 +47,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       "an error occured while fetching data. Please try again later";
     return [];
   }
-  function displayJackets(favJackets, jacketContainer, favourites) {
+  function displayJackets(apiFavorites, jacketContainer, userFavorites) {
     jacketContainer.innerHTML = "";
 
-    favJackets.forEach((jacket) => {
-      createHTML(jacket, jacketContainer, favourites);
+    apiFavorites.forEach((jacket) => { 
+      createHTML(jacket, jacketContainer, userFavorites);
     });
   }
 });

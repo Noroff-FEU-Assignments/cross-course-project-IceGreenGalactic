@@ -1,6 +1,6 @@
 
 import { fetchJackets, createHTML, handleClick } from "./jacketsList.js";
-import { getExistingFavs, toggleFavorite } from "./utils/favFunctions.js";
+import { getExistingFavs, toggleFavorite, saveFavs } from "./utils/favFunctions.js";
 import { NavbarClosing } from "./utils/hamburgerMenu.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (jacketContainer) {
 
             const jacketList = await fetchJackets(jacketContainer)
-            let favourites = getExistingFavs();
+            let userFavorites = getExistingFavs();
 
             
 
@@ -24,16 +24,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (maleJackets.length > 0) {
                 maleJackets.forEach((jacket) => {
-                    createHTML(jacket, jacketContainer, favourites);
+                    createHTML(jacket, jacketContainer, userFavorites);
                 });
 
                 jacketContainer.addEventListener("click", (e) => {
                     if (e.target.classList.contains("fa-heart")) {
                         const clicketJacketID = e.target.dataset.id;
                         const clicketJacket = jacketList.find((jacket) => jacket.id === clicketJacketID);
-                        handleClick(e.target, favourites, jacketContainer);
+                        handleClick(e.target, userFavorites, jacketContainer);
                         toggleFavorite(clicketJacket);
-                        favourites = getExistingFavs();
+                        userFavorites = getExistingFavs();
 
 
                     }

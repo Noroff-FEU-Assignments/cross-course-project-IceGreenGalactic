@@ -378,7 +378,8 @@ Button:hover {
 
 .Index_Jackets-shop {
   max-width: 100%;
-  max-height: 500px;
+  max-height: 900px;
+  height: 460px;
   overflow-y: hidden;
   overflow-x: scroll;
   white-space: nowrap;
@@ -478,8 +479,8 @@ Button:hover {
 .onSale-price {
   font-weight: 900;
   position: absolute;
-  top: 95%;
-  left: 64%;
+  top: 100%;
+  left:50%;
   transform: translate(-50%, -50%);
   white-space: nowrap;
   color: red;
@@ -1287,6 +1288,7 @@ Button:hover {
   .Index_Jackets-shop {
     max-width: 100%;
     max-height: 500px;
+    height: 280px;
     margin-bottom: 50px;
   }
 

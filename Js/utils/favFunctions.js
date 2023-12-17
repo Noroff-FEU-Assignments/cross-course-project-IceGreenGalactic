@@ -2,41 +2,42 @@ export function toggleFavorite(jacket) {
   try {
     if (jacket && jacket.id) {
       jacket.id = parseInt(jacket.id, 10);
-      const currentFavs = getExistingFavs();
-      const filterFavs = currentFavs.filter((fav) => fav);
-      const existingItemIndex = filterFavs.findIndex(
-        (fav) => fav.id === jacket.id
-      );
+      const userFavorites = getExistingFavs();
+      const existingItemIndex = userFavorites.findIndex((fav) => fav.id === jacket.id);
 
       if (existingItemIndex === -1) {
         jacket.favorite = true;
-        currentFavs.push(jacket);
+        userFavorites.push(jacket);
       } else {
-        jacket.favorite = false;
-        currentFavs.splice(existingItemIndex, 1);
+        const existingItem = userFavorites[existingItemIndex];
+        existingItem.favorite = !existingItem.favorite
+
+        if(!existingItem.favorite){
+        userFavorites.splice(existingItemIndex, 1);
       }
-      saveFavs(currentFavs);
+    }
+    saveFavs(userFavorites);
     }
   } catch (error) {
-    console.error("Error toggling favorite:", error);
+    console.error("Error toggling favorite:", error); 
   }
 }
 export function getExistingFavs() {
   try {
-    const favs = localStorage.getItem("favourites");
-    if (favs === null) {
+    const userFavorites = localStorage.getItem("userFavorites");
+    if (userFavorites === null) {
       return [];
     }
-    return JSON.parse(favs);
+    return JSON.parse(userFavorites);
   } catch (error) {
     console.error("Error getting existing favorites:", error);
     return [];
   }
 }
-export function saveFavs(favs) {
+export function saveFavs(userFavorites) {
   try {
-    localStorage.setItem("favourites", JSON.stringify(favs));
+    localStorage.setItem("userFavorites", JSON.stringify(userFavorites));
   } catch (error) {
-    console.error("Error saving favourites:", error);
+    console.error("Error saving favorites:", error);
   }
 }

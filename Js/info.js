@@ -51,21 +51,23 @@ if (storedButtonText && buttonTexts.includes(storedButtonText)) {
 }
 
 export function createHTML(info, cartItem) {
-  const image = info.images[0].src;
-  const altText = info.images[0].alt;
-  const price = (parseInt(info.prices.regular_price, 10) / 100).toLocaleString(
+  const image = info.images && info.images.length >0 ? info.images[0].src : "";
+  const altText = info.images && info.images.length >0 ? info.images[0].alt: "";
+  const priceInfo = info.prices || {};
+  const regularPrice = info.prices?.regular_price ? (parseInt(info.prices.regular_price, 10) /100).toLocaleString(
     "nb-NO",
     {
       style: "currency",
       currency: "NOK",
-    }
-  );
-  const discountedPrice = (
-    parseInt(info.prices.sale_price, 10) / 100
-  ).toLocaleString("nb-NO", {
+    })
+    : "Regular Price N/A";
+  const discountedPrice = info.prices?.sale_price ? (
+    parseInt(info.prices.sale_price, 10) / 100).toLocaleString("nb-NO", {
     style: "currency",
     currency: "NOK",
-  });
+  })
+  : "Regular Price N/A";
+  const price = regularPrice;
 
   jacketContainer.innerHTML += `
     <div class="Jacket_info ">

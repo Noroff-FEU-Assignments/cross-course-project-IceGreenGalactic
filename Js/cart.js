@@ -80,6 +80,8 @@ function createCartItem(
   quantityStepper.classList.add("cart-quantity");
 
   quantityStepper.addEventListener("input", () => {
+    const cartSummarySection = document.querySelector(".Cart_Summary");
+
     const newQuantity = parseInt(quantityStepper.value);
     if (!isNaN(newQuantity) && newQuantity >= 1 && newQuantity <= 20) {
       cartItem.quantity = newQuantity;
@@ -88,7 +90,9 @@ function createCartItem(
       saveCartToLocalStorage(cart);
       updateCartandSave();
       updateOrderTotal(cart);
-      updateCartSummary(cartItems, cartSummarySection, cartSummaryPrice);
+      updateTotalPrice(cartItem, jacket);
+
+      updateCartSummary(cart, cartSummarySection, cartSummaryPrice);
     }
   });
 
@@ -128,7 +132,7 @@ function createCartItem(
       parseFloat(
         jacket.on_sale ? jacket.prices.sale_price : jacket.prices.price
       ) * cartItem.quantity;
-    totalP.textContent = `$${cartItem.totalPrice.toFixed(2)}`;
+    totalP.textContent = `${formatPrice(cartItem.totalPrice)}`;
   }
 
   function updateCartandSave() {
@@ -279,7 +283,7 @@ function updateOrderTotal(cartItems) {
   });
   const orderTotalElement = document.querySelector(".Cart_Total");
   if (orderTotalElement) {
-    orderTotalElement.textContent = `Total: $${orderTotal.toFixed(2)}`;
+    orderTotalElement.textContent = `Total: $${formatPrice(orderTotal)}`;
   }
 }
 
